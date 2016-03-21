@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>关于函数作用域的问题</title>
+ </head>
+ <body>
+	<input type="button" id="button" onclick="clickme()" value="点我呀" />
+	<script>
+		window.onload = function(){
+			/*function clickme(){
+				alert("ok");
+			}*/
+			document.getElementById("button").onclick = function(){
+				alert("ok");
+			};
+		};
+
+		/**
+			A:能
+			B:不能，B是对的
+			因为一般被点南的都是在全局下才能被执行的。
+			动态绑定是可以的
+		
+		*/
+	</script>
+ </body>
+</html>

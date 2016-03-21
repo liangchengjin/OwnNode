@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+
+	<script>
+		/*
+			string
+			number
+			function
+			object
+				Array--表格排序和banner切片[二维数组]
+				Date--万年历---音乐插件 html5+canvas实现动画效果
+				Regex
+				Error
+				object
+			boolean
+			undefined
+			
+			(音乐插件  html5 + canvas实现动画效果)
+		*/
+
+		function test(a, b, fn){
+			console.log(a+b);
+			fn();
+		}
+		var tt = function(){
+			console.log("dddddddddddddd");
+		};
+		test(100,100,tt);
+
+		/*
+			只要有大括号括起来的都是有作用域的
+			{
+				代码片段就丰在作用域
+			}
+		
+		*/
+
+		var a = 100;
+		function test(){
+			var a, b, c;
+			 console.log(a); 
+			 a = 200;
+			 b = 10;
+			 c = 100;	 
+			// 变量提升：变量的定之后，赋值之前执行的。
+			// 如果有代码执行的在变量定义之前就定义的。那么它首衔会拿undefined去给予
+
+
+			// 定义在函数内部的变量，在任意位置，它首先做的第一件事：查询LHS，看有不骨定义。如果没有定。
+
+
+		}
+		test(); // 答应是工
+
+		var a = 100;
+		delete a;  // delete 只能删除数组中某一个元素和对象属性，它是不能删除变量的的。
+		console.log(a);
+		//面试题：    A:100 B:undefined  答案是：A
+
+
+		// 面向对象
+			/**
+			 * cc 已经是一个了对象了
+			 *
+			 */
+		var cc = {
+			username:"小成",
+			age:20,			
+			address:"中国深圳",
+			say:function(){
+				console.log("大家好");
+			}
+		};
+		cc.username = "成成";
+		cc.sex = "女";
+		delete cc.sex;
+		cc = null;
+		
+
+
+		// 00:37:19
+
+		// 类==== javascript是没有类的概念===function--->在面向在对象中function支执行是没有任何意义的
+
+		// 如：游戏中的角色  小明 小花 小成
+			/*
+				游戏角色：名称，性别，级别同，颜色，技能(跳，爬，打，跑)
+			*/
+			// 当做一个类，Role() 就是一个构造函数 == 类+构造函数集成体
+			function Role(username){
+				this.username = username;
+				this.sex = "男";
+				this.lovel = 0;
+				this.color = "red";
+				this.jump = function(){
+					//console.log("角色是："+this.username+" :性别"+this.sex+"==级别是："+this.lovel+"==衣服颜色是:"+this.color+"它会跳");
+				}
+			};
+
+			// 在是javascript中可以动态添加属性和扩展方法；
+			var xiaomin = new Role("小英");
+				xiaomin.sex = "女";
+				xiaomin.address = "中国深圳";
+				xiaomin.jump = function(){
+					console.log(this.username);
+				};
+				xiaomin.jump();
+
+
+			var xiaochen = new Role("小成");
+				xiaochen.sex = "男";
+				xiaochen.jump();
+				//Role("我是双双");
+				//console.log(username); // 这里指向的是 window
+
+
+
+			function House(username){
+				this.username = "未知";
+				this.tv = "长虹电视";
+				this.sofa = "晚安";
+				
+			};
+			var cc = new House();
+				cc.username = "联想电视";
+				cc.tv = "联想的";
+
+			var hi = new House();
+				hi.username = "鼠标";
+				hi.tv = "双飞燕";
+
+			// 构造函数 constructor
+				console.log(hi.constructor == House);
+
+			// instanceof  就是判断一个对象是不是当前的某个类的对象
+				console.log(hi instanceof House);	// true
+				console.log(hi instanceof Role); // false
+
+			// hasOwnProperty();
+				console.log(Role.hasOwnProperty("sex")); // false
+
+			// hasOwnPrototype
+				/*
+					in: hasOwnPrototype instanceof 
+
+					in 是判断一个属性是否在、在某个对象中，包括原始对象的属性
+					
+					hasOwnPrototype (是能判断对象的自有属性，不包括原始对象属性) 是判断一个属性是否在在某个对象中，不包括原始对象的属性
+					
+					instanceof 是判断某个类创建出来的
+
+					hasOwnProperty 
+
+
+					原始对象属性Object中自有属性：
+						constructor: Object();				==== 判断对象的构造函数是什么
+						hasOwnProperty: hasOwnProperty();	判断自有属性
+						isPrototypeOf: isPrototypeOf();		来自哪个原型链
+						propertyIsEnumerable: propertyIsEnumerable();
+						toLocaleString: toLocaleString();
+						toString: toString();  把构造函数以字符串的方式打印
+						valueOf: valueOf();	   产生对象的代理
+				*/
+
+				var json = {username:"cc"};
+				var j2 = json.valueOf();
+				j2.username = "小成";
+				j2.sex = "男";
+				alert(json.sex+"===="+j2.sex);
+
+
+
+	</script>
+ </body>
+</html>

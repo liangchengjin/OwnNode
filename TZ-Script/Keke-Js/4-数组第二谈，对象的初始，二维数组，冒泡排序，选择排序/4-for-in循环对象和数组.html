@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>for-in循环对象和数组</title>
+ </head>
+ <body>
+  
+  <div id="box"></div>
+  <script>
+  // for-in 可以循环对象和数组
+	 var arr = ["小五","张三","王五","CC","小宇","小香","小冬","小强"];
+	 for(var i in arr){
+		document.write(i+"===="+arr[i]+"<br/>");
+	 };
+
+
+
+	// for-in 遍历 对象 
+		// 普通版
+		/*
+		 var json = {
+			width:"100px",
+			height:"100px",
+			background:"red"
+		 };
+		//alert(json.width);
+		var boxDom = document.getElementById("box");
+		for(var key in  json){
+			//alert(key+":"+json[key]);
+			//boxDom.style.width = 100+"px";
+			//boxDom.style.height = 100+"px";
+			//boxDom.style.background = "red";
+			boxDom.style[key] = json[key];
+		};*/
+		
+		// 增强版
+		/*var json = {
+			width:100,
+			height:100,
+			background:"red"		
+		 };
+		
+		var boxDom = document.getElementById("box");
+		for(var key in  json){
+			var value = json[key];					
+			if(typeof value=="number")value+="px";			
+			boxDom.style[key] = value;			
+		};
+		*/
+		
+
+		
+		// 面向对象的封装
+			function css(id, options){
+				var boxDom = document.getElementById(id);
+				for(var key in options){
+					var value = options[key];
+					if(typeof value=="number")value+="px";
+					boxDom.style[key] = value;
+				}
+			};
+			css("box",{			
+					width:600,
+					height:200,
+					background:"red",
+					borderRadius:5	
+			});
+
+  
+  </script>
+ </body>
+</html>

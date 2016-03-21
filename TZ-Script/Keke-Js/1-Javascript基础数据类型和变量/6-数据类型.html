@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>数据类型</title>
+ </head>
+ <body>
+  <h1 id="color">Color</h1>
+  <script>
+  	// 打印的封装 日志打印
+	function log(content){
+		if(console){
+			console.log("【你运算的结果是】: " + content);
+		}else if(dir){
+			console.dir("【你运算的结果是】: " + content);
+		}else{
+			alert("【你运算的结果是】: " + content);
+		};
+	};
+
+	/*
+	javascript:数据类型有：
+		string:字符串，定义的规则：就是 双引号或单引号引起来的就是字符串，比如 var s = "cc"; var ss = "123"; var f = "false";			  
+		number：数字 0 ,1,2,4.1; -1234, 0.63, -7.8
+		object：对象{}
+			Array数组 
+			null空
+			Date日期
+			Regex正则
+		funciton：函数
+		undefined：空对象 undefined和null的区别
+		boolean：布尔类型(true/false),一般应用逻辑判断，循环
+
+		如果你查看一个一个数据具体的类型： typeof 变量名称;
+		
+		1 > 2 no  否 错误 false
+		2 > 0 yes 是 正确 true
+
+		重点：
+			算法运算符：() 优先级最高
+	
+		总结：
+			1：算数运算符：+加法(加法) 连接符(字符串相加的连接符)
+			2：如果是两个数字字符串还是字符串连接符，但是对于 * / % 运算
+			   比如： var a = "2"; var b = "3";
+			   log(a + b);
+			   log(a * b);
+			   log(a / b);
+			   log(a % b);
+
+			 赋值运算符： =
+			 递增递减：++ -- 名称 前++和后++的区别(--同理)	
+	*/
+
+	 // 十进制：   逢十进一 0 1 2 3 4 5 6 7 8 9
+	 // 八进制：   逢八进一 0 2 3 4 5 6 7 8, 定义方式：一个数字以0开头就是八进制
+	 // 十六进制： 0-9 a-f  如果是以一个0X开头就是十六进制
+
+	 var a = 100; // 什么是十进制，
+	 log(typeof a);
+	 
+	 var b = 07; // 7
+	 var c = 01; // 7
+	 log(b);
+	 log(c);
+
+	 // toString 可以禁止转换 toString(2/8/10/16)
+	 var b = parseInt(255).toString(10);
+	 var c = parseInt(255).toString(8);
+	 var cc = 0377; // 八进制
+	 var dd = 0xff; // 
+	 log("0377:" + typeof cc); // number
+	 log("0xff:"+typeof dd+"==="+dd.toString(10));
+	 log("78.5e+3" + 78.5e+3);
+	 log("2e-3:" + 0.78e-3);
+
+	 // 指数 2e+3 2e-3
+	 
+
+	 // 无穷数 作业去了解数字无穷娄 infinity NaN
+	 // 怎么么产生 NaN 一个字符串去 除以， 乘以一个数字的时候就看到了NaN
+	
+
+	 // 颜色转换
+	 function getColor(r, g, b){
+		var rr = parseInt(r).toString(16);
+		var gg = parseInt(g).toString(16);
+		var bb = parseInt(b).toString(16);
+		return "#"+rr+gg+bb;
+	 };
+
+	// 随机颜色 
+	function getRandomColor(){
+		var rr = parseInt(Math.floor(Math.random()*256)).toString(16);
+		var gg = parseInt(Math.floor(Math.random()*256)).toString(16);
+		var bb = parseInt(Math.floor(Math.random()*256)).toString(16);
+		return "#"+rr+gg+bb;
+	 };
+	 var col = document.getElementById("color");
+	 var c = getRandomColor();
+		 col.style.background = c;
+		 col.style.color = "green";
+
+  </script>
+ </body>
+</html>

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<div id="box">随机颜色</div>
+	<script>
+		var oBox = document.getElementById("box");
+
+		function boxColor(){
+			var r = parseInt(Math.floor(Math.random()*256)).toString(16);
+			var g = parseInt(Math.floor(Math.random()*256)).toString(16);
+			var b = parseInt(Math.floor(Math.random()*256)).toString(16);
+			return "#"+r+g+b;
+		}
+		var colors = boxColor();
+		oBox.style.background = colors;
+	</script>
+ </body>
+</html>

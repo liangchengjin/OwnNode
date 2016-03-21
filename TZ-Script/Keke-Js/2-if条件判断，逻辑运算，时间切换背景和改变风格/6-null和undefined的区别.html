@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>null和undefined的区别</title>
+ </head>
+ <body>
+  
+  
+ <iframe width="500px" height="760px" src="https://sway.com/s/ZLJ8BLEKLqRkSWA1/embed" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border: none; max-width:100%; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen></iframe>
+
+
+  <script>
+   function log(message){
+		if(message){
+			console.dir("【打印的结果如下】：" + message);
+		}else{
+			alert("【打印的结果如下】：" + message);
+		}
+	 };
+	/*
+		1.数据类型层面:
+			undefined 是一个 undefined的数据类型
+			null:这是object数据类型
+	
+		2.内存分配层面:
+			undefined:如果是一个变量没有赋值没有操作它就是 undefined
+
+				var str;  alert(str); // undefined
+				str = 10;
+				alert(str); // 10
+
+				function test(){
+					a = 10;
+				};
+				test();
+				alert(a);
+
+			null:代表的是对象默认值, 可以清空对象
+			以后如果想要清空对象，就给赋null;
+	*/
+		var obj = {};
+		obj.name = "cc";
+		log(obj.name);		 // cc
+		//alert(typeof obj); // object
+		obj = null;
+		log(obj);			 // null
+
+		var n = 1 + undefined;
+		log(n);			 // NaN
+		var n = 1 + Infinity; 
+		log(n);			 // Infinity
+		var nn = 1 + 0;
+		alert(nn);		 // 1
+		
+
+
+
+
+			
+  </script>
+ </body>
+</html>

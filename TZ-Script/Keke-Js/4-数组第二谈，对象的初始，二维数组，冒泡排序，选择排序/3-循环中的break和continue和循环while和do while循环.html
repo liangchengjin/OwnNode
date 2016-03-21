@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3-循环中的break和continue和循环while和do while循环</title>
+ </head>
+ <body>
+  
+	<script>
+		// for in / while/do while
+		// break 和 continue  跑出循环
+
+		var arr = ["小五","张三","王五","CC","小宇","小香","小冬","小强"];
+		// 取出所有的偶数
+		// 如果遇到 cc 就循环退出
+
+			/*for(var i = 0; i < arr.length; i++){
+				var name = arr[i];
+				buyTip(arr[i]);
+				if(name == "王五"){
+					 continue; // 遇到当前的值，进中跳过，再执行下面的循环
+					// break; // 就是跳出当前后面的循环
+					//return;   // 就是返回当前的内容
+				}			
+			};*/
+
+		// 了解循环的写法
+			/**
+			var i =0, len = arr.length;
+			for(;;){
+				if(i<len){
+					i++;
+				}
+			};*/
+
+		// for while do/while 就相当于前面有三条路，任意选择一条
+		// 了解 while循环
+		
+			/* while 定义的格式：		
+				while(逻辑判断){
+					// 循环体
+					// 变量累加
+				};
+				
+				比如：
+					// while:
+					var i = 0;
+					while(i < 9){
+						alert(i);
+						i++;
+					}
+					
+					// for:
+					for(var i = 0; i < 9; i++){
+						alert(i);
+					}
+				*/
+		
+
+		// do while 是先判断 再执行
+		var i = 0;
+		do{
+			alert(i);
+			i++;
+		}while(false);
+
+		function buyTip(name){
+			alert(name+"买了一张票了......");
+		}
+
+	</script>
+ </body>
+</html>

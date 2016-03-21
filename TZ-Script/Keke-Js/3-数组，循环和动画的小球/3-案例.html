@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3-案例-把人的名字添加到div里去</title>
+ </head>
+ <body>
+	<div id="box"></div>
+	
+	<script>
+		
+		var boxDom = document.getElementById("box");
+		var students = ["小风","夏天","小成","小刚","小栖","小凤"];
+		
+		var len = students.length;
+		for(var i = 0; i < len; i++){
+			boxDom.innerHTML += "<h1>正在听课的学生是:"+students[i]+"</h1>";
+		}
+
+		document.write("<br><br>");
+		// 双重for循环   for嵌套for; 外层循环控制内层循环，内层一定要循环完毕以后才执行外部循环
+			/*for(var i = 0; i < 10; i++){
+				for(var j = 1; j < 10; j++){
+					document.write("=====" + j + "<br/>");
+				}
+				document.write(i + "<br/>");
+			}*/
+
+			for(var i = 0; i < 10; i++){				
+				for(var j = 1; j <= i; j++){
+					document.write(j + " * " + i + " = " + (j*i) + "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;");
+				}
+				document.write("<br/>");
+			}
+
+			var str = "cc";
+			var str2 = "20";
+			var str3 = "我的名字叫"+str+", 今年"+str2+"岁";
+			console.log(str3);
+
+			// 作业：理解双重for循环，用表格打印一个九九乘法表。
+			// 做九九乘法表的目的不是为降妖除魔于，是让你理解双重for。打印菱形和三角形
+			// 作业二：实现1-100的求总和 和1-100中每个数字的平方娄的累加， 并且开平方。对总和开根号，为了学习 Math函数
+
+			// 扩展：定一个页面输入一个两个数字，打印不同乘法表和求总和。
+	</script>
+ </body>
+</html>

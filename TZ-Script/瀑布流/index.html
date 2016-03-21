@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        *{margin:0; padding:0;}
+        #container{margin:50px auto; width:1000px; border:2px solid red;}
+
+        .items{width:200px; height:300px; background:red;}
+    </style>
+</head>
+<body>
+<!--快捷键：div.items{$}*10-->
+<div id="container">
+
+</div>
+    <script src="js/jquery-2.2.1.js"></script>
+    <script>
+        $(function(){
+            /**
+             * 案例：瀑布流
+             * 1.高度是自动伸缩*宽度固定
+             */
+            // 容器对象
+            var $container = $("#container");
+            // 固定宽度
+            var width = 200;
+            // 间距
+            var space = 10;
+            // 真实距离
+            var outwidth = width + space;
+            // 求列数
+            var cells = 0;
+
+            // url数据包
+            var sUrl = "http://www.wookmark.com/api/json/popular?callback=?";
+            var pageNo = 0;
+            var mark = true;
+
+            function getCells(){
+                cells = Math.floor(width.innerWidth / outwidth);
+                // 将容器的宽度
+                $container.width(cells * outerWidth - space);
+                console.log(cells);
+            }
+            getCells();
+
+
+            $.getJSON(sUrl,{page:0,pg:2},function(data){
+                data.forEach(function(obj){
+                   /* console.log(obj.preview);*/
+
+                    var sbit = $("<div/>");
+                    var iheight = obj.height * sbit;
+                    var $div = $("<div/>");
+                    $div.addClass("items").html("<img src'"+obj.preview+"' width='"+width+"'height='"+iheight+">");
+
+                    $container.append($div);
+
+                })
+
+            });
+
+
+        });
+    </script>
+</div>
+</body>
+</html>

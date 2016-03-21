@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>7-indexOf查找元素的位置</title>
+ </head>
+ <body>
+  
+  <script>
+	// indexOf(); 查找元素的位置(是从前面查找, 然后进行返回), 同进还可以进行替换
+    var arr = [1,2,3,4,"cc",5,6,7,8,9];
+	var index = arr.indexOf("cc"); // 找到 cc 所在的位置
+	arr[index] = "小成";		   // 进行修改
+	document.write(arr+"<br/>");   // 1,2,3,4,小成,5,6,7,8,9
+
+	// lastIndexOf(); 查找元素的位置(是从后面查找,然后进行返回)
+	var inds = arr.lastIndexOf(5);
+	arr[inds] = "pp";   
+	document.write(arr+"<br/>");   // 1,2,3,4,小成,pp,6,7,8,9
+
+
+	// 源代码(原型)：
+		Array.prototype.indexOf = function(value){
+			
+			for(var i = 0; i < this.length; i++){
+				if(this[i]===value){
+					return i;
+					break;
+				}
+			}
+			return -1;
+		};
+	
+
+
+  </script>
+ </body>
+</html>

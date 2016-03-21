@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>对象的循环 for in</title>
+ </head>
+ <body>
+  
+	<script>
+		// 对象的循环 for in,是拿到随想中所有的key和所有的value
+			var person = {
+				username:"cc",
+				age:20,
+				"user.email":"12345678@qq.com"
+			};
+
+			for(var key in person){//key 只是一个临时的变量
+				alert(key+"=="+person[key]);
+			};
+
+		
+
+
+
+	</script>
+ </body>
+</html>

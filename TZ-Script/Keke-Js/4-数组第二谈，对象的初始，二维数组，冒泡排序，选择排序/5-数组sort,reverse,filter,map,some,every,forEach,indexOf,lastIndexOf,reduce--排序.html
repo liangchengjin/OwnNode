@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>5-数组sort,reverse,filter,map,some,every,forEach,indexOf,lastIndexOf,reduce--排序</title>
+ </head>
+ <body>
+  
+  <script>
+  //es5数组:sort(),reverse(),filter(),map(),some(),every(),forEach(),indexOf(),lastIndexOf(),reduce()--排序
+	  /*
+		ever: 如果你的元素的每一个都符合条件就返回true，否则返回false
+		some：如果遇到 第一个不满足条件的true
+		用来检测数组中的类型是否是一致
+	  
+	  */
+	var arr = [1,2,3,4,5,6,7,8,9];
+	
+	// reverse(); 倒序(反转)
+		/*
+		arr.reverse();		  // 9,8,7,6,5,4,3,2,1 
+		document.write(arr);
+
+			源代码：
+					Array.prototype.reverse1 = function(){
+							var arr = [];
+							for(var i = this.length; i>0; i--){
+								arr.push(this[i]);
+							}
+							return arr;
+						};
+					var c = arr.reverse1();
+					alert(c);
+		*/
+
+
+
+	// filter(); 过滤的意思
+		/*
+			arr.filter(function(x,y,c){
+				document.write(x+"=="+y+"=="+c+"<br>");
+			});
+
+			1==0==1,2,3,4,5,6,7,8,9
+			2==1==1,2,3,4,5,6,7,8,9
+			3==2==1,2,3,4,5,6,7,8,9
+			4==3==1,2,3,4,5,6,7,8,9
+			5==4==1,2,3,4,5,6,7,8,9
+			6==5==1,2,3,4,5,6,7,8,9
+			7==6==1,2,3,4,5,6,7,8,9
+			8==7==1,2,3,4,5,6,7,8,9
+			9==8==1,2,3,4,5,6,7,8,9
+
+		*/
+			
+			/*var newArr = arr.filter(function(value, index, all){
+					//console.log(all[index][value]);
+					//console.log(all[index]===value);
+					//return value % 2
+					return !isNaN(value);
+				});
+				alert(newArr);*/
+				
+
+			// jQuery
+				/*
+				$(".className").fileter(function(){
+					return $(this).hasClass("class");
+				});*/
+
+	
+		// map();
+			/*
+			var newArr = arr.map(function(value, index, all){
+					//console.log(all[index][value]);
+					//console.log(all[index]===value);
+					//return value % 2
+					return !isNaN(value);
+				});
+				alert(newArr); // true
+				*/
+
+			
+			/*Array.prototype.map2 = function (callback){
+				var len = this.length;
+				var res = new Arrayi(len);
+				var thisp = arguments[1];
+				for(var i = 0; i < len; i++){
+					if(i in this){
+						res[i] = fun.call(thisp. this[i],i,this);
+					}
+				}
+				return res;
+			};*/
+		
+			
+
+		// push();
+			/*Array.prototype.map2 = function (callback){
+				var len = this.length;
+				var res = new Arrayi(len);
+				var thisp = arguments[1];
+				for(var i = 0; i < len; i++){
+					if(i in this){
+						var val = this[i];
+						if(fun.call(thisp, this[i], i, this)){
+							res.push(this[i]);
+						}						
+					}
+				}
+				return res;
+			};
+			
+			var newArr = arr.map2(function(value, index, all){
+					return true;
+				});
+				alert(newArr); // true			
+			*/
+
+
+
+		// filter:过滤的意思
+			/*
+			var newArr = arr.map2(function(value, index, all){
+						if(){}
+					});
+					alert(newArr); // true
+			*/
+
+		
+		// 最原始 过滤的方法 把cc 过滤掉
+			var arr = [1,2,3,"cc",4,5,6,7,8,9];
+			// 1.for循环的过渡方法
+			var newArr = [];
+			for(var i = 0; i < arr.length; i++){
+				if(arr[i]!= "cc"){       //  把cc过虑掉
+					newArr.push(arr[i]); // 1,2,3,4,5,6,7,8,9 
+				}
+			};
+			// document.write(newArr); // 1,2,3,4,5,6,7,8,9 
+			
+			//2.filter 过虑方法
+			var newArr2 = arr.filter(function(value){
+				return value != "cc";
+			});
+			document.write(newArr2);  //  1,2,3,4,5,6,7,8,9 
+
+		
+  </script>
+ </body>
+</html>

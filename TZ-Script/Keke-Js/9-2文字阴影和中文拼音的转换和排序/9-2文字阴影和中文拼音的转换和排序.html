@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>文字阴影和中文拼音的转换和排序</title>
+ </head>
+ <body>
+	
+	<pre>
+		<h1>文件标题</h1>
+		&lt;div&gt;
+		史蒂芬孙的发送到发士大夫阿士大夫阿士大夫阿士大夫\n
+		史蒂芬孙 士大夫士大夫
+		士大夫似的
+		士大夫
+		在啥地方
+		&lt; /div &gt;
+	</pre>
+	<div id="comment"></div>
+	<span>评价区域</span><br/>
+	<textarea id="content" style="width:600px; height:200px;"></textarea>
+	<input type="button" onclick="saveConment()" value="保存评论"/>
+
+	<script>
+		function saveConment(){
+			var content = document.getElementById("content").value;
+
+			document.getElementById("comment").innerHTML += "<p>"+content+"</p>";
+			sessionStorage.setItem("data", document.getElementById("comment").innerHTML);
+			
+		};
+		document.getElementById("comment").innerHTML = sessionStorage,.setItem("date");
+	
+	
+	</script>
+ </body>
+</html>

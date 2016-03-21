@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>混入</title>
+ </head>
+ <body>
+  
+	<h1 id="h1"></h1>
+	<script>
+		// 混入---把对象进行合并; 相同的属性进行覆盖，不同的属性进行追加
+		var person = {username:"own"};
+		var person2 = {age:20, address:"中国深圳"}
+
+		// extends
+		// 单个混入
+		function mi(obj, obj2){
+			for(var k in obj2){
+				if(obj2.hasOwnProperty(k)){
+					obj[k] = obj2[k];
+				}
+				
+			};
+			return obj;
+		};
+
+
+		// 多个对象的混入
+		function mixs(target, source){
+			var args = [].slice.call(arguments);
+			var i = 1;
+			if(args.length == 1){
+				return target;
+			};
+
+			while(source == args[i++]){
+				for(var key in source){
+					if(source.hasOwnProperty(key)){
+						target[key] = source[key];
+					}
+				}
+			}
+			return target;
+		};
+
+
+		var person3 = {tel:"12580", sex:"男"};	
+		var json2 = mixs(person, person2, person3);
+		alert(JSON.stringify(json2));
+
+
+
+		var json = mi(person, person2);
+
+		// JSON.stringify 把字符串转换成JSON
+		var jsonstringify = JSON.stringify(json);
+		console.log(jsonstringify);		
+		// {"username":"own","age":20,"address":"中国深圳"}
+		
+		// JSON.parse(); 把JSON转换成字符串
+		var josnparse = JSON.parse(jsonstringify);
+		console.log(josnparse);
+		// Object {username: "own", age: 20, address: "中国深圳"}
+		
+		function szTable(opts){
+			var defaults = {
+				title:"中国沿海"
+			};
+
+			var json = mi(defaults, opts);
+			
+			document.getElementById("h1").innerHTML = json.title;
+		};
+		 
+		szTable({
+			title:"javascript...."
+		});
+
+
+
+		// call() 是执行函数 
+		var jons = {username:"cc"};
+
+		function test(age){
+			alert(this.username+"==="+age);
+		};
+		test.call(jons,30);
+		//11:54
+
+		Array.prototype.ownSlice = function(start, end){
+			var arr = [];
+			var len = this.length;			
+			var index = (start<0?length-start:start) || 0;
+			var end = (end<0? len+end:end) || this.length;
+			for(var i = index; i < this.length; i++){
+				arr.pusth(this[i]);
+			}
+			return arr;
+		}
+		var arr = [1,2,3,4,5,6,7,8,9];
+		console.log(arr.ownSlice.call(0,3));
+
+	</script>
+ </body>
+</html>

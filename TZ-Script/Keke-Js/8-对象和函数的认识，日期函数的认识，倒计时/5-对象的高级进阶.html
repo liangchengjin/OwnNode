@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>对象的高级进阶</title>
+ </head>
+ <body>
+		<h1 id="title"></h1>
+		<h3 id="subtitle"></h3>
+		<h3 id="time"></h3>
+		<h3 id="author"></h3>
+		<h3 id="hits"></h3>
+		
+		<h3 id="price"></h3>		
+		<div id="content"></div>
+
+		<div id="attchments"></div>
+		<div id="conments"></div>
+		<div id="conments"></div>
+
+	<script>
+	var content = {
+					title:"毛呢外套呢子大衣韩版宽松",
+					content:"毛呢外套女2015秋冬新款韩版宽松女装修身显瘦中长款呢子大衣",
+					subtitle:"坐飞机",
+					author:"cc",
+					time:"2016-1-16 12:15:22",
+					hits:10,
+					isDalete:0,
+					img:"http://d04.res.meilishuo.net/pic/_o/fb/3f/299dcaf8449cff3915927a17c95c_750_975.cf.jpg_830983e8_s7_450_680.jpg",
+					attchments:["aa.txt", "bb.gif", "cc.jpg"],
+					mark:true,
+					price:12.5,
+					comments:[
+						{title:"1太好了", username:"cc1", img:"1aaa.gif", content:"fad54fdasfsdaf", time:"2016-1-16 14:49",},
+						{title:"2太好了", username:"cc2", img:"2aaa.gif", content:"fadf3452dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"3太好了", username:"cc3", img:"3aaa.gif", content:"fad4543fdasfsdaf", time:"2016-1-16 14:49"},
+						{title:"4太好了", username:"cc4", img:"4aaa.gif", content:"fadf45dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"5太好了", username:"cc5", img:"5aaa.gif", content:"fadf3523dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"6太好了", username:"cc6", img:"6aaa.gif", content:"fadf45dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"7太好了", username:"cc7", img:"7aaa.gif", content:"fadf3524dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"8太好了", username:"cc8", img:"8aaa.gif", content:"fadfd454asfsdaf", time:"2016-1-16 14:49"}
+					],
+					editors:{usernam:"小明", age:16, address:"深圳"},					
+				};
+				
+				for(var key in content){
+					var data = content[key];
+					if(typeof data!= "object"){
+						if($(key))$(key).innerHTML = data;
+					}else{
+						if(Array.isArray(data)){							
+							var len = data.length;
+							var chtml = "";
+							for(var i = 0; i < len; i++){
+								var params = data[i];
+								if(typeof params=="object"){									
+								}else{
+									chtml+=params;
+								}
+							}
+						}else{
+							var html = "";
+							for(var k in data){
+								html+=data[k]+'===';
+							}
+							$(key).innerHTML = html;
+						}
+					}
+					
+				}
+
+				// 写过三次以上的就要封装
+					function $(id){
+						return document.getElementById(id);
+					};
+
+				
+	
+	</script>
+ </body>
+</html>

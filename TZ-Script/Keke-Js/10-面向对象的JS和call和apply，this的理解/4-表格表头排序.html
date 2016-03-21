@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+
+  <style>
+	  
+  </style>
+ </head>
+ <body>
+  
+  <!--<audio src="mp3/01.mp3" controls></audio> -->	
+  <a href="javascript:void(0);" onclick="playstop(this)">播放</a> 
+  <a href="javascript:void(0);" onclick="tzAudio.next()">下一首</a>
+  <a href="javascript:void(0);" onclick="tzAudio.prev()">上一首</a>
+  <script>
+	// 对象，事件，回调函数---this, call apply 主要用于封装插件和组件开发
+		/**
+		 *  组件：就是对象事件回调函数的集成体
+		 *   
+		 *  json:解决参数的问题
+		 *   
+		 *  事件(回调函数):将一些操作继续交由用户去处理
+		 *
+		 *	call(对象,参数1, 参数2,...)，apply(对象,[参数1,参数2,...])值是改变的对象的引用
+		 *  
+		 *  call 和 apply 是函数的一种执行方式，只是这种执行可以改变我们这个函数中  this的指向。
+		 *  
+		 *  公式：函数.call(对象, 参数);
+		 */
+
+		 // call
+			 /**var username = "小成";
+			 function test(age, address){
+				alert("======"+this.username+"=="+age+"==="+address);
+			 };
+
+			 var cc = {
+				username:"cc",
+				sayHello:function(){				
+					//test.call(this, 20, "中国深圳");
+					//test.call(this, [20, "中国深圳"]);
+				}
+			 };
+			 cc.sayHello();*/
+
+
+		 /*
+			组件封装的步骤：
+				1：有页面原型
+				2：学会拆分
+				3：动态化
+
+			一、音乐播放器的封装：
+				1：创建一个音乐播放器
+				2：播放音乐
+				3：暂停音乐
+				4：显示时间
+				5：音量的控制
+				6：进度展示
+				7：上一首下一首
+				8：添加音乐
+				9：静音
+				10：歌词
+		 */
+		var tzBackground = {
+			imgs:[],
+			add:function(src){
+				this,imgs.push(src);
+			},
+			change:function(i, callback){
+				if(callback)callback(this,imgs[i]);
+			}
+		};
+		tzBackground.add("1.jpg");
+		tzBackground.add("1.jpg");
+		tzBackground.add("1.jpg");
+		tzBackground.add("1.jpg");
+		tzBackground.add("1.jpg");
+
+
+
+		 var tzAudio = {
+			audioDom:null,
+			songs:[],  // 音乐的容器
+			index:0,   // 播放音乐的起始位置
+			init:function(){
+				this.audioDom = document.createElement("audio"); // 创建一个音乐播放器
+			},
+			// 添加音乐
+			add:function(src){
+				//this.audioDom.src = src;
+				this.songs.push(src);
+			},
+			// 播放音乐
+			play:function(){
+				this.audioDom.src = this.songs[this.index];
+				this.audioDom.play();
+			},
+			// 暂停音乐
+			stop:function(){
+				this.audioDom.pause();
+			},
+			// 音乐时间
+			time:function(){
+			
+			},
+
+			shound:function(){
+			
+			},
+
+			percent:function(){
+			
+			},
+			
+			prev:function(){
+				this.index--;
+				this.play();
+			},
+
+			next:function(){
+				this.index++;
+				this.play();
+			}
+		 };
+
+		 tzAudio.init();
+		 tzAudio.add("mp3/01.mp3");
+		 tzAudio.add("mp3/02.mp3");
+		 tzAudio.add("mp3/03.mp3");
+		 tzAudio.add("mp3/04.mp3");
+		 //tzAudio.play();
+		 //tzAudio.stop();
+
+		 function playstop(obj){
+			var text = obj.innerHTMNL;
+			if(text == "播放"){
+				tzAudio.play();
+				obj.inierHTML = "暂停";
+			}else{
+				tzAudio.stop();
+				obj.innerHTMNL = "播放"
+			}
+		 };
+  </script>
+ </body>
+</html>

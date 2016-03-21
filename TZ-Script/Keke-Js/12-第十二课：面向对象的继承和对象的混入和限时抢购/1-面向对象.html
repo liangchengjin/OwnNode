@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	
+	<script>
+	// 在写面向对象的 javascript的， function它已经不在是数据类型，也不是函数，把它当做"类"
+
+	// function 充当类, Person() 充当构造函数
+		function Person(username){
+			this.username = username;
+			this.sayHello = function(){
+				alert(this.username+"和大家问好！");
+			}
+
+		};
+		
+		// Person.prototype 原型对象--它还是一个对象---继承Object
+		// Object对象默认提供了默认原型: Object.prototype
+		// 定义默认的属性和方法：valueOf constructor hasOwnProperty toString getPrototypeOf
+
+		Person.prototype = {
+			constructor:Person
+		};
+		
+		/*
+		alert(valueOf in Object.prototype); // false
+		alert(valueOf in Person.prototype); // false
+		alert(Object.prototype.constructor == Object);  // true
+		alert(Object.prototype.constructor == Person);  // false
+		*/
+
+		// Person.prototype继承Object.prototype
+
+		// 注意：构造器是放在原型对象中 prototype, 我们虽然看不到定义一个类，没有年到所谓原型，但是并不代表不存在
+
+		// 构造函数
+
+		Person.prototype.address = "中国深圳"; // 这是原型的扩展
+		var cc = new Person("成成");
+		cc.address = "";		
+		var own = new Person("自有的");
+		// alert(cc.address === own.address);
+
+		/*
+			总结原型：
+				构造函数是用 new 操作符调用的普通函数，可以随时定义自已的构造函数有来创建多个具有同样的属性对象 ，可以用 instanceof操作符或直接访问 constructor属性来鉴别对象是被哪里个构造函数所创建的
+				
+				function Person(){
+					
+				};
+				var cc = new Person;
+				alert(cc instanceof Person); // true
+				alert(cc.constructor === Person); // true
+
+				var Object = {
+					prototype:{
+						valueOf:
+						toString:fn
+						constructor:
+					}
+				};
+
+				Person.prototype = {
+					constructor:Person
+				}
+
+				Person.prototype extends Object.prototype
+
+				2:每一个函数都具有prototype的属性，它定义了该构造函数创建的虽有对象共享的属性。通常共享的方和原始属性被定义原型对象中，而其它属性都定在构造函数中，每个对象在创建的时候都保存一个[prototype]原型的引用，这个属性它不是原型的副本而是一个具体的引用。 javascript首先在自有属性中查询属性名称，如果自有属性中没有找到则查找原型属性。
+				*/
+				
+				
+				
+				
+				// 内建原型，是在javascript中已经定好了的。
+				// Object.prototype: 内建原型
+					var str = "cc";
+					/*str.indexOf();
+					str.charAt();
+					str.subString();
+
+					var data = new Date();
+					date.getFullYear();
+
+					var num = 100;
+					num.toFixed;
+
+					var arr = [];
+					arr.push();
+					arr.sort();*/
+
+
+					/*String.prototype = {
+						constructor:String,
+						indexOf:function(){
+						
+						},
+						subString:function(){
+						
+						}
+					};
+
+					Array.prototype = {
+						sort:
+						push:
+						unshift
+						shift
+					};*/
+					
+					// reduce 在ie/6/7/8 里不支持
+					var arr = [1,2,3,4,5,6,7,8,9,10];
+					Array.prototype.sum = function(){
+						return this.reduce(function(value, nvalue){
+							return value + nvalue;
+						})
+					};
+					var num = arr.sum();
+					// alert(num);
+
+					// 首字母大写
+						String.prototype.cap = function(){
+							return this.charAt(0).toUpperCase()+this.substring(1);
+						};
+
+						/*var str = "chengcheng";
+						var s = str.cap();
+						alert(s);*/
+
+						String.prototype = {
+							lower:function(){
+								return this.toLowerCase();
+							}
+						};
+
+					var str = "SHEN ZENG";
+					var st = str.charAt(2,3)
+					alert(st);
+
+					
+
+				
+					
+
+		
+
+	</script>
+ </body>
+</html>

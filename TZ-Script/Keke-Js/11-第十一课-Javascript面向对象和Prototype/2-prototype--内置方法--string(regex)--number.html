@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>prototype--内置方法--string(regex)--number</title>
+ </head>
+ <body>
+  
+	<script>
+		// prototype--内置方，string(regex),number
+
+		// dom+html5的应用开发+javascript
+
+		// dom ==== document
+
+		// jQuery
+
+		// 原型链在开发中， 
+			/**
+			prototype:
+				原型：每一个对象的基类
+				对象: (扩展属性和方法)
+				你可以把某个类中的 prototype 当成每一个创建以后的对象
+
+			它是围绕类去创建一个基类，每一个对象中都会在创建的时候中都拥用一个prototype的引用.
+			你可以prototype(原型对象)
+			
+			*/
+			// 小球对象
+			function Ball(){
+				this.x = 0;
+				this.y = 0;
+				this.radius = 10;
+				this.color = "red";
+			};
+
+			// Ball.prototype 继承 Object.prototype
+				/*Ball.prototype.draw = function(){
+					alert(this.x+"====="+this.y+"===="+this.name);
+				};
+				
+				Ball.prototype.name = "cc";
+				*/
+				
+				Ball.prototype = {
+					constructor:Ball,
+					name:"cc",
+					draw:function(){
+						alert(this.x+"====="+this.y+"===="+this.name);
+					}
+				};
+
+				
+			
+			// for 循环
+			/*for(var k in Ball.prototype){
+				alert(k+"<======>"+Ball.prototype[k]);
+			}*/
+
+			var ball = new Ball(); // 对象创建的时候，它拥有一个 prototype
+			var ball2 = new Ball();
+			ball.x = 200;
+			//ball.draw();
+			
+			
+
+			ball2.x = 1000;
+			//ball2.draw();
+
+			alert(ball.constructor === Ball);
+
+
+	</script>
+ </body>
+</html>

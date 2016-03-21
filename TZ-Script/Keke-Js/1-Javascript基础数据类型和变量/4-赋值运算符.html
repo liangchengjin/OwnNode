@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>04-赋值运算符</title>
+ </head>
+ <body>
+  <script>
+  	// 打印的封装 日志打印
+	function log(content){
+		if(console){
+			console.log("【你运算的结果是】: " + content);
+		}else if(dir){
+			console.dir("【你运算的结果是】: " + content);
+		}else{
+			alert("【你运算的结果是】: " + content);
+		};
+	};
+
+
+	/*
+		赋值运算符：=
+	
+	*/
+	var a = 100;
+	// 连续运算符
+	var b = c = d = 1000; // 这里它们都是独立的。我们可以进行单个赋值
+		b = 200 // 200
+		log(b); // 1000
+		log(a); // 100
+		log(d); // 1000
+		
+		/*
+		4-赋值运算符.html:16 【你运算的结果是】: 1000
+		4-赋值运算符.html:16 【你运算的结果是】: 1000
+		*/
+
+	var e = 89, f = 56, g = 88;
+		log(e);
+		log(f);
+		log(g);
+		/*
+		4-赋值运算符.html:16 【你运算的结果是】: 89
+		4-赋值运算符.html:16 【你运算的结果是】: 56
+		4-赋值运算符.html:16 【你运算的结果是】: 88
+		*/
+  
+  </script>
+ </body>
+</html>

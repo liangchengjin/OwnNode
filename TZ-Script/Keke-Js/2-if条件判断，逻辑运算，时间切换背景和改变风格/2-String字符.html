@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>2-String字符</title>
+ </head>
+ <body>
+
+  <div id="box"></div>
+  <textarea id="message"></textarea>
+  <script type="text/javascript">
+	function log(message){
+		if(message){
+			console.log(message);
+		}else{
+			alert(message);
+		}
+	}
+	
+	/*
+		字符串：string
+	
+	*/
+	var str = "我是一个好人";
+	document.getElementById("box").innerHTML = str;
+	// 为什么在 js 语言中，会出来双引号和单引号
+
+	// 给用户一定不要有两个选择，有一个选择比较好了。
+
+	// var str = '我的名字叫:"cc", 今年16岁，我长得很帅。但是有很多'; // 这就是 双引号和单引号的意义
+	// 外面用 单引号 里面就用 双引号。 外面用双引号外面就用单引号，
+	// 如果里面和外面一定要用双引号的话，那么就用\转义符
+
+	// 特殊字符
+		/*
+			在字符串要转义语法的字符：\" \' \\
+			换行符：\n
+			回加符: \r
+			制表符：\t   写了一个 \t 就是文字与文字之按了一个 tab 键
+		
+		*/
+		// var str = "\"";  // '
+		// var str = "\\";  // \
+
+		// \n  \t
+		// var str = "我很喜欢这里可是这里\n呆的时间又太长了";    //  这里会换两行
+		// var str = "我很喜欢这里可是这里\t呆的时\t间又太长了";  // 是这里	呆的时	间又太长了
+		
+		var str = "我很喜欢这里可是这里\n呆的时间又太长了";
+		var str2 = "我很喜欢这里可是这里\r呆的时间又太长了";
+
+		log(str);  
+		/*
+		我很喜欢这里可是这里
+		呆的时间又太长了
+		
+		*/
+		log(str2);
+		/*
+		我很喜欢这里可是这里
+		呆的时间又太长了		
+		*/
+		document.getElementById("message").value = str + str2;
+
+
+  </script>
+ </body>
+</html>

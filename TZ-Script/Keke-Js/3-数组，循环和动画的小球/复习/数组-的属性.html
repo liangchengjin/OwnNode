@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	<h1>Array属性：</h1>
+	<p>数组：var arr = [1,2,3,4,5,6,7,8,9];</p>
+	<ul>
+		<li>
+			<h3>向前增加(unshift),向后增加(push)</h3>
+			<ul>
+				<li>unshift：向数组的前面添加</li>
+				<li>push:向数组的后面添加</li>
+
+				<li><h4>应用案例：</h4></li>
+				<li>arr.unshift("小明","小刚");</li>
+				<li>arr.push("2016今天好冷呀！")</li>			
+			</ul>
+		</li>
+		<li>
+			<h3>修改: arr[0] = "";</h3>
+			<ul>
+				<li>arr[0] = ""; arr[0]就指定的数组下标第0个进行修改 = "这里就是要修改的内容"; 然后再把修改的内容赋值给左加第0个，也就是中国的第一个的意思</li>
+			</ul>			
+		</li>
+
+		<style>
+			a{			
+			display:block;				/*转换块级元素*/
+			text-decoration:none;		/*去掉文字下划线*/		
+			background-color:red;		/*添加背景颜色*/
+			color:yellow;				/*添加文字的颜色*/
+			font-weight:800;			/*加粗字体*/
+			font-family:"微软雅黑";		/*添加字体的样式*/
+			font-size:20px;				/*改变文字的大小为16像素*/
+			line-height:50px;			/*改变字体的行高*/
+			text-indent:20px;			/*字体首行缩进20像素*/
+			text-align:center;			/*字体居中显示*/
+			height:50px;				/*改变a标签的高度*/
+			width:300px;				/*改变a标签的宽度*/
+			border-radius:5px;			/*改变圆角为5像素*/
+			border:2px solid #6600ff;	/*改变边框为紫色*/
+			}
+		</style>
+		<a href="#">&lt;a&gt;标签&lt;/a&gt;</a>
+			
+	</ul>
+	<script>
+		var arr = [
+				"我是歌手4",
+				"1998.5万",
+				"奔跑吧兄弟3",
+				"2998.4万",
+				"非诚勿扰",
+				"3997.4万",
+				"了不起的挑战",
+				"4988.1万",
+				"全员加速中",
+				"5996.4万",
+				"跟着贝尔去冒险",
+				"6989.1万",
+				"一年级大学季",
+				"7988.1万",
+				"爱情保卫战",
+				"8985.5万"
+				];
+		// 增加: 
+			/*向前unshift();*/
+			var a1 = arr.unshift("【我是小成】");
+			document.write("a1一共:"+a1+"个<br/>");
+			document.write("向前增加unshift: " + arr + "<br/><br/>");		
+			/*增加: 向后push();*/	
+			var a2 = arr.push("【小锦】","2016今天好冷");
+			document.write("a2一共:"+a2+"个<br/>");
+			document.write("向后增加push:"+arr+"<br/><br/>");
+
+		// 修改：arr[0] = "";
+			var a3 = arr[2] = "【\"听说你那里下雪了吗？\"】";
+			document.write("a3一共:"+a3+"个<br/>");
+			document.write("向3修改了:"+arr+"<br/><br/>");
+
+		// 删除: 			
+			/*pop(); 向后删除，并返回一个值*/			
+			var po = arr.pop();  // 2016今天好冷 
+			document.write("pop向后删除并返回的值：" + po + "<br/><br/>");
+			/*shift(); 向前删除，并返回一个值*/			
+			var st = arr.shift();
+			document.write("shift向前删除并返回的值：" + st+ "<br/><br/>");
+			/*delete(); 但是delete只是删除前的一个内容，里面还是留下了一个空的位置，就像我们的钱包一样，中间有五格，里面都装了5张卡，你拿走前面的一张，里面还是有一个空间的，这就是数组里的delete删除内容*/
+			var del = delete arr[1];
+			document.write("delete删除第一个结果：" + arr + "<br/><br/>");
+
+		// 复制slice(startIndex, endIndex); 
+			var arr = [1,2,3,4,5,6,7,8,9];
+			var sli = arr.slice(1, 4);  // 2,3,4 它是从数组下标第1个开始至第4个复制中间的数据，并返回结果的值
+			document.write(sli + "<br/><br/>");
+		
+		// splice(startIndex, endIndex); 剪切
+			var arr = [1,2,3,4,5,6,7,8,9];
+			var spl = arr.splice(1, 6); // 2,3,4,5,6,7 它是从数组下标第1个开始至第6个剪切中间的数据，并返回结果的值
+			document.write(spl + "<br/><br/>");
+		
+		// splice(startIndex, endIndex,"替换的内容","替换的内容");
+		   var arr = [1,2,3,4,5,6,7,8,9];
+		   var str = arr.splice(2,6,"aaa","bbb");  // 1,2,aaa,bbb,9 
+		   document.write(arr);
+
+		
+	</script>
+	
+ </body>
+</html>

@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>数学的函数</title>
+  <style>
+  div{font-size:20px; color:#FFF; float:left; font-weight:800; width:100px; height:50px; line-height:50px; text-align:center;}
+  </style>
+ </head>
+ <body>
+  
+    <!--<div id="box">随机颜色</div>-->
+	<script>
+		/*
+			一、定时器
+				setTimeout   执行定时一次
+				clearTimeout 清除定时器一次
+
+				setInterval   执行定时多次
+				clearInterval 清除定时器
+
+			二、数学函数
+				Math.random(x);   // 随机数
+
+				Math.floor();	 // 向下取整 只保留小数点前面的数字，后面都会去
+				Math.ceil();	 // 向上取整 只保留小数点前的数字+1, 后面都舍去, 除非是整数，就直接返回
+
+				Math.max(n, n1, n2..);		 // 最大值
+				Math.min(n, n1, n2..);		 // 最小值
+
+				Math.round();	 // 四会五入
+				Math.abs(s);		 // 绝对值
+
+				Math.pow();		 // 几次方
+				Math.sqrt();	 // 开平方
+		
+		*/
+		var a = -100;
+		var b = Math.abs(a);
+		// console.log(b); // 100
+		
+		// Math.max() 最大值
+		var maxValue = Math.max(1,58,9,7,5,8,6,2,45,6,23,9);
+		// alert(maxValue);   // 58
+		
+		// Math.min() 最小值
+		var minValue = Math.min(1,58,9,7,5,8,6,2,45,6,23,9);
+		//alert(minValue);      // 1
+
+		var arr = [1,58,9,7,5,8,6,2,45,6,23,9];
+		Array.prototype.max = function(){
+			//return Math.max.apply(this, this);
+			return Math.max.apply(null, [1,58,9,7,5,8,6,2,45,6,23,9]);
+		};
+		var ma = arr.max();
+		//alert(ma);	// 58
+		
+		// 几次方
+		var a = 2;
+		var c = Math.pow(5, 3); // 5*5*5  就是3个5相乘
+		//alert(c); // 2*2=4 2*3=8 5*3
+		
+		// 开平方根
+		var a = 2;
+		var cc = Math.sqrt(a);
+		// alert(cc);
+
+		// Math.floor();向下取整,只保留小数点前面的东西，后面的都省去，全删除
+		var cc = 1.5998558;
+		var c = Math.floor(cc);
+	
+		// Math.ceil();
+		var k = Math.ceil(cc);
+		
+		// Math.round();  
+		// toFixed(保留小数点的位数); 周时会四舍五入
+		var r = Math.round(cc);
+		// alert(c+"====="+k+"====>>"+r+"====="+cc.toFixed(2));	
+
+
+		// 随机数 Math.random(x); 随机数据范围; 0<=num(0.5)<1的个数字一个小数
+			// 5-10的随机数
+			/**setInterval(function(){
+				console.log(Math.floor(Math.random()*5+(10-5+1))); // 它永远也到不了5
+			}, 200);*/
+
+			setInterval(function(){
+				console.log(rangeRandom(3, 5));
+			}, 200);
+			
+			function rangeRandom(start, end){
+				return Math.floor(Math.random()*(start+1)+(end-start));
+			};
+
+
+			function tRandom(start){
+				return Math.floor(Math.random()*start);
+			};
+
+			// 随机颜色
+				function getRgb(){
+					// 0 - 255
+					var r = tRandom(256);
+					var g = tRandom(256);
+					var b = tRandom(256);
+					return "rgb("+r+","+g+","+b+")";
+				};
+
+				setInterval(function(){
+					console.log(getRgb());
+					//console.log(getRgb16());
+					var divDom = document.createElement("div");
+					var color = getRgb16();
+					divDom.style.background = color;
+					divDom.innerHTML = color;
+					
+					document.body.appendChild(divDom);
+					//document.getElementById("box").style.background = getRgb16();
+					//document.getElementById("box").innerHTML = getRgb16();
+				}, 1000);
+
+
+				function getRgb16(){
+					// 0-255 16进制
+					var r = tRandom(256).toString(16);
+					var g = tRandom(256).toString(16);
+					var b = tRandom(256).toString(16);
+					if(r.length<2)r= r+""+r;
+					if(g.length<2)g= g+""+g;
+					if(b.length<2)b= b+""+b;
+					return "#"+r+""+g+""+b;
+				};
+
+
+
+		
+
+
+
+	
+	</script>
+ </body>
+</html>

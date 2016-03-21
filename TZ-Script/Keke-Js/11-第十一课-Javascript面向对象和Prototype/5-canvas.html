@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  	<canvas id="canvas" width="960" height="460" style="background:#111;"></canvas>
+	
+	<script>
+	window.onload = function(){
+		var canvas = document.getElementById("canvas");
+		var context = canvas.getContext("2d");
+		
+		/*context.beginPath();
+		context.fillStyle = "red";
+		context.arc(200, 200, 50, 0, Math.PI*2, true);
+		context.fill();*/
+
+		var ballNums = 201;
+		var balls = [];
+		// 创建200个小球
+		for(var i = 0 ; i < ballNums; i++){
+			var ball = new Ball();
+			ball.x = canvas.height/2;
+			ball.y = canvas.height;
+			ball.radius = 4;
+			balls.push(ball);
+		};
+	
+		function drawCanvas(ball){
+			ball.x = ;
+			ball.y = ;
+			ball.color = ;
+			ball.draw(context);
+		}
+		
+
+		// 一次性。肯定需要用不断的改变
+		setInterval(function(){
+			// 一次性绘制200小球，并且每个小球都调用drawCanvas
+			balls.forEach(function(obj){
+				drawCanvas();
+			});
+		},100);
+
+	};
+
+	function Ball(radius){
+		this.radius = radius;
+		this.x = 0;
+		this.y = 0;
+		this.color = "#FF0000";
+	};
+
+	// 原型方法
+	Ball.prototype.draw = function(context){
+		context.beginPath();
+		context.fillStyle = "red";
+		context.arc(obj.x, obj.y, obj.radius, 0, Math.PI*2, true);
+		context.fill();
+	}
+	</script>
+ </body>
+</html>

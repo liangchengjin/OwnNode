@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>4-运动的碰撞</title>
+  <style>
+   *{padding:0; margin:0;}
+	#box{
+		width:100px;
+		height:100px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:0;
+		border-radius:100%;
+	}
+  </style>
+ </head>
+ <body>
+	
+	<div id="box"></div>
+	<div id="boxs"></div>
+
+	<script>
+		/*
+		 移动动画：left, top定位		
+		
+		*/
+		
+		(function(){
+			var x = 0;
+			var y = 0;
+			var speed = 10;
+			var xtep = speed;
+			var ytep = speed; // 动画 速度 + - 是决定方向
+
+			var boxDom = document.getElementById("box");
+			function draw(){
+				// 获取浏览器的宽度和高度
+				var maxwidth = window.innerWidth - boxDom.offsetWidth;
+				var maxheight = window.innerHeight - boxDom.offsetHeight;
+				x+= xtep;
+				y+= ytep;
+				
+				if(x >= maxwidth){
+					xtep = -speed;
+					x = maxwidth;
+				};
+
+				if(x <= 0){
+					xtep = speed;
+					x = 0;
+				}
+
+
+				// y 如果大于 width
+				if(y >= maxheight){
+					ytep = -speed;
+					y = maxheight;
+				};
+
+				if(y <= 0){
+					ytep = speed;
+					y = 0;
+				}
+
+				boxDom.style.left = x+"px";
+				boxDom.style.top = y+"px";			
+			}
+
+			setInterval(function(){
+				draw();
+			},1000/30); // 30 这是匀速运动
+		})();
+		
+	
+	
+	</script>
+ </body>
+</html>

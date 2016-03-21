@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>5-运动的多个小球</title>
+  <style>
+   *{padding:0; margin:0;}
+	.box{
+		width:100px;
+		height:100px;
+		background:red;
+		position:absolute;
+		top:0;
+		left:0;
+		border-radius:100%;
+		line-height:100px;
+		text-align:center;
+	}
+  </style>
+ </head>
+ <body>
+	
+
+	<script>
+		/*
+		 移动动画：left, top定位		
+		
+		*/
+
+
+		var speed = 10;
+		var arr = [];
+		// 动态创建多个小球
+		for(var i = 0; i < 20; i++){
+			var divDom = document.createElement("div");
+			divDom.className = "box";
+			divDom.innerHTML = i;
+			divDom.x = 0;
+			divDom.y = 0;
+			divDom.xstep = i+2;
+			divDom.ystep = i+2;
+			document.body.appendChild(divDom);
+			arr.push(divDom);
+		}
+
+			
+			
+
+			function draw(boxDom){
+				for(var i = 0; i < arr.length; i++){
+						var boxDom = arr[i];
+						// 获取浏览器的宽度和高度
+						var maxwidth = window.innerWidth - boxDom.offsetWidth;
+						var maxheight = window.innerHeight - boxDom.offsetHeight;
+						boxDom.x+= boxDom.xstep;
+						boxDom.y+= boxDom.ystep;
+						
+						if(boxDom.x >= maxwidth){
+							boxDom.xstep = -boxDom.speed;
+							boxDom.x = maxwidth;
+						};
+
+						if(boxDom.x <= 0){
+							boxDom.xstep = boxDom.speed;
+							boxDom.x = 0;
+						}
+
+
+						// y 如果大于 width
+						if(boxDom.y >= maxheight){
+							boxDom.ystep = -boxDom.speed;
+							boxDom.y = maxheight;
+						};
+
+						if(boxDom.y <= 0){
+							boxDom.ystep = boxDom.speed;
+							boxDom.y = 0;
+						}
+
+						boxDom.style.left = boxDom.x+"px";
+						boxDom.style.top = boxDom.y+"px";	
+				}
+
+					
+			};
+
+			setInterval(function(){
+				draw();
+			},1000/30); // 30 这是匀速运动
+		
+	
+	</script>
+ </body>
+</html>

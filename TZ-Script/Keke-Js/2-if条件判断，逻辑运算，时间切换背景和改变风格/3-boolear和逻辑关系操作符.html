@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3-boolear和逻辑关系操作符</title>
+ </head>
+ <body>
+   <script>
+	 function log(message){
+		if(message){
+			console.dir("【打印的结果如下】：" + message);
+		}else{
+			alert("【打印的结果如下】：" + message);
+		}
+	 };
+
+	 /*
+		布尔类型
+			number 是完成小数里面人类小学四则运算的话
+			那么字符串就是写一个文章
+			而 boolear就是：判断题，是与否, 这就是我们的 boolear 类型
+			所有的数据类型，就相当于我们在完成一个考卷一样
+			考卷就是作我们的作用域，而判官就是js引擎，如果正确的话就进入作用域中，如果不正正确的话就发脾气，提示语法错误 error
+
+			boolear 判断题：true / false	 
+	 */
+   
+	   var cc = true;
+	   var f = false;
+
+	   // 1.今天是星期天吗：如果是我就逛街，如果不是就在家里睡觉
+	   // 2.我有一个女朋友。那么我一定很爱刀，如果没有我就爱自己
+	   // 3.如果当前时间是22:00那么我就要div背景切换成一个美女，否则切换成另外一张跑车的图片。
+
+		/*
+			关系运算符：
+				大于 >,
+				小于 <,
+				小于等于 <=,
+				等于 =,
+				大于等于 >=,
+				不等于 !=,
+				全等于 ===,
+			返回值都是boolear  	
+		
+		*/ 
+		  // var m = 1 > 2;
+		  // alert(m); // false 
+
+		// 条件表达式：如果(if) / 否则(else)
+			/*
+			if(boolear){
+				// if(程序体)
+			}else{
+				// else(程序体)
+			}*/
+			
+			/**
+			// 1.今天是星期天吗：如果是我就逛街，如果不是就在家里睡觉
+			var str = "星期一";
+			//if(str = "星期天"){ // 这里永远都是打钱逛街， 因为这里是赋值
+
+			if(str == "星期天"){ // 这里永远都是打钱逛街， 因为这里是赋值
+				alert("我就逛街");
+			}else{
+				alert("就在家里睡觉");
+			}
+			*/
+
+
+			// == 和 === 的区别
+				/*
+				var str = "0"; // string
+				var num = 0;   // number
+				log("str ==" + typeof str); 
+				log("num == " + typeof num);
+				
+
+				console.dir(str == num);  // true
+				console.dir(str === num); // false 这里比较了我们的字面值 又比较了数据类型
+				*/
+
+			// 逻辑运算符：如果你是男人并且今年30岁并且要有房子并且脸蛋我就让你做我的男朋友。否则滚开
+				/*
+					&&: 且(与)
+						true && true === true;
+						true && false === false;
+						false && true == false;
+						false && false === false;
+						总结：只要条件中有一个为false那么就是false, 只要全部为true才是true
+					
+					||: 或
+						true && true === true;
+						true && false === false;
+						false && true == false;
+						false && false === false;
+						总结：只要条件中有一个为true那么就是true, 只要全部为false才是false
+					
+					! : 非(真亦假，假亦真)(取反)  
+						
+					如果是括号的优先级别是最高。先执行括号的然后在执行外面：
+					比如：true && (true && false) || false === true && false || false == false					
+				
+				*/
+			
+
+			var str = "男人";
+			var age = 30;
+			var house = "别墅";
+			var mark = "帅哥";
+			/*
+			&&:
+				if(str=="男人" && age==30 && house=="别墅" && mark=="帅哥"){				
+					alert("嫁给你");
+				}else{
+					alert("死远去");
+				};*/
+
+			/*
+			||:
+				if(str=="男人" || age==20 && house=="别墅" && mark=="帅哥"){				
+					log("嫁给你");
+				}else{
+					log("死远去");
+				};*/
+			
+			/*
+			!:
+				if(str !="男人" || age==20 && house=="别墅" && mark=="帅哥"){				
+					log("嫁给你");
+				}else{
+					log("死远去");
+				}; // 【打印的结果如下】：死远去*/
+			
+			/* java语法：
+				public  class Test{
+					public static void main(String[] args){
+						String str = "男人";
+						int age = 30;
+						String cc = "成成";
+
+						if(!str.equels("男人") || age==20 && house=="别墅" && mark=="好人"){
+							System.out.println("跟你走");
+						}else{
+							System.out.println("去一边去。");
+						}
+					}
+				}*/
+			
+				var m = true && (true && false) || false;
+				log(m); // false
+				
+				/*false || false == 极品
+				  false && false == 更假*/
+
+				// 操作符的优先级：
+					// var s = 1 + 3 * 9;
+					var s = (1 + 3) * 9;
+					log(s); // 36
+
+					var f = false && false || true && true;
+					log(f); //true
+					
+				// 三目运算符是 if else的一种替代语法：boolean?if体:else体
+					if(1 > 2){
+						log("我就去睡觉");
+					}else{
+						log("我就要去看书");
+					};
+
+				// 替代写法：
+					 1>2?log("我是去睡觉"):log("我就是去看书....！");
+
+				// 惰性写法：
+					var str = 1>2 ||"cc";
+					alert(str);
+
+				// 字符串 number boolear object undefined function(三次课讲)
+					/*
+						object 的 null 和 undefined 来进行比较
+					*/
+
+
+
+
+
+
+
+   </script>
+ </body>
+</html>

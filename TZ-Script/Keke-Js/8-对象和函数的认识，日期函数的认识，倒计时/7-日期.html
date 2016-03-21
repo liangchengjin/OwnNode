@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>日期</title>
+ </head>
+ <body>
+		<script>
+			// object -- Date --万年历，时间的倒计进，时钟，里头切换皮肤，布置一个作业
+		
+			// 数组和对象没有任何关系
+			var json = {
+				"user.name":"cc"
+			};
+			alert(json["user.name"]);
+
+			window.onload = function(){
+				var date = new Date();
+				//alert(date);
+				
+				var year = date.getYear();
+				var fullYear = date.getFullYear();  //  年
+				var month = date.getMonth() + 1;	//  月
+				var dates = date.getDate();			//  日
+
+				// 时 分 秒
+				var hourse = date.getHours();		// 时
+				var min = date.getMinutes();		// 分
+				var sec = date.getSeconds();		// 秒
+
+				// 星期数
+				var week = date.getDay();			// 0 星期天 一周第一天是星期天，最后一天是星期六
+
+				alert(fullYear+"年"+month+"月"+dates+"日"+hourse+"时"+min+"分"+sec+"秒, 星期:"+week);
+
+				// 毫秒 0 - 99 -- 会转成 1 
+				var mi = date.getMilliseconds();
+				alert(mi);
+
+				// 获取毫秒数--是获取 1970的1月1号到当前现在的时间差
+				var time = date.getTime();
+				alert(time);
+
+				// 日期的构造函数
+				var date = new Date(year, month, date, wek, hour, minutes, secon);
+			}
+
+			
+		</script>
+ </body>
+</html>

@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>9-案例</title>
+ </head>
+ <body>
+   
+   <div id="box">
+		<input type="text" class="s2" value="2">
+		<input type="text" class="s1" value="1">
+		<input type="text" class="s3" value="3">
+		<input type="text" class="s5" value="5">
+		<input type="text" class="s4" value="4">   
+   </div>
+
+
+   <div id="box">
+		<input type="text" class="s2" value="2">
+		<input type="text" class="s1" value="1">
+		<input type="text" class="s3" value="3">
+		<input type="text" class="s5" value="5">
+		<input type="text" class="s4" value="4">   
+   </div>
+	<!--
+   <div id="box">
+		<input type="text" class="s1" value="2">
+		<input type="text" class="s2" value="1">
+		<input type="text" class="s3" value="3">
+		<input type="text" class="s4" value="5">
+		<input type="text" class="s5" value="4">   
+   </div>
+   -->
+
+   <input type="button" value="排序" onclick="tzSort()">
+	
+   <script>
+		function tzSort(){
+			var arr = [];
+			var boxDom = document.getElementById("box");
+			var inputs = boxDom.children;  // children 是找到一个元素下载面所有的元素
+			var len = inputs.length;
+			for(var i = 0; i < len; i++){
+				arr.push(inputs[i]);
+			};
+			
+			arr.sort(function(a, b){
+				return a.value - b.value;
+			});
+
+			// 循环排序好的数组
+			boxDom.innerHTML = "";
+			for(var i = 0; i < arr.length; i++){
+				boxDom.appendChild(arr[i]);  // boxDom.appendChild(arr[i]); 添加一个元素的对象
+			}
+				
+		}
+
+
+
+		// 作业：写一个div内容和中文排序
+   
+   </script>
+ </body>
+</html>

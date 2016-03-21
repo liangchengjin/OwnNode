@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<!--<h1 id="time1"></h1>
+<h1 id="time2"></h1>-->
+    <h1 time="2015/12/23 01:49:00"></h1>
+	<h1 time="2015/12/23 01:49:10"></h1>
+	<h1 time="2015/12/23 01:49:20"></h1>
+	<h1 time="2015/12/23 01:47:30"></h1>
+	<h1 time="2015/12/23 01:34:00"></h1>
+	<h1 time="2015/12/23 01:35:00"></h1>
+	<h1 time="2015/12/23 01:36:00"></h1>
+    
+<script>
+   window.onload = function(){
+	 function start(arr, dom, endDate, callback){
+		var data = new Date(); // 创建当前的时间
+		var end = endDate;
+		var time = end.getTime() - date.getTime(); // 毫秒数
+		var sec = time / 1000; // 1秒 == 1000毫秒 1分 = 60秒;
+				//还剩下多少天
+		var dd = Math.floor(sec/60/60/24);
+		var hh = Math.floor(sec/60/60%24);
+		var mm = Math.floor(sec/60%60);
+		var ss = Math.floor(sec/60);
+
+		dom.d = dd;
+		dom.h = hh;
+		dom.m = mm;
+		dom.s = ss;
+		dom.timer = setInterval(function(){
+			dom.index++;
+			if(dom.index > 50){
+				clearInterval(dom.timer);
+			};
+
+			if(callback)callback.call(dom,(dd==0 && hh==0 && mm==0 && ss==0));
+		},1000/60);
+			
+			if(dd==0 && hh==0 && mm==0 && ss==0){
+				clearInterval(dom.timer);
+				dom.removeAttribute("time");
+				var index = arr.indexOf(dom);
+				arr.splice(index,1);
+				if(callback)callback.call(dom, true)
+				if(callback)callback.call(dom, false);
+				
+			};
+		};
+
+			var hdoms = document.getElementsByTagName("h1");
+			var hdomsArr = [].slice.call(hdoms);
+			var htimer = setInterval(function(){
+				for(var i = 0; i < hdomsArr.length; i++){
+					var timer = hdomsArr[i].getAttribute("time");
+					if(timer){
+						hdomsArr[i].index = 0;
+						hdomsArr[i].timer = null;
+						start(hdomsArr, hdomsArr[i], new Date(timer),function(ok){
+								if(ok){ // 执行完成进入这里
+									this.style.background = "red";
+									this.innerHTML = "抢购吧"									
+								}else{
+									this.innerHTML = this.d+"==="+this.h+"==="+this.m+"==="+this.s+"==="+this.index;
+								}
+							});
+					}
+				}
+			},1000);
+
+	 
+	
+   };
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>4-默认真的给予</title>
+ </head>
+ <body>
+  <script>
+ function log(message){
+	if(message){
+		console.dir("【打印的结果如下】：" + message);
+	}else{
+		alert("【打印的结果如下】：" + message);
+	}
+ };
+
+// 惰性求值
+   var str = "大眼睛";  // "", 0, false, null, undefined, NaN===返回都是false所以是falsy 都是为假
+   var str2 = str || "cc"; // 如果前的值是空的话，就给一个默认的值 
+   if(str == 0){
+	str2 = "cc";
+   }else{
+	str2 = str;
+   }  
+
+	
+	if("0"){
+		alert("1");
+	}else{
+		alert("2");
+	}; // 1
+
+   // falsy 和 truely 
+
+
+   // 第一个 input 获取文本值是字符串，第二：falsy的简写判断和注意点。和默认值的给予
+
+
+   
+  
+  </script>
+ </body>
+</html>

@@ -1,0 +1,32 @@
+		// 知识点取余数：被除数 < 除娄===被除数
+			/*
+			var snum = (60 - s) % 60;
+			console.log(s+"==="+parseInt(snum/2));
+			*/
+
+
+		// 了解if else和boolean数据类型的关系
+		// 对逻辑运算一个连接
+			/*
+			undefined 和 null的理解，去度找
+			switch case 和 if elseif else 一个使用
+
+			 */
+
+		// 作业
+			/*
+			1：var a; typeof a; 结果是？
+			2：var s = "ls"; s++; 结果是？
+			3：!! "false"; 结果是什么？
+			4：!! undifined; 结果是什么？
+			5：typeof -Infinity; 结果是什么？
+			6：10 % "0"; 是什么？
+			7：typeof "2e+2";是什么
+			8：a = 3e+3;a++; 是什么
+
+			第二大题目：
+			var v = v || 10;
+			如果将v 分别设置为：100,0,null, 结果分别是什么
+
+			第三题目：预习for循环和数组，打印九九乘法表,
+			*/

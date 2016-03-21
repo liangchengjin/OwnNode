@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>写一个 input 获取文本值是字符串，第二：falsy的简写判断和注意点。和默认值的给予</title>
+ <style>
+ *{padding:0;margin:0;}
+ form{margin:50px;}
+ input[type="text"]{width:360px; height:30px; outline:none; border:1px solid red;}
+ input[type="button"]{width:100px; height:36px; outline:none; border:none;}
+ 
+ </style>
+ </head>
+ <body> 
+	 <form>
+		<input type="text" id="username" placeholder="请输入用户名称">
+		<input type="button" onclick="validator()" value="验证"> 
+		 <h1 id="result"></h1>
+	 </form>
+	
+  
+  <script>
+   // 写一个 input 获取文本值是字符串，第二：falsy的简写判断和注意点。和默认值的给予
+	function validator(){
+		//var username = document.getElementById("username").value;
+		var username = document.getElementById("username").value || "没有输入";
+		var h1Dom = document.getElementById("result");
+			h1Dom.innerHTML = username;
+		 
+		// 如果元素为空的话在 result中显示：没有输入，否则显示文本框输入的值
+			/*
+			方式一：
+			if(username !="" && username.length>0){
+				h1Dom.innerHTML = username;
+			}else{
+				h1Dom.innerHTML = "没有输入";
+			}
+			*/
+
+			// 方式二："" undefined null 0 判断里为空
+				/*
+				if(username){
+					h1Dom.innerHTML = username;
+				}else{
+					h1Dom.innerHTML = "没有输入";
+				}*/
+
+			// 方式三："" undefined null 0 判断里为空
+				/*
+				if(parseInt(username) === 0){
+					h1Dom.innerHTML = username;
+				}else{
+					h1Dom.innerHTML = "没有输入";
+				}*/
+
+
+			 var str = "cc";
+			 var strobj = new String(str);
+			 delete str; //
+	}
+  
+  </script>
+ </body>
+</html>

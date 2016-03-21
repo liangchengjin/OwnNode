@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3-对象如何去运用</title>
+
+  <style>
+	*{padding:0; margin:0;}
+	body{font-size:14px; font-family:"微软雅黑"; padding:100px;}
+	table{width:100%; border-collapse:collapse;}
+	table td{border:1px solid #ccc; padding:10px; }
+  </style>
+ </head>
+ <body>
+	<table>
+		<thead>
+			<tr>
+				<td>姓名</td>
+				<td>年龄</td>
+				<td>地址</td>
+				<td>描述</td>
+				<td>操作</td>
+			</tr>
+		</thead>
+		<tbody id="tbody">
+			<tr>
+				<td>cc</td>
+				<td>20</td>
+				<td>深圳</td>
+				<td>城革奇才夺奇才奇才砝码柑</td>
+				<td>操作</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<script>
+		// object === json ---一种数据格式就是va obj = {};
+
+		// 对象的定义， 获取， 修改，删除，循环，属性的查找
+
+		// json-string	 string--json
+		// 对象转字符串，字符串转对象
+			var json = {
+				width:"100px",
+				height:"200px",
+				border:"2px solid red",
+				background:"green"
+			};
+
+			var order = {
+				orderNumber:"tz123452545",
+				price:12.5,
+				num:100,
+				total:1230
+			};
+
+		// 对象的转换
+			// 将对象转换成字符串 JSON.stringify(obj);
+				var string = JSON.stringify(json);
+				console.log(string);
+			// 从后台返回就是json字符串
+				var jsonString = '{"usernam":"cc", "age":20}';
+				var json2 = JSON.parse(jsonString);
+				console.log(json2.username+"===="+json2.age);
+
+				//alert(JSON.stringify(window)); // 可以看以很多的对象
+			
+
+		// 应用阶段，怎么理解对象数据
+				/* 
+					重点：
+						能够被 .(点) 的东西前面一定是对象
+						能点的东西，一定是你对象里面拥有的东西
+				*/
+					//document.getElementById("");
+					/*var num = 10;
+					new Number(num).toFixed;*/
+					//dom对象.style.bac
+
+
+			    var tbody = document.getElementById("tbody");
+
+				var cc = {
+					username:"成成",
+					age:16,
+					address:"深圳",
+					listen:function(){
+						alert(this.username+"==="+this.age+"==="+this.address);
+					}
+				};
+				// 拼接
+					/*tbody.innerHTML +="<tr>"+
+						"<td>"+cc.username+"</td>"+
+						"<td>"+cc.age+"</td>"+
+						"<td>"+cc.address+"</td>"+
+						"<td></td>"+
+						"<td></td>"+				
+				   "</tr>";*/
+
+
+				var xiaomin = {
+					username:"小明",
+					age:18,
+					address:"杭州",
+					listen:function(){
+						alert(this.username+"==="+this.age+"==="+this.address);
+					}
+				};
+				// 拼接
+					/*tbody.innerHTML +="<tr>"+
+						"<td>"+xiaomin.username+"</td>"+
+						"<td>"+xiaomin.age+"</td>"+
+						"<td>"+xiaomin.address+"</td>"+
+						"<td></td>"+
+						"<td></td>"+				
+				   "</tr>";*/
+
+				var fangfan = {
+					username:"方方",
+					age:16,
+					address:"北京",
+					listen:function(){
+						alert(this.username+"==="+this.age+"==="+this.address);
+					}
+				};
+				// 拼接
+					/*
+					tbody.innerHTML +="<tr>"+
+						"<td>"+fangfan.username+"</td>"+
+						"<td>"+fangfan.age+"</td>"+
+						"<td>"+fangfan.address+"</td>"+
+						"<td></td>"+
+						"<td></td>"+				
+				   "</tr>";*/
+				
+				
+
+				// 把上面的对象装到数组中
+				var arr = [];
+				arr.push(cc);
+				arr.push(xiaomin);
+				arr.push(fangfan);
+				alert(JSON.stringify(arr)); // 这里就可以看到很多个多对象
+				
+				// 数组排序
+					arr.sort(function(a, b){
+						var avalue = a.age;
+						var bvalue = b.age;
+						// return avalue - bvalue; // 升序
+						return bvalue - avalue;	   // 降序
+					});
+				// 要以排序，反转，统一循环放入到我们的目标元素中
+				for(var i = 0; i < arr.length; i++){
+					var data = arr[i];
+					tbody.innerHTML +="<tr>"+
+						"<td>"+data.username+"</td>"+
+						"<td>"+data.age+"</td>"+
+						"<td>"+data.address+"</td>"+
+						"<td>"+data.address+"</td>"+						
+						"<td>操作</td>"+				
+				   "</tr>";
+				};
+
+
+
+
+				var content = {
+					title:"毛呢外套呢子大衣韩版宽松",
+					content:"毛呢外套女2015秋冬新款韩版宽松女装修身显瘦中长款呢子大衣",
+					subtitle:"坐飞机",
+					time:"2016-1-16 12:15:22",
+					hits:10,
+					isDalete:0,
+					img:"http://d04.res.meilishuo.net/pic/_o/fb/3f/299dcaf8449cff3915927a17c95c_750_975.cf.jpg_830983e8_s7_450_680.jpg",
+					attchments:["aa.txt", "bb.gif", "cc.jpg"],
+					mark:true,
+					price:12.5,
+					comments:[
+						{title:"1太好了", username:"cc1", img:"1aaa.gif", content:"fad54fdasfsdaf", time:"2016-1-16 14:49",},
+						{title:"2太好了", username:"cc2", img:"2aaa.gif", content:"fadf3452dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"3太好了", username:"cc3", img:"3aaa.gif", content:"fad4543fdasfsdaf", time:"2016-1-16 14:49"},
+						{title:"4太好了", username:"cc4", img:"4aaa.gif", content:"fadf45dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"5太好了", username:"cc5", img:"5aaa.gif", content:"fadf3523dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"6太好了", username:"cc6", img:"6aaa.gif", content:"fadf45dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"7太好了", username:"cc7", img:"7aaa.gif", content:"fadf3524dasfsdaf", time:"2016-1-16 14:49"},
+						{title:"8太好了", username:"cc8", img:"8aaa.gif", content:"fadfd454asfsdaf", time:"2016-1-16 14:49"}
+					],
+					author:{usernam:"小明", age:16, address:"深圳"},					
+				};
+
+				// 做开发面对解析对象(json)，三部曲
+					
+						//第一步：看数据类型是什么
+							//alert(typeof content); // 如果是对象就直接对象获取属性即可
+						//第二步：如果不是对象，那么就用JSON.parse转成对象
+							// parse 将字符串转换成对象
+								var josnstring = "{\"username\":\"cc\", \"age\":20}";
+								//alert(typeof josnstring);
+								//var json = JSON.parse(josnstring);
+
+							// eval 将字符串转换成对象
+								var json = eval("("+josnstring+")");							
+								alert(json.username);
+
+								// ie兼容性写法
+									function parse(jsonstring){
+										if(JSON.parse){
+											return JSON.parse(jsonstring);
+										}else{
+											return eval("("+jsonstring+")");
+										};
+									};
+						//第三步：进行解析
+						//第一步：
+					
+
+		// 对象应用于插件的参数中，减少参数的定义变得更加灵活
+
+		//
+
+
+	</script>
+ </body>
+</html>

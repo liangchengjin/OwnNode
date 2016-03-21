@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>10-冒泡排序</title>
+ </head>
+ <body>
+  
+	<script>
+	// 10-冒泡排序
+		
+		/*var arr = [5,4,3,2,1];
+		// 现在有一个需求 要从矮到高
+		// 排序 就是两 两进行交换，必须要用两个循环进行交换
+		
+			
+		for(var i = 0; i < arr.length; i++){ // 外面是控制循环多少次数的
+			for(var j = 0; j < arr.length-i-1; j++){ // 里面永远都是交换的
+				//arr[j] > arr[j+1];
+				
+				if(arr[j] > arr[j+j]){
+					var temp =  arr[j+1];
+					arr[j] = arr[j+j];
+					arr[j+1] = temp;
+				}
+			}
+		};
+		alert(arr);*/
+
+		// 选择排序----找到这个数组中最小的值，然后用最小的值去交换位置
+		
+		
+
+	    var arr = [0,2,1,4,5];
+		var len = arr.length;
+		var min = 0;
+		for(var i = 0; i < len-1; i++){
+			min = i;
+			for(var j = i; j < len; j++){
+				if(arr[min] > arr[j]){
+					min = j;
+				}
+			}
+			
+			if(i!=min){
+				var temp = arr[i];
+				arr[i] = arr[min];
+				arr[min] = temp;
+			}
+		}
+		alert(arr);
+	</script>
+ </body>
+</html>

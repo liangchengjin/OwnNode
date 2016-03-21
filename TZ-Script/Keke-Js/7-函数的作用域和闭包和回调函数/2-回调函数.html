@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-回调函数</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+
+    <style>
+        div{width:100px;
+            height:100px;
+            background:#999;
+            margin:10px auto;
+            text-align:center;
+            color:#FFF;
+            font-size:36px;
+            line-height:100px;
+            cursor:pointer;
+        }
+    </style>
+</head>
+<body>    
+    <div id="box1">1</div>
+    <div id="box2">2</div>
+    <div id="box3">3</div>
+    <script>
+        // 回调函数 ----都是属于javascript函数进阶的内容，一般应用于组件和开发和封装
+            /**
+             *  如果不会的，基础一定要掌握，比较了解和认识一下。
+             *
+             *  一直坚持学习函数===作用域===一到两年的时间，主要是天天写，天天练习
+             */
+
+        // 即时函数，和 私有函数，闭包，都是为了解决作用域的问题
+            /*function clineMe(){
+                var boxDom = document.getElementById("box");
+                boxDom.style.background = "red";
+            }*/
+
+            //1. 动态绑定 普通方法
+               /* window.onload = function(){
+                    var boxDom1 = document.getElementById("box1");
+                    boxDom1.onclick = function(){
+                        this.style.background = "red";
+                    }
+
+                    var boxDom2 = document.getElementById("box2");
+                    boxDom2.onclick = function(){
+                        this.style.background = "green";
+                    }
+                    var boxDom3 = document.getElementById("box3");
+                    boxDom3.onclick = function(){
+                        this.style.background = "pink";
+                    }
+                }*/
+
+        //2. 动态绑定 封装方法
+            /*function clickMe(id, value, callback){
+                var boxDom = document.getElementById(id);
+                boxDom.onclick = function(){
+					if(id=="box"){
+						// 宽度和高度变成400 * 400 并且颜色变成红色，边框变成4像素黑色 
+					}else if(id=="box2"){
+						// 我执行一个跳转页面的需求,window.location.href="rul";
+						//window.location.href="http://www.baidu.com";
+					}else if(id=="box3"){
+						alert(1+1);
+					}else{
+						this.style.background = "red";
+					}
+				}
+            };*/
+
+
+            function  clickMe(id, callback){
+	             var boxDom = document.getElementById(id);
+				 boxDom.onclick = function(){
+					if(callback)callback(this);
+				 };
+            };
+			// 宽度和高度变成400 * 400 并且颜色变成红色，边框变成4像素黑色
+			function callback(obj){
+				obj.style.width = 400+"px";
+				obj.style.height = 400+"px";
+				obj.style.background = "red";
+				obj.style.border = "4px solid #111";
+			};
+			
+			function callback1(){
+				window.location.href="http://www.baidu.com";
+			};
+
+			clickMe("box1", callback); 
+			// 我要执行一个跳转的的需求，window.location.href = "http://www.baidu.com";
+			clickMe("box2", callback1);
+			// 我要执行计算 1+1=2
+
+			// 你如果把函数当做数据类型
+			clickMe("box3", function(obj){
+				obj.style.width = 400+"px";
+				obj.style.height = 400+"px";
+				obj.style.background = "red";
+				obj.style.border = "4px solid #111";
+			}); // 15.25
+
+			
+
+		
+    </script>
+</body>
+</html>

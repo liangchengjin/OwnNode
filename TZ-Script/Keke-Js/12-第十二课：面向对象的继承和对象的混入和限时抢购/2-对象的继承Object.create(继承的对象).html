@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>对象的继承Object.create(继承的对象)</title>
+ </head>
+ <body>
+  
+  <script>
+  
+  var preson = {usernam:"own"};
+   // 对象的继承Object.create(继承的对象)
+  var obj = Object.create(preson);
+  obj.age = 20;
+  alert(obj.usernam+"====="+obj.age);
+
+  // 构造函数继承
+
+  // 矩形
+  function Rect(length, width){
+	this.length = length;
+	this.width = 200;
+	this.address = "中国深圳1111111"; 
+	this.desc = "cc";
+  }
+
+  // 计算面积
+  Rect.prototype.getArea = function(){
+	return this.length + this.width;
+  }
+
+  Rect.prototype.toString = function(){
+	alert("这个矩形的面积是："+this.getArea()+"宽度"+this.width+"==高度："+this.length);
+  }
+
+  var rect = new Rect(100, 100);
+  rect.toString();
+  // 平行四边形
+  function Square(size){
+	this.size = size;
+	this.length = 200;
+	this.address = "中国深圳"; 
+	this.say = function(){
+	
+	}
+  };
+
+ 
+  function Person(){
+	this.tel = "1882022222";
+  };
+
+   // 构造函数继承： 右边的 net 一个对象 赋值给左边的方法
+   Square.prototype = new Rect;  // 第一种方法继承
+   // Square.prototype = Rect.prototype;  // 第二种方法继承
+   Square.prototype.constructor = Square;
+   Square.prototype = new Person();
+
+   var sq = new Square(10);
+   // sq.toString();
+   alert(sq.address+"====="+sq.desc+"===="+sq.tel);
+
+   // 混入(mix)=extends
+	/**
+		混入就是对象的容合
+		var opts = $.extend({},options);
+	
+	*/
+
+
+  
+  
+  </script>
+ </body>
+</html>

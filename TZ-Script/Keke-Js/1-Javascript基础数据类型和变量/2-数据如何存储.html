@@ -1,0 +1,153 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>2-JS数据如何存储</title>
+ </head>
+ <body>
+  
+  <script>
+	// 注释：
+	
+	// 单行注释
+
+	/*
+		多行注释
+	*/
+
+	/*
+		注释内容最终都是被js引擎忽略的内容。被抛弃的女人.
+		js是定义在html文件中的代码片段 定义在如下格式：
+			<script type="text/javascript">
+				JS代码区域
+			<\/script>
+
+			html5中可以省略type="javascript"
+			
+			1. 0 1 2 3 4 5 6 7 8 9 ----这是数字
+
+			2. A b c ----这是字母
+
+			3. 2015-2-12 -----日期
+
+			4. 今天心情不错，我想和你表白：我喜欢你----这是字符串
+				
+			格式：在javascript是一门弱类型语言，它只有一种替代数据类型，就是我们的:var
+
+			数据类型  变量 = 字面值;
+			如何：
+				var 变量 = 1;
+				变量：就是你的名字。你为什么叫小风，你为什么叫cc，你为什么叫成成
+				变量具有代表性，它是唯一
+
+				变量定义的规则：以字母, _, $ 开头， 其它随便(除了关键字 作为：javascript有哪些关键字)
+
+
+				数字：不需要加双引号
+				字符串：一定要用双引号或者单引号引起来的
+
+				变量有什么用？
+				能够让计算机cpu运行的编码都是01代码，也就是二进制
+
+
+
+	*/
+
+	// 例如：
+		/*
+		旅馆：内存--window
+			你现在醋个房间号1101方法，人进去
+
+		空间是大小。房号:变量名称	人:字面值
+
+		房间大小就是有数据类型去决定的
+			javascript中实际数据类型:
+				number	数字
+				string	字符串		
+				object	对象
+					array
+					null
+					regEx
+					date
+				function	函数
+				boolean		布尔类型
+				undefined	空数据类型
+		
+		*/
+
+	var s1101 = "人住进这个房间"; // 内部代码
+	var strint = new String(s1101);	
+	//var s = new String(s1101);
+	
+
+	var num = 1; // 十进制转二进制
+	//var num = new Number(num);
+	
+
+	var a = 2;
+	var c = 123;
+	var s = "今天心情不错，我想和你表白：我喜欢你----这是字符串";
+	var s = "今天心情不错，我想和你表白：我喜欢你----这是字符串";
+
+	var obj = {};
+	var arry = [];
+	var bool = true;
+	function test(){
+	}
+
+	// 查看真实的数据类型：typeof
+		var s = typeof s1101;
+		console.dir("字符串======" + s); 
+		console.dir("数字======" + typeof num); 
+		console.dir("字符串======" + typeof s); 
+		console.dir("对象======" + typeof obje);  
+		console.dir("对象======" + typeof arr);  
+		console.dir("function类型======" + typeof test); 
+		console.dir("对象类型======" + typeof null);  
+		console.dir("undefined类型=====" + typeof undefined); 
+		console.dir("boolean类型======" + typeof bool); 
+		console.dir("数字类型======" + typeof NaN); 
+		/*
+		2-JS数据如何存储.html:104 字符串======string
+		2-JS数据如何存储.html:105 数字======number
+		2-JS数据如何存储.html:106 字符串======string
+		2-JS数据如何存储.html:107 对象======undefined
+		2-JS数据如何存储.html:108 对象======undefined
+		2-JS数据如何存储.html:109 function类型======function
+		2-JS数据如何存储.html:110 对象类型======object
+		2-JS数据如何存储.html:111 undefined类型=====undefined
+		2-JS数据如何存储.html:112 boolean类型======boolean
+		2-JS数据如何存储.html:113 数字类型======number		
+		*/
+
+		// 都是给 要能够触发js引擎---去通知cpu去获取内在中存储好的值，去计算
+
+	// 操作符和函数
+			/*
+				存储的东西就是给函数(方法)去用的---执行(调用函数)---通知js引擎--让cpu去运行。
+			*/
+			
+			
+		
+	
+	
+	
+	/*
+	var $$$ = 100;
+	var $_$ = 200;
+	var ___ = 45645;
+	var $$_aa$$ = "adafda";
+	var $中 = "adafdaf";
+	*/
+	
+
+	// 0.58 分
+
+
+  </script>
+ </body>
+</html>

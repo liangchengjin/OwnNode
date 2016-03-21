@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>变量的作用域的问题</title>
+ </head>
+ <body>
+  
+	<h1 id="timer"></h1>
+	<script>
+		// 变量的作用域的问题
+
+		// 全局变量的和局部变量
+
+		// 在函数中定义的变量都是局部变量，除非你没有通过var去定义。
+			//var data = new Date(2015, 2, 1);
+			var a = 100;
+			function test(){
+				date = new Date(2014, 1, 1);
+
+				var b = 200;
+				function init(){
+					alert(b);
+				}
+				// 数据类型----申请空间大小---Number
+				var json = {
+					num:b,
+					num2:a
+				};
+				return json;
+			};
+
+			// 只有对象才能.属性
+			var json = test();
+			//alert(json.num);
+
+			// setTimeout和setInterval的用法
+				var date = new Date();
+				//var h = date.getHours();
+				// alert(typeof h);
+				var timerDom = document.getElementById("timer");
+				setInterval(function(){
+					var date = new Date();		// 当前的时间
+					var h = date.getHours();	// 时
+					var m = date.getMinutes();	// 分
+					var s = date.getSeconds();	// 秒
+					timerDom.innerHTML = h+":"+m+":"+s;
+				},1000);
+
+				// 都是通过人为控制一些键盘，鼠标触发的事件
+				// 通过定时器自动取执行函数就是setTimeout和setInterval
+
+
+
+
+		// 数学函数
+	</script>
+ </body>
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>关于this和call和apply</title>
+ 
+ <style>
+	#box div{height:50px; margin-top:2px; background:red; line-height:50px; padding-left:10px;}
+ </style>
+ </head>
+ <body>
+  
+  <div id="box">
+	 <div id="f1">11111111111111</div>
+	 <div id="f2">22222222222222</div>
+	 <div id="f3">33333333333333</div>
+  </div>
+  <script>
+		// 关于this和call和apply
+		
+		// this---代表当前对象
+		/*var cc = {
+			username:"cc",
+			age:10,
+			sayHello:function(){
+				//alert(cc.username+"====="+cc.age);
+				alert(this.username+"<====>"+this.age);
+			},
+			
+			goSleep:function(){
+				alert(this.username+"<====>"+this.age);
+			}
+		};
+		cc.sayHello();*/
+		window.onload = function(){
+			var boxDom = document.getElementById("box");
+			var childrens = boxDom.children, len = childrens.length;
+			for(var i = 0; i<len; i++){
+				childrens[i].onclick = function(){
+					alert(this.innerHTML);
+				};
+			}
+			/*document.getElementById("f1").onclick = function(){
+				//alert(document.getElementById("f1").innerHTML);
+				//alert(this.innerHTML);
+				this.innerHTML = cc.username;
+			};*/
+		}
+		
+
+		var cc = {
+			usernam:"cc",
+			age:20,
+			sayHello:function(){
+				this.goSleep();
+			},
+
+			goSleep:function(){
+				this.eating();
+			},
+
+			eating:function(){
+
+				alert("11111");
+			}
+
+		};
+		// cc.sayHello();
+
+		var ccDialog = {
+			init:function(){
+				// 初始化模板
+				this.template();
+				// 初始化事件
+			},
+			template:function(){
+				
+			},
+
+			event:function(){
+
+			},
+
+			alert:function(){
+					this.init();
+			},
+
+			confirm:function(){
+
+			}
+
+		};
+
+
+
+  </script>
+ </body>
+</html>

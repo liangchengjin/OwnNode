@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>对象</title>
+ </head>
+ <body>
+  <script>
+  // 对象
+	 /*
+		string
+		number
+		boolean
+		Object
+			Array
+		function
+		undefined
+
+			1.为什么要学习函数和行为
+			2.定义。语法是佳作以，理解是什么
+			3.生命周期又是什么
+	 */
+	 var str = "我爱我的家，和我爱的人";
+	 var num = 100;
+	 var b = false;
+	 var arr = [1,2,3,4,5,6];
+	 var obj = [];
+	 var b = undefined;
+	 var data = new Date();
+
+	 // 常态
+		 var str = "cc要去逛街了。。。。！";
+		 var str = "cc要去逛街了。。。。！";
+		// 腾讯
+		 /*var arr = ["cc","小明","小红"];
+		 var len = arr.length;
+		 for(var i = 0; i < len; i++){
+			alert(arr[i]+"发工资了。。。！");
+		 };
+		// 百度	
+		 var arr = ["cc","小明","小红"];
+		 var len = arr.length;
+		 for(var i = 0; i < len; i++){
+			alert(arr[i]+"发工资了。。。！");
+		 }
+		 */
+		 //  谷歌
+		 var arr = ["cc","小明","小红"];
+		 var len = arr.length;
+		 for(var i = 0; i < len; i++){
+			 getSalary(arr[i]);
+		 };
+
+		 function getSalary(name){ // 这里的name 是形参数			
+			console.log("【"+name+"】：发工资了--------!");
+		 };
+		
+
+		 /*
+			重点：函数它是一个数据类型
+
+			函数：是代表一类对旬具体的行为
+			属性：代表一类对象具体的属性(标签)
+			var username = "cc";
+
+			方法名：命名遵循变量的命名规则即可，不能使用关键字以字母，美元符合，下划线开头，不能使用关键字，(见名知意)
+
+			函数的定义规则语法是：
+				//函数的申明
+					function 方法名(){
+						// 函数体
+					};
+				
+				// 函数的表达式
+					var 方法名 = function(){
+						// 函数体
+					}
+				
+				// 两者的区别					
+					开发过程中哪种好呢，两种都可以，在封闭插件过程中，就用函数表达式
+
+
+				// 开发过程中都使用申明实
+				
+				// 函数中定义个变量，不会受到外界的干扰，有独立的生命周期
+				
+				// return 返回出来的结果，就是返回给我们的调用者
+		 */
+		
+		 /*
+		 var str = "cc发工资了！";
+		 var a = 200;
+		 // 这个只是将function的数据 getSalary 放入内在中
+		 function getSalary(){
+				var a = 100;
+				var b = 200;
+				var c = a + b;
+				return c;  // 把计算出来的东西结果值返回出去，
+				
+		 };
+		 // 执行函数, cc 是用返回接收的结果
+		 var cc = getSalary();
+		 //var bb = 100
+		 //alert(cc - bb);
+		 alert(cc);
+		 */
+
+
+		/*
+		// 返回值是执行函数过程中。是通知 cpu 去执行函数体内空结果的一种方未能，
+		   返回给调用者
+		   参数只不过是动态获取值一个过程，通过参数传递达到函数方法共用
+		   执行函数是打括号
+				var arr = [];
+				function test(){
+					
+				}
+				
+				arr.push(test);   // 函数
+				arr.push(test()); // undefined
+				arr.push(getSalary());
+
+				//setTimeout(test,3000);
+				var a = arr[1];
+
+		
+			function 是一个数据类型，把它当做字符串和数字一样的东西
+			只不过他们有一点区别对象，它可以执行。
+
+		
+		*/
+		//var fn = arr[0]("cc");
+		var fn = arr[0];
+		alert(typeof fn);
+		
+
+  
+  </script>
+ </body>
+</html>

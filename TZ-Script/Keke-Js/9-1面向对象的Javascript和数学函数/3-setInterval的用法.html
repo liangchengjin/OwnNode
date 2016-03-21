@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>setInterval的用法</title>
+ <style>
+	#box{width:100px; height:100px; background:red; position:absolute;}
+ </style>
+ </head>
+ <body>
+  
+	<h2 id="num"></h2>
+	<div id="box"></div>
+	<script>
+		// 用于动画, banner效果, 运动, 游戏等都用setInterval
+
+		// 它和setTimeout的用法一模一样, 值的名称改变了
+
+		// setTimeout claerTimeout
+
+		// setInterval clearInterval
+
+		// 轮询，根据你指定的时间会周期性的执行回调函数
+
+		setInterval(function(){  // 帧速率---一般为30
+			change2();
+		}, (1000/30));
+
+		var num = 0;
+		var top = 0;
+		var left = 0;
+		var speed = 0.5;
+
+		function change2(){
+			num++;
+			top+=speed;
+			left+=speed;
+			console.log(num);
+			document.getElementById("num").innerHTML = num;
+			document.getElementById("box").style.top = top+"px";
+			document.getElementById("box").style.left = left+"px";
+			speed+=1;
+		}
+		/*
+		var index = 0;
+		var timer = null;
+		function change(){
+			index++;
+			console.log("===="+index);			
+			setInterval(change, 1000);
+			if(index==0)clearTimeout(timer);
+		};
+		change();*/
+	
+	</script>
+ </body>
+</html>

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>7-案例换肤</title>
+  <style>
+  *{margin:0; padding:0;}
+  html{height:100%;}
+	#bg{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		z-index:-1;
+	}
+	#timer{background:rgba(0,0,0,0.3); position:relative; top:100px;}
+	#timer .box{width:200px; background:rgba(0,0,0,0.3); margin:0 auto; text-align:center; font-size:48px; font-weight:600; color:#FFF;}
+  </style>
+ </head>
+ <body>
+  <div id="bg" style="background:url('img/01.jpg') no-repeat top left / cover fixed; border:1px solid red;"></div>
+  <div id="timer">
+	<div class="box" id="t">00:00:00</div>
+  </div>
+  <script>
+
+	var tDom = document.getElementById("t");
+	var timer = setInterval(function(){
+		var d = new Date();
+		var h = d.getHours(); // 时间
+		var m = d.getMinutes();// 分钟
+		var s = d.getSeconds();// 秒钟
+
+		var bgcolor = (h<10?"0"+h:h)+":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+		var time = (h<10?"0"+h:h) + ":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+		tDom.innerHTML = time;
+		bgDom.style.background = "#"+bgcolor;
+		//bgDom.style.background = "url('img/"+name+".jpg')";
+
+	}, 1000);
+
+
+
+	
+  </script>
+ </body>
+</html>

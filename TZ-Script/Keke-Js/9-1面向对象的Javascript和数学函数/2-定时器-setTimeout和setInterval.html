@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>定时器</title>
+  
+  <style>
+	#box{width:200px; height:200px; background:green;}
+  </style>
+ </head>
+ <body>
+  
+	<h1 id="timer"></h1>
+	<div id="box"></div>
+
+	<a href="javascript:void(0);" onclick="cclose()">关闭</a>
+	<a href="javascript:void(0);" onclick="cplay()">启动</a>
+	<script>	
+	// 通过定时器自动取执行函数就是setTimeout和setInterval
+	
+	// setTimeout和setInterval的用法
+		// 用法：setTimeout(fn,timer)
+
+	// 清除动画：clearTimeout和clearInterval
+
+	// setInterval和for循环区别
+		/*
+		var timerDom = document.getElementById("timer");
+		setInterval(function(){
+			var date = new Date();	  // 当前的时间
+			var h = date.getHours();  // 时
+			var m = date.getMinutes();// 分
+			var s = date.getSeconds();// 秒
+			timerDom.innerHTML = h+":"+m+":"+s;
+		},1000);*/
+		
+
+	// 需求:
+		   //1:三秒钟之后把box的宽度改成 200*200，并且颜色设置成红色
+		   function change(){
+			var boxDom = document.getElementById("box");
+			boxDom.style.width = "400px"; 
+			boxDom.style.height = "400px";
+			boxDom.style.background = "red";
+		   };
+			
+		   var timer = null;	
+		   function cplay(){
+				if(timer != null)setTimeout(change, 3000);
+				timer = setTimeout(change, 3000);
+		   };
+
+		   function cclose(){				
+				if(timer != null)clearTimeout(timer);
+		   }
+
+
+
+
+
+
+		   //requestAnimationFrame(); // 是处理延时的问题 ie/6/7/8不支持
+		   //var timer = 3000;
+		   //setTimeout(change, 3000);      // 等3秒 后执行  推荐
+		   //setTimeout(change(), 3000);    // 这是执行函数，不会等3秒
+		   //setTimeout("change()", 3000);  // 这是不严格的写法，不推荐 错误的写法
+		   // eval("change()");				// 这是函数运算字符串的转换等
+
+		   // 以下两都可以
+				/**
+			   setTimeout(function(){
+					change("122552");	// 有参数，就在这里传		   
+			   },3000);
+
+				setTimeout(function changeCode(){
+					change("122552");	// 有参数，就在这里传		   
+			   },3000);*/
+
+		   // 匿名函数
+			   var test = function getName(){
+					alert("ok"); 
+					// 执行的的是test 而不是getName 因为getName是服务于test
+			   };
+			  // test();
+
+
+
+
+
+
+
+
+
+
+
+
+
+			   // 封装			  
+			   function ccTimeout(fn, timer){
+				   var args = arguments;
+				   var clearTimer = setTimeout(function(){						
+						if(args.length>2){
+							var arr = [];
+							for(var i = 2; i < args.length; i++){
+								arr.push(args[i]);
+							}
+							fn.apply(this, arr);
+						}else{
+							fn();
+						}
+					}, timer);
+
+					return clearTimer;
+			   };
+				
+			   function clearTimeout(timer){
+				clearTimeout(timer);
+			   }
+			   function sum(a, b, c){
+				alert(a+b+c);
+			   };
+
+			   
+			 
+	
+	</script>
+ </body>
+</html>

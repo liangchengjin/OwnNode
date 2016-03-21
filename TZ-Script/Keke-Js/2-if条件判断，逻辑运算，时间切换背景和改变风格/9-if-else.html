@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+  <style>
+    html,body{
+		padding:0;
+		margin:0;
+		background:#333;
+	}
+	select{margin:50px;}
+	#result{color:#fff;}
+  </style>
+ </head>
+ <body>
+	<div class="boxs">
+		  <select onchange="chengePeople(this);"> // 改变事件 就是用 onchange事件
+			<option value="0">--请选择人群--</option>
+			<option value="1">少年</option>
+			<option value="2">青年</option>
+			<option value="3">中年</option>
+			<option value="4">老年</option>		
+		  </select>
+		  <h1 id="result"></h1>
+	 </div> 
+  <script>
+	var age = 30;
+	// 判断属于：少年0-16 青年17-30 壮年31-60 老年60+
+		/*
+		if(age > 0 && age <= 16){
+			alert("少年");
+		}else if(age <= 17 && age <= 30){
+			alert("青年");
+		}else if(age <=31 && age <= 60){
+			alert("壮年");
+		}else{
+			alert("老年");
+		};
+		*/
+
+	// 替代写法：	
+		/*switch(变量(可以是字符串，数值，也可以是 boolean)){
+			case 条件:
+				代码块;
+				break;
+			case 条件:
+				代码块;
+				break;
+			case 条件:
+				代码块;
+				break;
+			case 条件:
+				代码块;
+				break;
+			default 条件:
+				代码块;
+				break;
+			}*/
+
+		// java 1.6不允许是字符串， jdk1.7可以是字符串
+			/*
+			switch(age){
+				case age>=0 && age<=16: 
+					alert("少年");
+					break;
+				case age>=17 && age<=30:
+					alert("青年");
+					break;
+				case age>=31 && age<=60:
+					alert("壮年");
+					break;			
+				default: 
+					alert("老年");
+					break;				
+			}*/
+
+		// 根据人群去查找年龄范围
+			/*
+			var str = "青年";
+			switch(str){
+				case "老年":alert(str+"年龄范围是在:[64+]");
+				case "壮年":alert(str+"年龄范围是在:[31-60]");
+				case "青年":alert(str+"年龄范围是在:[17-30]");
+				default:alert(str+"年龄范围是在:[0-16]");
+			}*/
+
+			function chengePeople(obj){
+				var value = obj.value;
+				var resultDom = document.getElementById("result");
+				var result = "ok";
+				/*
+				if(value == 1){
+					result = value + "年龄范围是在:[0-16]"
+				}else if(value == 2){
+					result = value + "年龄范围是在:[17-30]"
+				}else if(value == 3){
+					result = value + "年龄范围是在:[31-60]"
+				}else{
+					result = value + "年龄范围是在:[64+]"
+				}
+				resultDom.innerHTML = result;*/
+				var sindex = obj.selectedIndex;
+				var text = obj.options[sindex].innerHTML; // 这是获取到文本框中的值 
+				// 注意：innerText在火狐里面不支持textContent
+				// 注意：jQuery $(ojb).find("[option.seleted]").text(); 在jQuery里获取文本的写法
+
+			    // alert(text);
+				// alert(typeof value);
+				switch(parseInt(value)){
+					case 1: result = text + "==年龄范围是在:[0-16]";break;
+					case 2: result = text + "==年龄范围是在:[17-30]";break;  // 如果后面没有加 break 它就会被击穿其它都会继续往下执行
+					case 3: result = text + "==年龄范围是在:[31-60]"; break;
+					default: result =  text + "==年龄范围是在:[64+]";break;
+				}
+				resultDom.innerHTML = result; 
+
+				// 现种方案都行，在开发中选择自己喜欢的一种，简单3、4条件建议if else if else
+				
+			}
+  </script>
+ </body>
+</html>

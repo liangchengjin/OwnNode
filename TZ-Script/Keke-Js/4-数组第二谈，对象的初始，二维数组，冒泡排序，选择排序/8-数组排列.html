@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>8-数组排列</title>
+ </head>
+ <body>
+  
+  <script>
+	// 数字排序
+		// sort(); 默认是排升序
+		//var arr = [1,2,3,4,5,6,7,8,9,];
+		//arr.sort();  
+		//alert(arr);
+		
+		var arr = [9,8,7,6,5,4,3,2,1];
+		arr.sort();       // 1,2,3,4,5,6,7,8,9 
+		document.write(arr);
+		
+		// arr.sort(); // 默认是升序，sort默认的排序算法：火狐是：并归算法，goole是：快速算法===分治算法
+
+		// 算法：冒泡，选择，“搜索算法，并归算法，快速”
+		
+		/*var mid = arr.length / 2;
+		var left = arr[mid, length];*/
+		
+		//  a - b 是升序, b - a 是降序
+			/*arr.sort(function(a, b){
+				// return a - b; // 
+				return b - a;
+			});
+			alert(arr);*/
+
+		// 数组排序
+			/*
+			arr.sort(function(a, b){
+				if(a > b ){
+					return 1;
+				}else if(a < b){
+					return 0;
+				}
+			});
+			alert(arr);
+			*/
+
+		// 数据排序扩展：
+			/*Array.prototype.ccSort = function(mark){
+				this.sort(function(a, b){
+					if(mark){
+						return a - b;
+					}else{
+						return b - a;
+					}
+				});
+			};
+			// arr.ccSort(true); // 升序
+			arr.ccSort(false);	 // 降序
+			alert(arr);*/
+
+
+	// 字母排序
+
+
+
+	// 对象排序
+		/*var json1 = {username:"cc", age:20};
+		var json2 = {username:"小成", age:16};
+		var json3 = {username:"小骨", age:10};*/
+
+		var json1 = {username:"a", age:20};
+		var json2 = {username:"b", age:16};
+		var json3 = {username:"c", age:10};
+		
+		var arr = [];
+		arr.push(json1);
+		arr.push(json2);
+		arr.push(json2);
+		
+		arr.sort(function(a, b){
+			// 根据数据排序
+				/*var ageA = a.age;
+				var ageB = b.age;
+				return ageA - ageB;*/
+			// 根据字符串排序
+				var u1 = a.username;
+				var u2 = a.username;
+				if(u1.toLowerCase() - u2.toLowerCase()){
+					return -1;
+				}				
+		});
+		
+		alert(JSON.stringify(arr));
+  
+		// a b c d
+		// A B C D
+		// a==97  A==65  0==48
+		var str = "abcd";
+		alert(str.charCodeAt(0)); // 97
+		alert(str.charCodeAt(1)); // 98
+		alert(str.charCodeAt(2)); // 99
+
+
+
+	// 字符串排序
+  
+  </script>
+ </body>
+</html>

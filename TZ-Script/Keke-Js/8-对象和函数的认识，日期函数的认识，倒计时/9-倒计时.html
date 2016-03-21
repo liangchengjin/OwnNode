@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>倒计时</title>
+ </head>
+ <body>
+  
+	<h1 id="time"></h1>
+	<script>
+
+	window.onload = function(){
+		// 距离明年元旦放假还有多少天
+
+		// 当前时间和下一下的时间
+			function start(){
+				var date = new Date(); // 当前的时间
+				//var end = new Date(date.getFullYear()+1,0,1);
+				var end = new Date(,m-1,1);
+				
+				var time = end.getTime() - date.getTime(); // 毫秒数
+				var sec = time / 1000; // 1秒 == 1000毫秒 1分=60秒
+
+				// 还剩下多少天
+				var dd = Math.floor(sec/60/60/24);
+				var hh = Math.floor(sec/60/60%24);			
+				var mm = Math.floor(sec/60%60);			
+				var ss = Math.floor(sec%60);			
+				var html = "距离【"+end.getFullYear()+"年】元旦还有："+dd+"天"+hh+"小时"+mm+"分"+ss+"秒";
+				document.getElementById("time").innerHTML = html;
+			};
+			start(2017, 1,1);
+			setInterval(function(){
+				start(2017, 1, 1);
+			}, 1000);
+			
+	}
+	</script>
+ </body>
+</html>

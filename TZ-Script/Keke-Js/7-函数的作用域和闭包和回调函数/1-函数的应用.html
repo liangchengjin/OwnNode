@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="Generator" content="EditPlus®">
+    <meta name="Author" content="">
+    <meta name="Keywords" content="">
+    <meta name="Description" content="">
+    <title>函数</title>
+</head>
+<body>
+<div id="box"></div>
+<script>
+    /*
+		 string
+		 number
+		 boolear
+		 object
+		 undefined
+		 function
+		 函数它是一个数据类型，一般应用于事件，事件的回调函数就是function数据类型
+
+		 事件：键盘事件，鼠标事件，点击事件等....
+
+		 如：
+		 我今年20岁，我的名字叫cc, 我正在教室学习。
+		 var age = 20;
+		 var name = "cc";
+		 var a = "我正在教室学习";
+     */
+
+
+    // 函数
+		/*
+		 特点：它是是能达到封装的目的
+		 函数中的函数体：有作用域，有生命周期
+
+		 */
+		/*for(var i = 0; i < 5; i++){
+		 test(i);
+		 }*/
+
+		var a = 100;
+		/*
+		 第一次查找到是否存在变量a在作用域中，如果不存在就就定义 a = undefined
+		 第二次又查询，有RHS---100赋值给变量a
+		 全局变量，所有的函数都可以共享和修改。(在执行函数的时候修改)
+		 全局变量，是定义函数中的变量，它生命周期只是在函数中。
+		 两者必须都用、用var去修饰
+		 */
+		/*function test(){
+			 // 函数体
+			 var a = 200;
+			 alert("test======" + a);
+		 };
+		 test();					// 200
+		 alert("全局的：====="+a);	// 100	*/
+
+
+		function test() {
+			// 函数体
+			a = 1
+			var b = 1
+			var c = a + b;
+			console.log("test======" + c);
+			// 重点：如果函数里的变量没有加 var 就默认的将它提升为全局变量
+			// 写在函数里的变量 统称为局部变量 大于(>) 全局变量
+		}
+		
+		test();						// 200
+		console.log("全局的：=====" + a); // 200
+
+
+		
+		var index = 0;
+		function plus(){
+			return index++;
+		};
+		plus();
+		console.log("加："+index);
+
+
+		function numis(){
+			index--;
+		};
+		numis();
+		console.log("减："+index);
+		/*
+			函数中的函数，一种数据类型，你在写代码的时候，就应该把函数当做number, string一样的看待可以了，只是它比我们普通数据类型不一样东西，它打个括号可以执行。
+		*/
+		/*
+		var a = 200;
+		function F(){
+			var a = 100;
+			function test(){
+				alert(a);
+			};
+
+			return {
+				a:a,
+				test:test				
+				};
+		};
+		var obj = F();
+		alert(obj.a);
+		obj.test();
+		*/
+		// 结论：定义在直接定在script块中的函数和变量都是全局的，命名的一定不能重复，如果一定重复，就发生覆盖,你就影响别人定义的代码。
+
+		// 以下是一个设计模块--模块模式	
+		function Dialog(){
+				function init(){
+				
+				};
+
+				function template(){
+				
+				};		
+
+				function templte(){
+				
+				};
+
+				function event(){
+				
+				};
+
+				function setParams(){
+				
+				};
+		};
+
+		// 能.的前面一定是对象；
+		// 对象.方法和属性
+			var a = 200;
+			function F(){
+				var a = 100;
+				var test = function(){
+					console.log(a);
+				};
+				return test;
+			};
+			var obj = F();
+			obj();
+
+
+		// 即时函数, 
+			/*
+				它只执行一次。并且是立马执行, 并且不会被外界所干扰
+				但是外办也无法访问，即时函数中的函数和变量
+			*/
+		var ccTable = (function(){
+			
+			function Tab(){
+				function init(){
+				
+				};
+
+				function templte(){
+				
+				};
+
+				console.log("12233");
+			};
+			
+			// 用return 将里面的函数暴露出去。
+			return {
+					tab:Tab
+				}
+			
+		})();
+		ccTable.tab();
+
+
+		// 闭包------就是突破函数里面的作用域，就是将一个函数中的局部中的变量，能够返回给外界去访问
+
+			function test(){
+				var a = 100;
+				return a;
+			};
+			
+			var a = "全局变量";
+			var f = function(){
+				var b = "局部变量";
+				var c = function(){
+					var d = "内部变量";
+					return b;					
+				};
+				return c;
+			};
+			//var cc = f();
+			//var b = cc();
+			//alert(b);
+
+			// 一行的写法
+			var cc = f()(); // --->f() 执行函数，返回一个function数据类型，并且执行。
+			alert(cc);      // 局部变量
+
+
+
+			// jQuery 封装
+			// $("#").html().text().css();
+				function $(id){
+					var dom = document.getElementById(id);
+					var json = {
+						html:function(html){
+							dom.innerHTML = html;
+							return this;
+						},
+
+						css:function(key, value){
+							dom.style[key] = value;
+							return this;
+						}
+					};
+
+					return json;
+				};
+				$("box").html("111111111111111111")
+						.css("border", "1px solid red")
+						.css("background","red")
+						.css("color","yellow");
+				//  4 视频
+		
+		
+
+
+
+</script>
+</body>
+</html>

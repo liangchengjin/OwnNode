@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="button" id="btn1" value="全选"/>
+<input type="button" id="btn2" value="返选"/>
+
+<div id="box">
+    <label><input type="checkbox" name="a">看书</label>
+    <label><input type="checkbox" name="a">游泳</label>
+    <label><input type="checkbox" name="a">学习</label>
+    <label><input type="checkbox" name="a">音乐</label>
+    <label><input type="checkbox" name="a">美食</label>
+    <label><input type="checkbox" name="a">电影</label>
+</div>
+<script>
+    window.onload = function(){
+        var btn1 = document.getElementById('btn1');
+        var btn2 = document.getElementById('btn2');
+        var box = document.getElementById('box');
+        var boxDoms = box.getElementsByTagName('input');
+
+       var flag = false;
+        btn1.onclick = function(){
+            if(btn1.value = "全选"){
+                for(var i = 0; i < boxDoms.length; i++){
+                    boxDoms[i].checked = true;
+                    btn1.value = "返选";
+                }
+            }else{
+                for(var i = 0; i < boxDoms.length; i++){
+                    boxDoms[i].checked = !boxDoms.[i].checked;
+                    btn1.value = "全选";
+                }
+            }
+        }
+        /* btn1.onclick = function(){
+            for(var i = 0; i < boxDoms.length; i++){
+                boxDoms[i].checked = true;
+            }
+        };
+
+        btn2.onclick = function(){
+            for(var i = 0; i < boxDoms.length; i++){
+                boxDoms[i].checked = false;
+            }
+        }*/
+
+    }
+</script>
+</body>
+</html>

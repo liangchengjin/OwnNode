@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Javascript的函数的认识</title>
+  <style>
+ 	*{padding:0;margin:0}
+	a{text-decoration:none;color:#fff}
+	ul,li{list-style:none}
+	.fr{float:right;}
+	body{font-size:12px;font-family:"微软雅黑"}
+	#box{width:640px;height:300px;margin:100px auto}
+	#box li{background:#333;color:#fff;padding:10px;margin-top:2px;}
+
+  </style>
+ </head>
+ <body>
+	
+	<div id="box">
+		<ul>
+			<li>名称?<a href="javascript:void(0);" onclick="sortLi()"><span class='price fr'>价格</span></a></li>
+		</ul>
+		<ul id="shoplist">
+			<li>SanDisk 16GB存储卡（Class4） 黑色<span class='price fr'>20￥</span></li>
+			<li>适配机型： 小米平板 / 1 / 1S, 红米1S/红米, 红米Note/增强版, 红米手机2, 红米手机2A
+			35.9元	<span class='price fr'>2320￥</span></li>
+			<li>小米体重秤 白色<span class='price fr'>200￥</span></li>
+			<li>
+				适配机型： 小米Note、小米4、小米3、红米2/2A、红米Note 4G 
+				<span class='price fr'>1200￥</span>
+			</li>
+			<li>因为玻璃商品特殊性，每台小米体重秤需单独加15元配送费<span class='price fr'>3200￥</span></li>
+			<li>适配机型： 小米Note、小米4、小米3、红米2/2A、红米Note 4G <span class='price fr'>2080￥</span></li>
+			<li>因为玻璃商品特殊性，每台小米体重秤需单独加15元配送费<span class='price fr'>21100￥</span></li>
+			<li>适配机型： 小米Note、小米4、小米3、红米2/2A、红米Note 4G <span class='price fr'>90230￥</span></li>
+			<li>因为玻璃商品特殊性，每台小米体重秤需单独加15元配送费<span class='price fr'>55300￥</span></li>
+		</ul>
+	</div>	
+	
+	<script>
+		// 数组。。。在任何语言中，数组就是一个容器，用来装载任何的数据类型
+			/*
+			数组:数组的排序，已经 parseInt和parseFloat的使用方式。
+
+			循环：
+				arr.sort(funciton(a, b){
+					return a - b
+				})
+				arr
+			*/
+
+			// Array.prototype == 每一个对象都有一个默认的prototype，就是专门用来额外创建一个写函数的属性的。
+
+			/*var mark = true;
+			function sortLi(){}
+				var mark = !mark;*/
+				//1. 定义数组
+				var arr = [];
+				//2. 将排序的对象放入到数组中
+				var shoplistDom = document.getElementById("shoplist");
+
+				// 拿到所有的li对象
+				var liDoms = shoplistDom.children; // 类数组, length
+
+				// var liArr = Array.prototype.slice.call(liDoms);
+				// alert(liArr);
+				 
+					/*var len = liDoms.length;
+					for(var i = 0; i < len; i++){
+						arr.push(liDoms[i]);
+					};*/
+				
+				// 源代码：
+					/*Array.prototype.slice = function(startIndex, endIndex){
+						
+					}*/
+
+					var arr = [1,2,3,4,5,6];
+					var a = arr.slice(1);
+					document.write(a+"<br/>");
+
+					// 源型扩展
+						/*var Array = {
+							prototype:{
+								push:function(){
+								
+								},
+								sort:function(){
+								
+								},
+								pop:function(){
+								
+								}
+							}
+						}*/
+
+					// 源代码：
+					/*Array.prototype.slice = function(startIndex, endIndex){
+						
+					}*/
+					
+					
+			
+
+
+		Array.prototype.slice = function(){
+			var arr = [];
+			// 这里的this 指向的是 arr
+			for(var i = 0; i < this.length; i++){
+				arr.push(this[i]);
+			}
+			return arr;
+		}
+
+		var arr = [1,2,3,4,5,6];
+		var a = arr.slice(1); // 2 3 4 5 6
+		document.write(a+"<br/>");
+
+
+		//3. 调用sort 方法进行排序
+		arr.sort(function(a, b){
+			//1. 获取一类数组 children
+			/*var p1 = a.children[0].innerHTML;
+			var p2 = b.children[0].innerHTML;*/
+			
+			//2. 获取一组的 getElementsByTagName("span");
+			/*var p1 = b.getElementsByTagName("span")[0].innerHTML;
+			var p2 = b.getElementsByTagName("span")[0].innerHTML;
+			alert(p1+"==="+p2);*/
+
+			//3. 获取一个class类名 getElementsByClassName("class类名");
+			/*var p1 = b.getElementsByClassName("price")[0].innerHTML;
+			var p2 = b.getElementsByClassName("price")[0].innerHTML;*/
+
+			// 4.CSS3 获取 querySelectAll(".price")[0].innerHTML;
+			var p1 = a.querySelectAll(".price")[0].innerHTML;
+			var p2 = b.querySelectAll(".price")[0].innerHTML;
+
+			alert(p1+"==="+p2);
+			
+
+			
+		});
+
+				
+
+			
+	</script>
+ </body>
+</html>

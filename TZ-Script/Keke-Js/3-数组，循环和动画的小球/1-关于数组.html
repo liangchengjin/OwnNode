@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>1-关于数组</title>
+</head>
+<body>
+    <script>
+        // 数组
+            /*
+                想到数组就知道排序
+
+                数组：这不是一种数据类型，它是一种结构，用来装数据类型的！是每个语言都有的数组，每个语言的数组都是装各自语言的数据类型
+                比如：javascript数组可以半string, number function object(数组，date, Regex, Error, obj) undefined
+                如果：java中集合Lists可以装java任何数据类型，byte short int long float double boolean char 对象，封装数据类型
+            */
+
+
+			/*
+				数组定义：
+					var arr = []; // 推荐使用第一种
+					var arr = new Array();
+					
+					定义并初始化：
+					var arr = [1,2,3,4,5,6,7,8,9];
+					var arr = new Array(1,2,3,4,5,6,7,8,9);
+
+					arr = ["adfaf", 1, true, 44526, {}, fn, false]; // 这种在开发中基本不会有的
+
+					// 用数组装载起来的数据。可以很方便进行控制和管理。
+					// 我们用数组装载起来的数据，统一去执行一个方法和行为。
+
+					// 案例说明
+						我在商店买了书包，书包装书			
+			*/	
+						var books = ["Java书籍"]; // 创建一个书包
+			// 增 
+						// 数组的往前添加：unshift用法和push一样
+						books.unshift("成成书籍","张三书籍");
+						// 增 push栈底添加(数组的后端添加)
+						books.push("c++书籍");
+						books.push("HTML5书籍");
+						books.push("CSS3书籍");
+						books.push("JavaScript书籍");
+						books.push("aa","bb","cc");						
+						
+
+				// 删 查 改
+				// 数组的长度 数组.length
+						//console.dir(books.length);
+
+						// 数组的数据一但添加到内存中，就会给他们创建一个索引，这个索引就诱使去查询元素和控制元素
+						// 索引是从0开始
+						// console.dir(books[0]);
+						// console.dir(books[2]);
+						// console.dir(books[books.length-1]); // cc
+
+
+				// 修改
+						// 我从一个书包里找一本书，要么看，要么丢掉，进行修改
+						books[0] = "呈琛书籍";  // 
+						console.dir(books);
+
+				// 删除 pop(往后拿)shift(住前拿) delete 清空(小偷偷走了100元，塞一张白纸，到此一游)
+
+						// pop/shift 删除元素  数组的长度会发生变化  ---返回的是具体数据类型
+						/*
+							var items = books.pop();
+							console.dir("拿这【"+items+"】去看");
+
+							var  items2 = books.shift();
+							console.dir("拿这【"+items2+"】去看");
+							
+							console.dir(books); // 拿这【呈琛书籍】去看
+
+				// delete 只能删除、删除中元素和对象中属性，不能删除变量
+							delete books[1];
+							document.write(books); // 张三书籍,,c++书籍,HTML5书籍,CSS3书籍,JavaScript书籍,aa,bb 
+							*/
+				// 复制(slice) 和 剪切(splice 多个数据的操作) 返回值是：数组
+						
+						// splice(startIndex); 第一种 从startIndex索引位置开始剪切，这样子就全剪完了，-1负数就是从后面开始减
+						// splice(startIndex, count); 第二种 不允许为负数
+						// splice(startIndex, endIndex, 填充的值); 第三种
+						
+				// 复制
+							// slice(startIndex, endIndex);
+
+						//var nbs = books.splice(1); 
+						//var nbs = books.splice(-1);	// 等价于 books.splice(books.length-1);
+						//var nbs = books.splice(7, 3); //  books剪切splice:张三书籍,Java书籍,c++书籍
+						
+						/*
+						var nbs = books.splice(7, 3,"uuu","bbb");	// 替换
+						document.write("books剪切splice:" + nbs+"<br />");
+						document.write("books剪切splice后："+books); // books剪切splice后：呈琛书籍,HTML5书籍,CSS3书籍,JavaScript书籍,aa,bb,cc 
+
+						splice(0) == unshift
+						splice(length-1)==pop
+						*/
+
+					// 拷贝
+						var arr = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+						// var ns = arr.splice(1, 3); // 2 - 3
+						// var ns = arr.s(-1, -3);   // slice(8, 9);  后面这个负数一定要比前面的大才能截取出来
+						var ns = arr.slice(-8, -3); 2 3 4 5 6
+						alert(ns);
+
+
+						
+
+
+
+
+
+
+
+    </script>
+</body>
+</html>

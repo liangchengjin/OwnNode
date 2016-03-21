@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>3-对象如何去运用</title>
+ </head>
+ <body>
+	
+	<script>
+		// object === json ---一种数据格式就是va obj = {};
+
+		// 对象的定义， 获取， 修改，删除，循环，属性的查找
+
+		// json-string	 string--json
+		// 对象转字符串，字符串转对象
+			var json = {
+				width:"100px",
+				height:"200px",
+				border:"2px solid red",
+				background:"green"
+			};
+
+			var order = {
+				orderNumber:"tz123452545",
+				price:12.5,
+				num:100,
+				total:1230
+			};
+
+			// 将对象转换成字符串 JSON.stringify(obj);
+				var string = JSON.stringify(json);
+				alert(string);
+			// 从后台返回就是json字符串
+				var jsonString = "{usernam:'cc', age:20}";
+				var json = JSON.parse(jsonString);
+				alert(json.username+"===="+json.age);
+
+			
+
+		// 应用阶段，怎么理解对象数据
+
+		// 对象应用于插件的参数中，减少参数的定义变得更加灵活
+
+
+	</script>
+ </body>
+</html>

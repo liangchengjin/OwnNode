@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+
+ <script>
+
+  // 对象
+     var json = {
+       age:30,
+      username:"cc"
+     };
+
+     json.age = 40;
+     json.address = "中国深圳";
+     /** alert(json.age+"===="+json.address);*/
+     // 删除对象的属性
+     /**delete json.age;*/
+     // 删除对象
+     /** json = null;*/
+    console.log(json.age+"===="+json.address);
+
+    for(var key in json){
+      console.log(key+"==="+json[key]);
+    };
+    var key = "userusernam";
+    json[key];
+
+    var name = "cc";
+    var str = "我叫cc";
+
+    // 面向对象    
+    var json = {
+      user:{
+         cc:{
+          age:30
+         }
+      }
+    };
+	json.user.cc.age = 30;
+
+    json.user["cc.age"] = 20;
+    var json = {
+      user:{
+       "cc.age":20
+      }
+    };
+
+   // key 永远都是字符串
+   var json = {
+     "user":{username:"cc123...."}
+   };
+   //alert(json.user.username);
+
+   var keys = Object.keys(json);
+   //alert(Array.isArray(keys)); // true
+   for(var i = 0; i < keys.length; i++){
+	//alert(keys[i]+"===="+json[keys[i]]);
+   };
+
+   // 循环闭包
+   function Test(){
+	   var arr = [],i;
+	   for(i=0; i<3; i++){
+		  arr[i] = (function(num){
+			return num;
+		  })(i); // 即时函数，形成独立的作用域立即执行函数
+	   };
+	   return arr;
+   };
+	
+   function result(num){
+		return num;
+   };
+
+
+   var t = Test();
+   for(var i = 0; i < t.length; i++){
+	var value = t[i];
+	alert(value);
+   }
+   
+
+   // 即时函数
+	var num = 100;
+	(function(){
+		var num = 200;
+		alert(num);
+	})();
+
+	// 对象里的就是私有函数
+	var json = {
+		sayHello:function(){
+			alert("aaaa");
+		}
+	};
+	json.sayHello();
+
+	/**(var i = 100;
+		// 独立作用域
+		function result(num){
+			return num;
+		}
+	)(100);*/
+
+	// jquery 源代码
+	(function(win){
+		win.$ = function(id){
+			alert(id);
+		}
+	})(window);
+	$("ccc0000");
+   
+
+
+
+
+
+
+
+
+ </script>
+ </body>
+</html>

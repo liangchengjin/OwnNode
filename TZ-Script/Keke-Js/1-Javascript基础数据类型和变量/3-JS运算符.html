@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>03-</title>
+ </head>
+ <body>
+  
+	<script>
+	// 打印的封装 日志打印
+	function log(content){
+		if(console){
+			console.log("【你运算的结果是】: " + content);
+		}else if(dir){
+			console.dir("【你运算的结果是】: " + content);
+		}else{
+			alert("【你运算的结果是】: " + content);
+		};
+	};
+
+
+
+		// 
+		var a = 100;
+		
+	// 一、 操作符：
+		
+		// 算术运算符：+(加号) -(减) *(乘) /(除) %(取余娄)
+
+		// 逻辑运算符：&&(且)、||(或)、!(非)
+
+		// 位运算符：>, <, =, <=, >=, !=, ==(相等),  ===(值内存相等)
+		
+		// boolean if for
+
+		// 赋值运算符：=(赋值)
+
+		// 递增递减运算符：++(递增) / --(递减)
+
+		// 三元运算符：? :
+
+		// 位运算符：
+
+		// + 号是一个加法运算，通过连接符
+		var a = 1;
+		var b = 2;
+		console.log("1 + 2 = " + (a + b));  // 1 + 2 = 3
+
+		var str = "我";
+		var str2 = "爱你";
+		/*
+			1.数字放前面运算，先计算在接接，如果后面就是当做字符串接接了
+		
+			重点：如果我们先算出结果，不让它出现NaN那就么就要把相加或减的数字进行 () 括起来如：
+				consonle.log(str + (a -b));
+		*/
+			console.log(str + str2);    // 我爱你
+			console.log(str + a + b);   // 我12
+			console.log(a + b + str);   // 3我
+			console.log(str + a - b);	// NaN 因为 我1-2，如果一个运算无法计算会返回NaN
+
+			var str = "1";
+			var str2 = "2";
+			log(str+str2);
+			
+		// 但是在乘法，减法，除法(返回浮点数(小数),除得尽的就是整数)，取余数就运算符
+			/*
+				整数:正整数(123456789)和负整数(-1 -100 -14575) 和 0
+				浮点数:整数(正整娄和负整数和0)和小娄(1.1645, 1.89, -1.86)
+			*/
+			log(str - str2);
+			log(str * str2);
+			log(str / str2);
+			log(str % str2);
+			log(3/4);
+			log(1/9);
+			/*
+				3-JS运算符.html:17 【你运算的结果是:】 12
+				3-JS运算符.html:17 【你运算的结果是:】 -1
+				3-JS运算符.html:17 【你运算的结果是:】 2
+				3-JS运算符.html:17 【你运算的结果是:】 0.5		
+			*/
+		
+
+			// %
+			log(9%9); // 返回是1；被除数 % 除数 = 余数 除不尽的就是直接返回回被除娄
+			log(10 % 9);
+			log(6 % 2);
+			log(6 / 2);
+			log(1 % 2);
+			log(99%100);
+			log(201%988);
+			log(8 % 9); // 8
+			log(8 / 9); // 0.8888888888888888
+			/*
+				重点：取莫 就是 取余数 
+					   如：8 除以 9  = 等于它的一个余数的结果值
+
+				3-JS运算符.html:17 【你运算的结果是】: 0
+				3-JS运算符.html:17 【你运算的结果是】: 1
+				3-JS运算符.html:17 【你运算的结果是】: 0
+				3-JS运算符.html:17 【你运算的结果是】: 3
+				3-JS运算符.html:17 【你运算的结果是】: 1
+				3-JS运算符.html:17 【你运算的结果是】: 99
+				3-JS运算符.html:17 【你运算的结果是】: 201			
+			*/
+
+
+
+
+
+
+			
+			
+
+	</script>
+ </body>
+</html>

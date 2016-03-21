@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>简单的时钟</title>
+ </head>
+ <body>
+	<h1 id="time"></h1>
+	<script>
+		window.onload = function(){
+				var timeDom = document.getElementById("time");
+				
+				//alert(date);
+				setInterval(function(){
+						var date = new Date();
+						var year = date.getYear();
+						var fullYear = date.getFullYear();  //  年
+						var month = date.getMonth() + 1;	//  月
+						var dates = date.getDate();			//  日
+
+						// 时 分 秒
+						var hourse = date.getHours();		// 时
+						var min = date.getMinutes();		// 分
+						var sec = date.getSeconds();		// 秒
+
+						// 星期数
+						var week = date.getDay();			// 0 星期天 一周第一天是星期天，最后一天是星期六
+
+						var formate = fullYear+"年"+month+"月"+dates+"日"+hourse+"时"+min+"分"+sec+"秒, 星期:"+getWeek(week);
+						timeDom.innerHTML = formate;
+					
+				}, 1000);
+				
+				function getWeek(week){
+					switch(week){
+						case 0: return "星期天"; break;
+						case 1: return "星期一"; break;
+						case 2: return "星期二"; break;
+						case 3: return "星期三"; break;
+						case 4: return "星期四"; break;
+						case 5: return "星期五"; break;
+						case 6: return "星期六"; break;
+						default: return ""; break;
+					}
+				}
+			};
+	</script>
+ </body>
+</html>

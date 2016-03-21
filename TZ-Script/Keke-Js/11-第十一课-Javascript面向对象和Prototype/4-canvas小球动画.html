@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+  
+	<canvas id="canvas" width="960" height="460" style="background:#111;"></canvas>
+	<script>
+		window.onload = function(){
+		
+			var canvas = document.getElementById("canvas");
+			var ctx = canvas.getContext("2d");
+			
+			// 绘制
+			ctx.beginPath();
+			ctx.fillStyle = "red";
+			// PI：就圆心的半径 *2就得出来一个圆  
+			ctx.arc(200,200,20,0,Math.PI*2,true); // true 是顺时针，false 是逆时针
+			ctx.fill();
+			
+			ctx.beginPath();
+			ctx.fillRect(300,300,20,100);
+			ctx.fill();
+
+			ctx.beginPath();
+			ctx.font = "18px bold 微软雅黑";
+			ctx.fillText(10,10,"中国深圳！");
+			
+			
+		}
+		
+	</script>
+ </body>
+</html>

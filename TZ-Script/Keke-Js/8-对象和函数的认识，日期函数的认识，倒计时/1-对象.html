@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+ </head>
+ <body>
+	
+	<input type="text" id="num" />
+	<script type="text/javascript">		
+		function test(){
+			var a = 10;
+			var b = 21;
+			var c = a + b;
+			
+			var d = a * b;
+			var f = b / a;
+			var arr = [];
+			arr.push(c);
+			arr.push(b);
+			arr.push(f);
+			return arr; // 可以返回 string number arr object data function boolean dom
+			//document.getElementById("num").value = c;
+			// 封装函数体，可以进行任何的js的业务逻辑的编写，比如，运算，逻辑的判断
+		};
+		var c = test(); // 这里接收的是数组
+			/*
+			alert(c[0]);
+			alert(c[1]);
+			alert(c[12]);
+			*/
+		document.getElementById("num").value = c;
+
+
+		// 对象 object ------ data日期
+			/*
+				arr是是一个容器，可以装任何的东西，它不能够很好的去体现一个事物完整特性和信息，获取也不放便维护，修改也很麻烦
+
+
+				对象是什么 是由我们键值对组成的一种数据形态
+				格式：
+					var obj = {
+						key:value,
+						key1:value1,
+						key2:value2				
+					};
+					a.对象结尾的键值不要加逗号的.因为在ie6/7/8它会把它当做一种错误会阻断代码的执行
+					b.第一个把就就是检查对象的最后一个健值对有没有加逗号.
+
+
+					我的名字叫cc同学。今年20岁，我在yy6359频道听keke老师讲课，我家住址：上海
+			
+			*/
+			var cc = {
+				usrname:"cc",
+				age:20,
+				address:"深圳",
+				listen:function(){
+					console.log(this.usrname+"===yy6359频道听课,今年"+this.age+"岁,地址"+this.address);
+				}
+				
+			};
+			cc.listen();
+
+			// 定义对象两种方式：var obj = {}; 或者 var obj = new Object();
+
+			// 对象的修改，删除，新增，查找，属性探测，获取
+			
+			/*
+				var person = {
+					"username":"cc",
+					"password":"12345678"
+				};
+
+				var person = {
+					username:"cc",
+					password:"4534866122"
+				};
+
+				var person = {
+					'username':'cc',
+					'password':'23456787'
+				};
+			*/
+
+			// 为干什么提供两种赋值的方式和获取的方式呢
+			// 使用[]改变原有就是因为存在一个.情况下。无法去操作了，因为的key必须是字符串
+			var person = {
+				username:"cc",
+				age:20,
+				"user.email":"12345678@qq.com"
+			};
+
+			// 修改
+			person["username"] = "spring";
+			person.username = "spring";
+			person["user.email"] = "1245122255@qq.com";
+
+			// 获取
+			console.log(person["age"]);
+			var email = "user.email";
+			console.log(person[email]);
+			console.log(person.usernmae+"===="+person["username"]);
+			// 能够被对象点击的属性，一定是包含在对象中
+
+			// 删除属性和删除对象
+			//person = null; // 删除对象
+
+			// 删除属性
+				delete person.username;
+
+			// 检查元素是否存在对象，在就返回true否则返回false
+			// in 有个特征就是不管是对象自定义属性还是父类object比如：toString, constructor,valueOf 中继承中的属性的属性都可以识别
+
+			//hasOwnProperty: 检查属性是否存在对象中，但是不能检查父类中的属性
+				/*console.log("username" in person);
+				console.log("age" in person);
+				console.log("email" in person);*/
+
+				alert(person.hasOwnProperty("username"));
+				alert(person.hasOwnProperty("age"));
+				alert(person.hasOwnProperty("toString"));
+
+				/*
+					对象内置的方法：
+						toString
+						constructor
+						valueOf
+				*/
+
+				var arr = ["cc",30];
+				arr.unshift("深圳");
+				
+				var arr = [1,2,3,4,5,6,7,8,9];
+				console.log(arr.toString());
+				console.log(arr.constructor); // 判断当前具体的数据类型是什么
+
+
+
+			// 删除数据？ arr = null; 
+
+				/*
+					Object
+					arr
+					data
+					regex
+					obj
+				*/
+				function isArray(arr){
+					if(typeof arr=="object" && arr.constructor.indexOf("Array")!=-1){
+						return true
+					};
+				};
+				var cc = isArray();
+				console.log(cc);
+
+				var a = 10;
+				a.toFixed();
+
+				
+				// javascript优秀的地方
+					var temp = new Number(a);
+					a = temp.toFixed();
+					delete temp;
+					console.log(temp);
+			
+			
+			
+
+
+			// 
+
+	</script>
+ </body>
+</html>

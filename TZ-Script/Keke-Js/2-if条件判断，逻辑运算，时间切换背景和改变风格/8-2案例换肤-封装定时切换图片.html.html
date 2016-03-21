@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>7-案例换肤</title>
+  <style>
+  *{margin:0; padding:0;}
+  html{height:100%;}
+	#bg{
+		position:absolute;
+		top:0;
+		left:0;
+		width:100%;
+		height:100%;
+		z-index:-1;
+	}
+	#timer{background:rgba(0,0,0,0.3); position:relative; top:100px;}
+	#timer .box{width:200px; background:rgba(0,0,0,0.3); margin:0 auto; text-align:center; font-size:48px; font-weight:600; color:#FFF;}
+  </style>
+ </head>
+ <body>
+  <div id="bg" style="background:url('img/01.jpg') no-repeat top left / cover fixed; border:1px solid red;"></div>
+  <div id="timer">
+	<div class="box" id="t">00:00:00</div>
+  </div>
+  <script>
+	/*
+		我现在创意的需求：我现在想根据时间进行换肤操作，并且显示当前的时间
+		a:6 -- 9   中切换一种早晨的图片  01.jpg
+		b:9 -- 12  切换成中午的图片	     02.jpg
+		c:13 --18  切换下午的图片		 03.jpg
+		d:19 -- 23 切换				     04.jpg	
+	*/
+	
+
+	var tDom = document.getElementById("t");
+	var timer = setInterval(function(){
+		var d = new Date();
+		var h = d.getHours(); // 时间
+		var m = d.getMinutes();// 分钟
+		var s = d.getSeconds();// 秒钟
+
+		console.log(typeof h);
+
+		tDom.innerHTML = (h<10?"0"+h:h) + ":"+(m<10?"0"+m:m)+":"+(s<10?"0"+s:s);
+		loadingData();
+	}, 1000);
+
+
+
+	function loadingData(){
+		var bgDom = document.getElementById("bg");
+		var name = "01";
+
+		// 日期函数
+		var date = new Date();
+		var h = date.getHours(); // 0- 23 的一个时间
+
+		if(h > 1 && h<=9){
+			name = "02";
+		}else if(h >= 10 && h<=12){
+			name = "03";
+		}else if(h >= 13 && h<=18){
+			name = "04";
+		}else if(h >= 19 && h<=23){
+			name = "01";
+		}else{
+			name = "01";
+		};
+
+		bgDom.style.background = "url('img/"+name+".jpg')";
+
+
+	}
+	
+  </script>
+ </body>
+</html>

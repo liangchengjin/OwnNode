@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>2-九九乘法表-升级版</title>
+  <style>
+	body{font-size:14px; font-family:"微软雅黑"; padding:20px;}
+	td{padding:5px 20px; border:1px solid red #ccc; background:#111; color:#fff;}
+	
+  </style>
+ </head>
+ <body>
+	<input type="text" placeholder="请输入数字" id="num">
+	<input type="button" onclick="result()" value="手动生成乘法表">	
+	<input type="button" onclick="starts()" value="自动生成乘法表">	
+	<input type="button" onclick="clears()" value="停止生成乘法表">	
+	<table id="tab">
+		<tbody id="tbody">			
+		</tbody>
+	</table>
+
+	<script>		
+		function result(){
+			var num = document.getElementById("num").value;
+			if(!num){
+				document.getElementById("num").focus();
+				alert("请输入一个值吧");
+				return;
+			};
+			if(isNaN(num)){
+				document.getElementById("num").focus();
+				alert("请输入一个数字吧");
+				return;
+			}
+			var html = "";
+			for(var i = 0; i < num; i++){
+				html +="<tr>";
+				for(var j = 1; j<=i; j++){		
+					html += "<td>"+j+"*"+i+"="+(j*i)+"</td>";
+				}
+				html += "</tr>";
+			}
+			document.getElementById("tbody").innerHTML = html;
+		};
+
+		var timer = null;
+		var num = 0;
+		function starts(){			
+			timer = setInterval(function(){
+						num++;
+						document.getElementById("num").value = num;;
+						result();
+					},3000);
+		
+		}
+	
+		function clears(){
+			clearInterval(timer);
+			timer = 0;
+		}
+
+
+
+	</script>
+ </body>
+</html>
