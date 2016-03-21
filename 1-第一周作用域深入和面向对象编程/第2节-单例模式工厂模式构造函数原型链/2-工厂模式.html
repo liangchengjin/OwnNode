@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-工厂模式</title>
+</head>
+<body>
+
+<script>
+    // 2-工厂模式
+
+
+    // TODO: 一、单例模式
+        /**
+         * 这种属性于手工制作模式
+         * @type {{name: string, age: number, writeJs: jsPerson1.writeJs}}
+         * 单例模式虽然解决了分组的作用。但是不能实现批量的生产，属于手工作用模式-->所以我们引用了第二种叫:"工厂模式"
+         */
+            var jsPerson1 = {
+                name:"李小明",
+                age:48,
+                writeJs:function(){
+                    console.log("my name is" + this.name+", i can write");
+
+                }
+            };
+            jsPerson1.writeJs();  // my name is李小明, i can write
+
+            var jsPerson2 = {
+                name:"陈冉冉",
+                age:16,
+                writeJs:function(){
+                    console.log("my name is" + this.name+", i can write js 啦~~~");
+
+                }
+            };
+
+
+
+    // TODO: 二、工厂模式
+        /**
+         * 1. 单例模式虽然解决了分组的作用。但是不能实现批量的生产，属于手工作用模式-->所以我们引用了第二种叫:"工厂模式"
+         *
+         * 2. 工厂模式: 就是把实现同一件事情的相同的代码放到一个函数中，以后如果在想实现这个功能，不需要从新的编写这些代码了，只需要执行当前的函数即可-->工厂模式它有一个专业的名词它叫"函数的封装"
+         *
+         *
+         * 2. 低耦合高内聚：
+         *        函数的封装它有一个专业的用处叫做 "低耦合高内聚":它的意思就是减少页面中的冗余(rǒng yú)代码，提高代码的重复利用率,这就是我们的工厂模式也称之为函数的封装
+         *          什么叫低耦合: 就是相同的
+         *          什么叫高内聚：就是它的重复利用率
+         *
+         */
+            function createJsPerson(name, age){
+                var obj = {};
+                obj.name = name;
+                obj.age = age;
+                obj.writeJs = function(){
+                    console.log("my name is" + this.name+", i can write js 啦~~~");
+                };
+                return obj;
+            }
+
+            var p1 = createJsPerson("李冉冉", 16);
+            p1.writeJs();  // my name is李冉冉, i can write js 啦~~~
+
+            var p2 = createJsPerson("梁成", 18);
+            p2.writeJs();  // my name is李冉冉, i can write js 啦~~~
+
+
+    // TODO: 三、JS是一门轻量级的脚本"编程语言"(HTML+CSS不属性于编程语言，属于标记语言)
+            /**
+             *
+             *      这些都是后台编程语言：.net C# php Java c c++ vb vf object-c ...
+             *
+             *      所有的编程语言都是面向对象开发的--->类的继承、封装、多态             *
+             *
+             *      继承：子类继承父类中的属性和方法
+             *      多态: 当前方法的多种形态-->后台语言中：多态包含，重载和重写
+             *
+             *      public void sum(int num, String str){
+             *          num = this.num;
+             *          str = this.str;
+             *      }
+             */
+
+
+            // js里有重载吗？
+                /**
+                 * 重点：JS中不存在重装，方法名如果一样的话，后面的会把前的覆盖掉的，最后只保留一个，所以js中没有重载
+                 *
+                 *      "JS中有一个操作类似重载但是不是重载": 我闪可以根据传递参数的不一样的，实现不同的功能, 这就是叫JS中的多态
+                 */
+                  // 如下案例说明：
+                    function sum(num){
+                        if(typeof num == "undefined"){
+                            return 0
+                        }
+                        return num;
+                    }
+                    sum(100);
+                    sum();
+
+                    /*sum(1);
+
+                    function sum(num1, num2){
+                            }
+
+                    function  sum(num1){
+                    }*/
+
+            // 重写：JS中的重写是子类重写父类的方法
+
+</script>
+</body>
+</html>

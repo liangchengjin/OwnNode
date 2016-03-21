@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>8-Date和应用</title>
+    <style>
+        body,div{
+            margin:0;
+            padding:0;
+            font-size:28px;
+
+        }
+        #div1{
+            position:absolute;
+            top:0;
+            left:0;
+            width:700px;
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            border:1px solid red;
+            background:-webkit-linear-gradient(top left, #08bece, #F9AF2A, #ffe470);
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1"></div>
+
+<script>
+   var fn = function(){
+
+
+    var oDiv  = document.getElementById("div1");
+    var wt = document.documentElement.clientWidth || document.body.clientWidth;
+    var ht = document.documentElement.clientHeight || document.body.clientHeight;
+    oDiv.style.left = (wt - 500) / 2+"px";
+    oDiv.style.top = (ht - 50) / 2+"px";
+
+    // 获取当前是自己电脑的时间
+        /**
+         * 获取当前自己电脑的时间，不能做重要的用途，例如：淘宝秒杀
+         */
+        var time = new Date();
+        console.log(time); // Tue Mar 15 2016 14:20:43 GMT+0800
+        /**
+         * 时间格式数据(对象数据类型)
+         *
+         *
+         * "2015年05月24日 星期日 15时31分27秒" 恋变我们这个时间格式字符串
+         */
+
+    function formatTime(){
+        var time = new Date();
+        var year = time.getFullYear(); // 获取 年
+        var month = time.getMonth()+1;   // 获取 月 必须 +1 才是中国的时间
+        var day = time.getDate();      // 获取 日
+
+
+        var week = time.getDay();      // 获取 周  0-6代表周日-周六
+        var wStr = "日一二三四五六";
+        var wk = wStr.charAt(week);
+
+
+
+        var hours = time.getHours();                // 时
+        var minutes = time.getMinutes();            // 分
+        var seconds = time.getSeconds();            // 秒
+        var mlSceconds = time.getMilliseconds();    // 毫秒
+
+
+        return year+"年"+zero(month)+"月"+zero(day)+"日    星期:"+week+" "+zero(hours)+"时"+zero(minutes)+"分"+zero(seconds)+"秒";
+    };
+
+
+    // 10 以下就补 0
+    function zero(value){
+        return value < 10?"0"+value:value;
+    }
+
+    var aTime = formatTime();
+    oDiv.innerHTML = "北京时间:"+aTime;
+   };
+
+    fn();
+    setInterval(fn,1000);
+
+
+</script>
+</body>
+</html>

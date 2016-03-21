@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时8 this关键字</title>
+</head>
+<body>
+
+    <div id="div1">有本事点我呀</div>
+
+<script>
+    //this关键字
+        /**
+         * 我们在js中主要研究的都是函数中的 this
+         *
+         * 1. js中的this代表的是当前行为执行的主体; js中的 context代表的是当前行为执行的环境(区域);
+         *
+         *    例如： 成成在沙县小吃 吃蛋炒饼，this->成成 context->沙县小吃
+         *          console.log(this); // Window
+         *
+         *              function 吃饭(){
+         *                   this --> 成成
+         *              }
+         *              成成.吃饭();
+         *
+         *              ~function(){
+         *                  成成.吃饭();
+         *              }();
+         *
+         *
+         * 2. this 是谁和函数在哪里定义的和在哪里执行的都没有任何关系;如何的区分 this呢？
+         *
+         *
+         *  this 一共有5条
+         */
+
+     // 一、关于this
+        /**
+         *  第一条 this
+         *      1. 函数执行，首先看函数名前面是否有 ".", 有的话，"."前面是谁this就是谁; 没有的话 this就是window
+         *
+         *  第二条 this
+         *      2. 自执行函数中的this永远是window
+         *
+         *  第三条 this
+         *      3. 给元素的某一个事件绑定方法，当前事件触发的时候，执行对应的方法，方法中的this是当前的元素
+         *
+         */
+
+         function fn(){
+            console.log(this);
+        }
+        var obj = {fn:fn};
+        fn();       // this---> 这里的this就是 window
+        obj.fn();   // this --> 这里的this就是 obj
+
+
+
+        // 注意 1
+        function sum(){
+            // this--> window 这里是说 sum 的this 是谁，这时是window
+            fn();  // this-->  这里还是 window
+        }
+        sum();
+
+
+        // 注意 2
+        var oo = {
+            sum:function (){
+                fn(); // this--> 这里是 window
+            }
+        };
+        oo.sum();   // 这里的 this是 oo
+
+        // 重点：如果真的是不知道this在哪里。就要想到一句话，你以为 你以为的 就是你你以为的
+
+        // 案例
+            document.getElementById("div1").onclick = fn; // 当你点中 fn中的this就是当前的#div
+
+            document.getElementById("div1").onclick = function(){
+                // 这里的方法this 才是 #div
+                fn(); // 这里的 this 是 window
+            };
+
+</script>
+</body>
+</html>

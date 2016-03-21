@@ -1,0 +1,23 @@
+// 闭包：就是函数执行的的时候会形成一个新的私有的作用域，来保护里面的变量不受外界的干扰，我们把这种保护机制叫做"闭包"
+
+
+// 1. 匿名函数
+                var fn = function(){
+                    console.log("匿名函数的定义");
+                };
+
+                var oBody = document.getElementById("bodyEle");
+                oBody.onclick = function(){
+                    console.log("匿名函数的定义绑定事件");
+                };
+
+            // 2. 自执行函数：定义和执行一起完成了
+                (function(){
+
+                })();
+
+                // 这四种也是自执行函数
+                ~function(){}();
+                !function(){}();
+                +function(){}();
+                -function(){}();

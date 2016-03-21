@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数深入</title>
+</head>
+<body>
+
+
+<script>
+    // 一、TODO:函数深入
+
+    var total = 0;
+    sum(1,2,3);
+
+    function sum(){
+        var total = null;
+        for(var i = 0; i < arguments.length; i++){
+            var val = Number(arguments[i]);
+            if(isNaN(val)){
+                continue;
+            }
+            total += arguments[i];
+        }
+        console.log(total);
+    }
+    sum(1,2,3);
+    sum(1,"2",3,"a");
+
+    // TODO: 预解释是发生在当前作用域下的，刚开始只声明或者定义全局下的 var 或者 function
+        /**
+        // 1. 带 var 和 function 关键字的，进行预解释的时候是不一样的
+        //    var： 只是提前声明
+        //    function： 提前的声明和定义都完成了
+
+        // 2. 一个function 在代码执行之前(预解释的时候)就把声明和定义完成了, 在接下来执行代码的过程中，如果遇到函数定义的那块代码直接的跳过就可以了
+        //    函数执行可以写在函数定义代码上面，原图是定义的这个操作在预解释就完成了
+
+        // 3. 函数执行会形成一个新的私有作用域(栈内存)
+        //    首先进行的就是预解释
+        //    其次代码执行
+
+        //   什么是闭包： (在函数的这个私有作用域中定义的变量都是私有的变量)形成的这个作用域保护里面的私有变量不受外界的干扰，我们把这种机制叫做闭包！
+
+        //    函数执行一次就会形成一个新的私有作用域，上述的步骤重复一次
+
+        // 4. 一般情况下，每一次执行完，函数新形成都会自动销毁
+        //    重点：什么是预解释：就是把所有带var 和 带 function 关键字的进行提前的声明或者定义
+
+        // 5. 预解释是发生在当前做作用域下的
+        */
+
+
+    //TODO: 1. 匿名函数
+    /**
+     *  函数表达式: 把函数定义的部分当做一个值给变量或者是元素的绑定事件，这就是函数表达式
+     */
+        var fn = function(){
+
+        }
+
+        /*oDiv.onclick = function(){
+
+        }*/
+
+        window.setInterval(function(){
+
+        }, 1000);
+
+    // TODO: 2. 自执行函数：定义和执行放在一起操作了，定义完紧接着就行了
+
+        ;(function (name){  // 前面加一个分号，就是怕别人给我影响了，所以我才加的。
+            console.log(name);
+        })("中国深圳");
+
+
+        ~function(name){
+            console.log("我我的名字叫："+name);
+        }("呈呈");
+
+        -function(){}();
+        +function(){}();
+        !function(){}();
+
+
+
+</script>
+
+</body>
+</html>

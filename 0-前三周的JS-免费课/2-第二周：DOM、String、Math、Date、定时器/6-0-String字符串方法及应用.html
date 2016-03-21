@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>6-Stirng字符串方法及应用</title>
+</head>
+<body>
+
+<script>
+    // String: 字符串类
+        /**
+         * 对象、类、实例
+         *
+         *  例如：自然中万物都是对象，类是对 对象的一个细分
+         *       比如：
+         *       人类
+         *       动物类
+         *       植物类...
+         *
+         *       实例是什么呢？
+         *          就是每一个类别中的一个具体中的事物，比如，小明就是人中的一个实例
+         *
+         *  JS中的对象就是一个泛指，所有东西都是对象，类是把这个泛指具体细分：
+         *      Object、
+         *      Array、
+         *      RegExp、
+         *      Date、
+         *      String、
+         *      Node、
+         *      这些都是JS中内置类，实例是类中的一个具体的东西，比如：{}是Object中一个实例，"深圳"是String中的一个实例
+         *
+         *      Arrar这个数组中提供了很多的方法，每一个数组都是它里面一个实例，所以数组可以用这个些方法
+         *
+         *
+         *
+         */
+
+    //1. 字符串
+        /**
+         *
+         * @type {string}
+         *
+         * 一个字符串是由多个字符组成的
+         *
+         * 字符串也有一个长度 length
+         *      str.length 获取字符串中字符的个数(字符串的长度)
+         *
+         *      字符串也存在索引，也是从0开始，'w'这个字符的索引就是 0
+         *
+         *      空格、换行这些特殊的符号也是一个字符
+         */
+        var str = "welcome to beijing! good good good study, day day up!";
+
+
+    //一、 字符串的方法
+        /**
+         * @type {string}
+         *
+         * 1. charAt(索引)  获取指定索引位置的字符
+         *
+         *    获取全部字符 就用for循环
+         *
+         *
+         *
+         *
+         */
+
+        // 1. charAt();    charAt(索引)  获取指定索引位置的字符
+
+        var str = "welcome to beijing! good good good study, day day up!";
+         console.log(str.charAt(5));  // m
+
+        // 用for循环来获取全部字符
+        for(var i = 0; i < str.length; i++){
+            var num = str.charAt(i);
+            //console.log(num);
+        }
+
+
+        // 2. charCodeAt(索引)   获取指定索引位置的字符对应的ASCII码值
+            /**
+             * ASCII值：每一个字母、汉字、特殊符号都有一个对应的码值(Unicode)
+             */
+
+            for(var i = 0; i < str.length; i++){
+                var num = str.charCodeAt(i);
+                console.log(num);
+            }
+
+
+    //二、 字符串截取
+        /**
+         * 1. substr(n, m); 从索引n开始截取m个字体
+         *
+         */
+        var str = "welcome to beijing! good good good study, day day up!";
+        console.log(str.substr(0, 19));  // welcome to beijing!
+
+
+        /**
+         * 2. substring(n, m); 从索引 n开始，找到索引m处(不包含m)，将找到的字符返回
+         */
+
+        var str = "welcome to beijing! good good good study, day day up!";
+        console.log("substring = " + str.substring(0, 18));  // welcome to beijing
+
+
+        /**
+         * 3. slice(n, m); 从索引 n开始，找到索引m处(不包含m)，将找到的字符返回 slice支持负数作为索引，str.length+负数索引
+         *
+         * 如果只写了一个n, 没有m：代表截取到末尾位置
+         *
+         *
+         */
+        var str = "welcome to beijing! good good good study, day day up!";
+        console.log("slice = " + str.slice(-11, -1));  // welcome to beijing
+
+
+// 三、字符串 查找字符的索引
+    /**
+     * 1. indexOF(字符)：获取指定字符在字符串中第一次出现的索引位置
+     *
+     * 2. lastIndexOf(字符): 获取揎定字符在字符串最后一次出现的索引位置
+     *
+     *     如果要没有这个字符，返回的是-1，基本这个理念我们经常用这两个方法判断字符串是否包含某个字符
+     */
+    var str = "welcome to beijing! good good good study, day day up!";
+    console.log(str.indexOf("!"));      // 18
+    console.log(str.lastIndexOf("!"));  // 52
+
+    // 判断这里有没有包含有没有这个 q 字符
+    if(str.indexOf("q") > -1){
+        // 代表包含q这个字符
+    }
+
+
+
+// 四、大小写转换
+    /**
+     * 1. toLowerCase(); 将所有的字母转为小写
+     *
+     * 2. toUpperCase(); 将所的字母转换为大写
+     */
+    var str = "welcome to beijing! GOOD GOOD good study, day day up!";
+    console.log(str.toLowerCase());  //welcome to beijing! good good good study, day day up!
+
+    console.log(str.toUpperCase());  //WELCOME TO BEIJING! GOOD GOOD GOOD STUDY, DAY DAY UP!
+
+
+
+// 五、替换
+    /**
+     * replace(要替换换的老字符, 替换成的新字符);
+     * 在不使用正则的情况下，每一次调用方法只能替换一次
+     *
+     * 一般情况下，我们都是用正则处理的。
+     */
+    var str = "welcome to beijing! GOOD GOOD good study, day day up!";
+    console.log(str.replace("o","欧"));  // 只替换一个，如果要替换多人，就得写多次
+
+    // 正则处理
+    console.log(str.replace(/o/g,"欧")); // welc欧me t欧 beijing! GOOD GOOD g欧欧d study, day day up!
+
+
+
+
+ // 六、将字符串按照指定的分隔符拆分成数组
+    /**
+     * 1. split(分割符)  它返回的永远是一个数组
+     * @type {split}
+     */
+    var s = "1+2+3+4+5+6";
+    console.log(s.split("+")); // ["1", "2", "3", "4", "5", "6"]
+    console.log(s.split("")); // ["1", "+", "2", "+", "3", "+", "4", "+", "5", "+", "6"]
+
+
+    var ss = "my name is cc";
+    console.log(ss.split(" "));  // ["my", "name", "is", "cc"]
+
+    // 将数组的分割符替换
+    var ary = [1,2,3,4,5,6,7,8,9];
+    console.log(ary.join("+")); // 1+2+3+4+5+6+7+8+9
+
+
+ // 7、match?  正则沉常用的
+
+
+
+</script>
+</body>
+</html>

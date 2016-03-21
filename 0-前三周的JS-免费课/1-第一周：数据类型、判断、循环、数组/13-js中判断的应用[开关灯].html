@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="own">
+  <title>js中判断的应用[开关灯]</title>
+  <meta name="Keywords" content="关键词,关键词">
+  <meta name="Description" content="描述">
+  
+ <style type="text/css">
+	*{margin:0; padding:0;}
+	html,body{font-size:14px; font-family:"微软雅黑"; width:100%; height:100%; cursor:pointer;}
+	#oBody{}
+ </style>
+ </head>
+ <body id="bodyEle" style="background-color:white;">	
+  <script>
+	// 一. 首先获取 boyd
+		/*
+		document.getElementById("元素标签的ID");
+
+		document 文档 称之为上下文件(context 限定我们获取元素的范围)
+		get 获取
+		Element 一个元素
+		By 通过
+		Id 元素的ID
+
+		 在整个文档中，通过元素的ID获取一个元素
+		*/
+		
+
+
+	// 二. 让body有一个点击的功能
+		/*
+			元素.onclick = function(){
+				点击的时候我们要处理的事情
+			}
+
+			1.给一个元素绑定点击事件
+			2.每一次点击的时候，都要先获取当前的背景颜色
+			  元素.style.backgroundColor  获取当前元素在"行内行样式上的"背景颜色
+
+			3.根据颜色让背景变成其它的颜色
+		*/
+
+	// 三. 点击时候执行我的换颜色操作
+		/*
+		var oBody = document.getElementById("bodyEle");
+		oBody.onclick = function(){			
+				var bg = this["style"]["backgroundColor"];
+				if(bg === "white"){
+					this["style"]["backgroundColor"] = "black";
+				}else{
+					this["style"]["backgroundColor"] = "white";
+				}
+			}
+
+			// this 在绑定的事件点点，this就是当前我们点击的这个元素的oBody
+		*/
+
+
+	// 四、 三元运算符 ? 来判断
+			/*
+			var oBody = document.getElementById("bodyEle");
+			oBody.onclick = function(){			
+				var bg = this["style"]["backgroundColor"];
+				bg==="white"?this["style"]["backgroundColor"]="green":this["style"]["backgroundColor"]="white";
+			}
+			*/
+
+
+	
+	// 五、if else if else 判断写的
+		/*
+		var oBody = document.getElementById("bodyEle");
+		oBody.onclick = function(){			
+				var bg = this["style"]["backgroundColor"];
+				if(bg === "white"){
+					this["style"]["backgroundColor"] = "blue";
+				}else if(bg === "blue"){
+					this["style"]["backgroundColor"] = "red";
+				}else if(bg === "red"){
+					this["style"]["backgroundColor"] = "yellow";
+				}else if(bg === "yellw"){
+					this["style"]["backgroundColor"] = "green";
+				}else{
+					this["style"]["backgroundColor"] = "white";
+				}
+			}
+			*/
+
+	// 五、switch case		
+		var oBody = document["getElementById"]("bodyEle");
+		oBody["onclick"] = function(){
+			var bg = this["style"]["backgroundColor"];
+			switch(bg){
+				case "white":
+					this["style"]["backgroundColor"] = "blue";
+					break;
+				case "blue":
+					this["style"]["backgroundColor"] = "red";
+					break;
+				case "red":
+					this["style"]["backgroundColor"] = "yellow";
+					break;
+				case "yellow":
+					this["style"]["backgroundColor"] = "green";
+					break;
+				default:
+					this["style"]["backgroundColor"] = "white";
+			}
+		}
+
+	
+	</script>
+ </body>
+</html>

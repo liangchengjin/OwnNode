@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>5-Math方法和应用</title>
+</head>
+<body>
+
+<script>
+    // Math 是数学函数 ，里面提供了几个操作数字方法
+        /**
+         * 1. Math.abs();   取绝对值, 就是将负数变成整数
+         *       Math.abs(-12); // 12
+                Math.abs(12)    // 12
+                Math.abs(-12.3) // 13.3
+
+         * 2. Math.ceil()   // 向上取整 只要出现小数点就往上取一位
+         *      Math.ceil(12.00004);  // 13
+         *      Math.cel(12.3);       // 13
+         *
+         *      Math.ceil(-12.3);     // -12
+         *
+         *  3.Math.floor();  // 向下取整
+         *      Math.floor(12.3);     // 12
+         *      Math.floor(-12.8);    // -13
+         *
+         *
+         *   4.Math.round();  // 四舍五入
+         *       Math.round(15.4);    // 15
+         *       Math.round(-15.4);   // -15
+         *       Math.round(15.6);    // 16
+         *       Math.round(-15.5);   // -15
+         *
+         *  5.Math.max(val, val,val.....);    // 求最大值
+         *      Math.max(12,58,46,35,78,54,22,69,128,551);  // 51
+         *
+         *
+         *  6.Math.min();   求最小值
+         *      Math.min(12,58,46,35,78,54,22,69,128,551)   // 12
+         *
+         *
+         *  7.Math.random();    获取(0-1);之间的随机小数
+         *       Math.random()
+         *          0.3908588676885454
+         *       Math.random()
+         *          0.5262485197990898
+         *       Math.random()
+         *          0.20668588730873094
+         *       Math.random()
+         *          0.6066553899702944
+         *       Math.random()
+         *          0.2502439365697029
+         *
+         *       获取[n-m] 之间的随机整数
+         *       Math.round(Math.random)*(m-n)+n 获取m-n之间的随机整数
+         *       例如：1-10  14 -58
+         *
+         *        var math = Math.round(Math.random()*44+14);
+         *         console.log(math);
+         *
+         *        var n = 0;
+         *        while(n !== 58){
+         *          n = Math.round(Math.random() * 44 + 1);
+         *          console.log(n);
+         *         }
+         *
+         */
+
+       // 7.Math.random();    获取(0-1);之间的随机小数
+       /* var math = Math.round(Math.random()*44+14);
+        console.log(math);
+
+        var n = 0;
+        while(n !== 58){
+            n = Math.round(Math.random() * 44 + 1);
+            console.log(n);
+        }*/
+
+
+        function getRandom(n, m){
+            //  不管传递的啥，强制转换一下，只有两种情况：数字和 NaN
+            n = Number(n);
+            m = Number(m);
+
+            // 只要有两个中有一个不是有效的数字就返回[0-1]之间的随机小娄
+            if(isNaN(n) || isNaN(m)){
+
+                return Math.random();
+            }
+            // 如果n比m大了，我们默认交换位置
+            if(n > m){
+                var temp = n;
+                n = m;
+                m = temp;
+            }
+
+            return Math.round(Math.random() * (m - n) + n);
+        }
+
+        // 获取4位 0-61之间的随机整数? 获取4位不重复的数字
+        var ary = [];
+        for(var i = 0; i < 4; i++){
+            ary.push(getRandom(0,61));
+        }
+        console.log(ary);
+
+</script>
+</body>
+</html>

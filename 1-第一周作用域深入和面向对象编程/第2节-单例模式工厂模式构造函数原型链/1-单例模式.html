@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>单例模式</title>
+</head>
+<body>
+
+<script>
+    // TODO:单例模式
+
+    // 1.
+    var name = "李小明";
+    var age = 18;
+
+    var name = "梁成";
+    var age = 22;
+
+    console.log(name);
+
+
+    // TODO: 一、 对象数据类型
+    /**
+     *
+     * 单例模式：
+     * 把描述同一个事物(同一个对象)的属性和方和在一个内容空间下，起到了分组的作用，这样不同事物之间的属性即使属性名相同，相互也不会发生冲突
+     *
+     * 1. 我们把这种分组编写代码的模式叫作 "单例模式"， 用简单的一句说，它就是一个破对象 哈哈
+     *
+     *      因为 person1 和 person2 是单独开的，它们互不影响，这就是 单例模式
+     *
+     *
+     * 2. 在单例模式中我们把 person1或者person2也叫做"命名空间"
+     * @type {{name: string, age: number}}
+     */
+        var person1 = {
+            name:"李小明",
+            age:18
+        };
+        person1.name
+        var peson2 = {
+            name:"梁成",
+            age:16
+        };
+
+    // TODO: 二、 单例模式是一种项目开发中经常使用的模式，因为项目中我们可以使用单例模式来进行我们的"模块化开发"
+        /**
+         * "模块化开发"： 对于一个相对来说比较大的项目，需要多人协作的开发的，我们一般情况下当前项目的需求划分成几个功能版块，每个人一部，同时开发，最后把每个人的代码地合并。
+         */
+
+        // 公共模块
+            var utils = {
+                select:function(){
+
+                }
+            };
+
+        // 比如：页卡模块中的change-->实现选项卡切换
+            /**
+             * 第一个人的模块
+             */
+                var tabReander = {
+                    change:function(){
+
+                        utils.setCss(); // 在自己的命名空间下调用其它命名空间的方法
+                    }
+                };
+
+        // 搜索模块 change-->搜索内容变化处理的
+            /**
+             * 第二个人的模块
+             */
+                var searchRender = {
+                    change:function (){
+                        //searchRender.clickEven(); // 在自己的命名空间下调用其它命名空间的方法
+                        this.clickEven(); // 在自己的命名空间下调用其它命名空间的方法
+                    },
+
+                    clickEven:function(){
+
+                    }
+                };
+                searchRender.change();
+
+</script>
+</body>
+</html>

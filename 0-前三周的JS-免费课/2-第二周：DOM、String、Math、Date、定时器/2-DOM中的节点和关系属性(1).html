@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2-DOM中的节点和关系属性(1)</title>
+</head>
+<body>
+
+<div id="div1">
+    <h1>深圳景点</h1>
+    <!--以下是深圳景点 的描述-->
+    <ul>
+        <li>欢乐谷</li>
+        <li>东部华侨城</li>
+        <li>世界之窗</li>
+        <li>大梅沙</li>
+        <li>玫瑰园</li>
+    </ul>
+</div>
+<script>
+    // 2-DOM中的节点和关系属性(1)
+
+    // 一、获取关系的属性
+        /**
+         * 节点：Node 一个页面中的标签，文字，注释...都是节点
+         *
+         *   var oDiv = document.getElementById("div1");
+         *    console.log(oDiv.childNodes);   // 获取所有的 子节点
+         *
+         * 1. childNodes：       获取元素所有子节点
+         *
+         * 2. children:         获取所有的元素子节点
+         *
+         * 3. parentNode：       获取父亲节点
+         *
+         * 4. previousSibling   获取上一个哥哥节点
+         *
+         * 5. nextSibling       获取下一个弟弟节点
+         *
+         * 6. firstChild        获取所有子节点的第一个
+         *
+         * 7. lastChild         获取所有子节点的最后一个
+         *
+         *
+         */
+        var oDiv = document.getElementById("div1");
+
+        // 1. childNodes 获取所有子节点
+            var nodes = oDiv.childNodes;    // 获取所有的 子节点
+            console.log(nodes);
+            // [text, h1, text, comment, text, ul, text]
+
+        // 2. children 获取所有元素的子节点
+            var ren = oDiv.children;
+            console.log(ren);       // [h1, ul]
+
+        // 3. parentNode 获取父亲节点
+            var parent = oDiv.parentNode;
+            console.log(parent);    // body
+
+        // 4. previousSiblings 获取哥哥节点
+           var previousSiblings = oDiv.previousSibling;
+            console.log(previousSiblings); // #text
+
+        // 5. nextSibling 获取弟弟节点
+            var next = oDiv.nextSibling;
+            console.log(next);  // #text
+
+        // 6. firstChild 获取所有子节点为的第一个
+            var fist = oDiv.firstChild;
+            console.log(fist);  // #text
+
+        // 7. lastChild 获取所有子节点的最后一个
+            var last = oDiv.lastChild;
+            console.log(last);  // #text
+
+
+
+    // 二、 在js中需要我们掌握的节点类型
+        /**
+         *                       nodeType(节点的类型)     nodeName(节点名称)     nodeValue(节点值)
+         *  元素节点(元素标签)          1                   大写的标签名            null
+         *  文本节点(文字)             3                    #text                 文字内容
+         *  注释节点(注释)             8                    #conment              注释内容
+         *  document                  9                    #document             null
+         *
+         *  1. 元素节点(元素标签)
+         *  2. 文本节点(文字)
+         *  3. 注释节点(注释)
+         *  4. document
+         *
+         *
+         *  在标准浏览器下，我们把space(空格)和 Enter(回车)都当做我们的文本节点处理
+         *
+         *  方法：模拟我们的children方法，实现获取指定元素下的子节点
+         *
+         */
+
+
+        var oDiv = document.getElementById("div1");
+        console.log(oDiv.childNodes[3]);
+
+        // nodeType
+        var nodetype = oDiv.nodeType;
+        console.log(nodetype);  // 1
+
+        // nodeName
+        var nodename = oDiv.nodeName;
+        console.log(nodename);  // DIV
+
+        // nodeValue
+        var nodevalue = oDiv.nodeValue;
+        console.log(nodevalue); // null
+
+
+
+        // 方法：模拟我们的children方法，实现获取指定元素下的子节点
+            /**
+             *
+             * @param ele
+             * getMyChildren：获取指定元素下的所有的元素节点
+             *
+             * @parameter:
+             *      ele：我匀要获取谁下面的，就把谁传进来
+             *      tagName: 你告诉我的获取哪种类型的元素，例如："div"就是代表只获取div元素标签
+             * @return:
+             *      我们最后获取的元素子节点
+             *
+             *      By cc on 2016/3/14
+             */
+            function getMyChildren(ele,tagName){
+                // 1. 弄一个空盒子放我们想要的元素，然后获取ele下的所有的子节点(包含)文本、注释、元素
+                var ary = [], nodes = ele.childNodes;
+                // 2. 循环所有的了节点
+                for(var i = 0; i < nodes.length; i++){
+                // 3. 把每一次循环得到的对应的节点赋值给cur，而且可能是文本，可能是注释，可能是元素...
+                    var cur = nodes[i];
+                    // 4. 我们只需要把元素的放到我们的盒子中就可以了。那么我们就通过nodeType等于1的就是我们的元素节点为的这个规律，把我们的元素节点放到盒子中
+                    if(cur.nodeType === 1){
+
+                        if(tagName){
+                            // 5. 如果你传递给我 tagName了,我们进一步筛选。在这里我们的nodeName 是大写，我们的tagName可能是大写，也有可以是小写，所以我们先把两边调用toLowerCase转换成小写，再比较
+                            if(cur.nodeName.toLowerCase() === tagName.toLowerCase()){
+                                ary.push(cur);
+                            }
+                        }else{
+                            // 6.如果你没有传递，默认就把所有的元素放到我们的盒子进而
+                            ary.push(cur);
+                        }
+
+                    }
+                }
+                return ary;
+            }
+
+            var oDiv = document.getElementById("div1");
+            var getDren = getMyChildren(oDiv,"ul");
+            console.log(getDren);
+            /*
+             Array[2]0: h11: ullength: 2__proto__: Array[0]
+             */
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

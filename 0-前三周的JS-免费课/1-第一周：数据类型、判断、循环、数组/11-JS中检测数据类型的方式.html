@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>11-JS中检测数据类型的方式</title>
+ </head>
+ <body>
+ 
+
+  <script>
+  // 一、JS中检测数据类型的方式
+		/*
+			四种检测数据类型
+				 typeof 运算符
+				 instanceof 运算符
+				 constructor 
+				 Object.prototype.toString.call()
+		*/
+		
+		// typeof 运算符;
+			/*
+				用来检测数据类型的: typeof 要检查的值
+				
+				返回值：是一个字符串，包含了数据类型字符口串"number"、"string"、"boolean"、"undefined"、"object"、"function"
+
+				typeof null 的结果是："object"
+				typeof的局限性：不能具体的检查 object 下细分的类型, 检查这些返回的都是"object"
+
+
+			*/
+			console.log(typeof "shenzheng"); // string
+
+			var num2 = 12;
+			console.log(typeof num2); // 把num2代表的值进行检测，检测是什么数据类型的。
+
+		// instanceof 运算符
+
+		// constructor 
+
+		// Object.prototype.toString.call()
+
+
+		// 腾讯面试题
+			console.log(typeof typeof (typeof (typeof (typeof []))));  // string 出现两个和两个以上的typeof的时候，最终结果都是"string"
+			
+			/*
+				分析：
+					typeof []		--->"object"
+					typeof "object" --->"string"
+					typeof "string" --->"string"
+
+					最终结果都是"string"
+			
+			*/
+  
+  </script>
+ </body>
+</html>

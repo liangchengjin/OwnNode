@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>12-js中三个判断的语法</title>
+ </head>
+ <body>
+	
+	<script>
+	// 12-JS中三个判断的语法
+			/*
+			 三个判断：if else、三元运算符、switch case
+
+				1.if、else if、else 是最常用的判断，可以解决js中所有的判断需求
+				
+				2.三元运算符应用于简单的if else情况
+
+				3.switch case 应用于不同值情况下的不同操作
+			*/
+
+
+	 // 一、 if else
+			 /*
+				if(条件1){
+					执行条件1成立的js代码
+				}else if(条件2){
+					执行条件2成立的js代码
+				}else if(条件3){
+					执行条件3成立的js代码
+				}else{
+					以年所有的条件都不成立执行的代码
+				}
+
+
+				1. if 中的条件可以是小于、大于、等于、还要k以是一	个值(判断当前值代表的是真还是假)
+
+				2. if中的条件还可以是多个小的条件组合，中间用 ||(只要有一个为真整体就为真) 和 &&(所有的小的条件都为真整体才为真)隔开
+			 */
+
+			  // 第一种 if 
+			  if([]){ // 代表的是真
+				console.log('真');
+			  } // 真
+
+
+
+			 var num = 10;
+			 if(num < 0){
+				console.log("负数");
+			 }else if(num>0 && num<=0){
+				console.log("0-10之间");
+			 }else{
+				console.log("10以上");
+			 } // 10以上
+		     
+	 // 二、 三运算符 ?
+			/*var num = 12;
+			if(num >= 0){
+				console.log("正娄或零");
+			}else{
+				console.log("负数");
+			}*/
+
+			// if else 改写成 "三元运算符 ?"
+			var num = 12;
+			num>=0?console.log("正数或零"):console.log("负数"); // 正数或零
+
+
+			// if 的改改  三元运行 ？
+			if(num >= 0){
+				console.log("正数或零");
+			}
+			num>=0?console.log("正数或零"):void 0; // 正数或零
+
+
+	// 三、 switch case
+			// 每一种case 情况下都要加 break; 如果不加break 不管后果面的代码是否成立都执行了
+
+			// 每一种 case 情况相当于 === 的比较，一定要注意数据类型是否一至;
+			
+			/*
+				var num = 10;
+				if(num==0){
+					console.log("0");
+				}else if(num==5){
+					console.log("5");
+				}else if(num==10){
+					console.log("10");
+				}else{
+					console.log("NaN");
+				} // 10
+			*/
+			
+			// if else 改写成 switch case
+			var num = "10";
+			switch(num){
+				case 0:
+					console.log("switchCase 0");
+					break;
+				case 5:
+					console.log("switchCase 5");
+					break;
+				case 10:
+					console.log("switchCase 10");
+					//break;
+				default:
+					console.log("switchCase NaN");
+			} // switchCase NaN
+			
+	
+	</script>
+ </body>
+</html>

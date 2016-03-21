@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div id="box"></div>
+<script>
+    var oBox = document.getElementById("box");
+
+    var html = "<td id='tailDiv' class='tailDiv' colspan='11' style='border-top-width: 0px; border-top-style: solid; padding: 2px; height: 60px;'>"+
+                           "<div class='select-content' style='border: 1px solid blue; padding: 10px; width: 50%;'>"+
+                    "<ul class='select-head'>"+
+                    "   <li><span>商户电话：<em>13798204682</em></span><span>商户地址：<em></em></span></li>"+
+                    "   <li><span>商户名称：<em>zbAndOthers</em></span></li>"+
+                    "</ul>"+
+                    "<table class='table  select-table'>"+
+                    "       <thead>"+
+                    "           <tr>"+
+                    "               <th>商品名称</th>"+
+                    "               <th>数量</th>"+
+                    "               <th>销售单价</th>"+
+                    "               <th>代理单价</th>"+
+                    "               <th>小结</th>"+
+                    "           </tr>"+
+                    "       </thead>"+
+                    "       <tbody id='tb66'>"+
+                    "           <tr>"+
+                    "               <td>智慧餐厅</td>"+
+                    "               <td>1</td>"+
+                    "               <td>10</td>"+
+                    "               <td>0</td>"+
+                    "               <td>--</td>"+
+                    "           </tr>"+
+                    "           <tr>"+
+                    "               <td>掌贝智能POS Z3 套餐版</td>"+
+                    "               <td>1</td>"+
+                    "               <td>1688</td>"+
+                    "               <td>0.01</td>"+
+                    "               <td>1687.99</td>"+
+                    "           </tr>"+
+                    "       </tbody>"+
+                    "</table>"+
+                    "</div>"+
+           "</td>";
+
+    oBox.innerHTML = html;
+</script>
+</body>
+</html>

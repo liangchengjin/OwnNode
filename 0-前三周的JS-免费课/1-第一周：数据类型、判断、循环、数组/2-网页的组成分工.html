@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>Document</title>
+
+ <style>
+	/*内嵌样式*/
+	div{height:300px; width:300px; background:red; border-radius:5px; text-align:center; line-height:300px;}
+ </style>
+ <!--/*外链样式 */-->
+ <link type="text/css" rel="stylesheet" href="test.css">
+ <!--导入式-->
+ <style>
+	@import "test.css";
+ </style>
+ </head>
+ <body>
+
+  <!--<div style="width:300px; height:35px; background:red;">中国深圳</div>-->
+  <div onclick="alert('中国深圳')">中国深圳</div>
+  
+  <img src=""/>
+  <script src="test.js"></script>	
+  <script>
+	// 一个网页是由哪几个部分组成的	
+		/*
+		一个网页的组成部分？
+
+			1.html: 什么是html,就是超文本标记语言，除了可以渲染和容纳文字以外还可以容纳图片，音视频等
+
+			2.XHTML: 它是更加严谨的超文本标记语言			
+
+			3.HTML5: 基于HTML的基础上增加很多强大的并且非常实用的新的API
+
+			5.DHTML: 什么是DHTML网页中的内容是通过JS动态绑定的
+
+		二、CSS
+			1.CSS:什么是CSS，就是层叠样式表
+			2.CSS3：什么是css3，就是在源于的CSS的基础上增加了一些非常常用而且方便我们开发的样式属性，例如：border-radius:20px; 可以实现盒子的圆角
+
+
+		三、JS
+			javascript:三种写法
+				1.javascript
+				2.JavaScript
+				2.js
+
+			1.什么是javascript?：它是一门轻量级的客户端脚本编程语言，--->它是运行在客户端
+			2.什么是客户端?：它是运行在浏览器上的语言--->它是一门编程语言(因为它们都是面向对象来开发的)
+			3.什么是编程语言?：php c++ java c# vb ruby pathyon .net
+
+			4.JS的作用：实现页面产品中的交互效果，例如：我选择中了一个图片，就展示对应的大图片(选项卡思想)，局部导航定位，轮播图片等凡是能够操作交互的一般情况下都是需要JS处理
+
+			5.它是把数据动态的绑定到一个HTML面面中，我们通过JS中提供Ajax/JSONP技术，从后台服务器上获取所需要的数据，并且绑定在页面中呈现给用户，以后只需要后台把数据更改了，前端页面的数据会自动的跟着进行更改
+			
+			6.用JS语言写服务器后台，进行文件处理，数据存储分析，业务逻辑处理等核心的操作(Node.js)
+
+		四、CSS样的引用方法			
+			// 1. 内嵌样式
+				div{height:300px; width:300px; background:red;}
+			
+			// 2. 行内样式
+				<div style="width:300px; height:35px; background:red;">中国深圳</div>
+
+			// 3. 外链样式
+				<link type="text/css" rel="stylesheet" href="test.css">
+
+			// 4. 导入式
+				<style>
+					@import "test.css";
+				</style>
+
+
+		五、引用JS的有三种方法
+			一共有三种方式，常用的只有两种
+
+			1.行内嵌入：(非常严肃的通知以后不用，因为太不安全了)，因为用户可通过浏览更改
+				什么是行内嵌入呢
+				<div onclick="alert('中国深圳')"></div>
+			1.内嵌式：
+				<script type="text/javascript">
+					alert("欢迎来到深圳");
+				</javascript>
+
+			3.外链式：就是在外面独立创建一个JS文件，进行引入
+				<script src="test.js"><\/script>
+				我们使用外链式引入JS，通过src把外部文件引入到当前目录，在它的<script>中间，不能再编写任何的js代码了，即使写了，也不会起作用。
+
+
+
+		*/
+
+		alert("请向我看好！！！");
+		
+  </script>
+ </body>
+</html>

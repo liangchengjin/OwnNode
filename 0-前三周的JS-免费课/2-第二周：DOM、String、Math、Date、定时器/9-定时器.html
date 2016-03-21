@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>定时器</title>
+</head>
+<body>
+
+<script>
+    // 定时器：设置一个定时器，在设置一个等待的时间，到达指定时间后，执行对应的操作
+
+    // 第一种：window.setInterval([function],[interval]);
+        /**
+         * 设置一个定时器，到达指定的时间 [interval]，执行我们的操作[function],然后定时器并没有停止，以后每隔这么长的时间，都重新的执行我们的[function]
+         *
+         */
+       /* var count = 0;
+        var timer = window.setInterval(function(){
+            count++;
+            console.log(count);
+        },1000);
+        */
+
+
+
+    // 第二种：window.setTimeout([function],[interval]);
+        /**
+         * 设置一个定时器，到达指定的时间[interval]，执行我们的操作[function]，定时器停止
+         *
+         */
+        var count = 0;
+        var timer = window.setTimeout(function(){
+            count++;
+            console.log(count);
+        },1000);
+
+
+
+    // 注意：定时器返回值是一个数字，代表当前是第几个定时器，相当于我去银行办理业务拿到的那个排队号
+
+    var timer1 = window.setTimeout(function(){
+        count++;
+        console.log(count);
+
+    });
+
+
+    var timer2 = window.setTimeout(function(){
+        count++;
+        console.log(count);
+
+    });
+
+
+    var timer3 = window.setTimeout(function(){
+        count++;
+        console.log(count);
+
+    });
+
+</script>
+</body>
+</html>

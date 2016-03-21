@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <style>
+        body,div{
+            margin:0;
+            padding:0;
+            font-family:"\5FAE\8F6F\96C5\9ED1", Helvetica, sans-serif;
+            font-size:18px;
+            -webkit-user-select:none; /* 清除goole下 禁止当我鼠标双击选中文本的那个样式*/
+        }
+        #code{
+            width:100px;
+            height:50px;
+            line-height:50px;
+            text-align:center;
+            border:1px solid #ff0000;
+            cursor:pointer;
+            /*中让这个盒子居中*/
+            position:absolute;
+            left:50%;
+            top:50%;
+            margin-left:-50px;
+            margin-top:-25px;
+            /*控制文字之间的间距 隔2像素*/
+            letter-spacing:5px;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="code"></div>
+    <script>
+        // 设置随机获取的范围
+        var codeStr = "abcdefghjklmnopqrstuvwxyzABCDEFGHJKLMNOPQRSTUVWXYZ0123456789";
+
+        // 0-61 索引 我只需要的随机的生成4个索引，然后通过 charAt()就可能获取到了
+
+        var oDiv = document.getElementById("code");
+
+
+        function getRandom(n, m){
+            n = Number(n);
+            m = Number(m);
+            if(isNaN(n) || isNaN(m)){
+                return Math.random();
+            }
+
+            if(n > m){
+                var temp = n;
+                n = m;
+                m = temp;
+            }
+            return Math.round(Math.random() * (m - n) + n);
+        }
+
+
+
+        function getCode(){
+            var str = "";
+            for(var i = 0; i < 4; i++){
+                var ran = getRandom(0, 61);
+                str+=codeStr.charAt(ran);
+            }
+            oDiv.innerHTML = str;
+        }
+
+        getCode();
+
+        oDiv.onclick = function(){
+            getCode();
+        };
+
+
+        // 思考：获取随机四位不重复的验证码
+    </script>
+</body>
+</html>

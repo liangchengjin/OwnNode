@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3-DOM中的节点和关系属性-综合应用.</title>
+</head>
+<body>
+    <div id="div1">
+        <h1>深圳景点</h1>
+        <!--以下是深圳景点 的描述-->
+        <ul>
+            <li>欢乐谷</li>
+            <li>东部华侨城</li>
+            <li id="li3">世界之窗</li>
+            <!--......-->
+            <li>大梅沙</li>
+            <li>玫瑰园</li>
+        </ul>
+    </div>
+    <script>
+        // 如果我想获取li3的上一个哥哥元素节点，我们发现，直接previousSibling获取的不一定是元素的，往上在找多级也不知道
+        var oLi3 = document.getElementById("li3");
+        var pre = oLi3.previousSibling;
+        while(pre && pre.nodeType !== 1){
+            pre = pre.previousSibling;
+        }
+        console.log(pre);
+
+        // 封装成一个方法  获取上一个哥哥节点
+        function  prev(ele) {
+            var pre = ele.previousSibling;
+            while (pre && pre.nodeType !== 1) {
+                pre = pre.previousSibling;
+            }
+            return pre;
+        }
+
+        function prevAll(ele){
+            var pre = ele.previousSibling, ary = [];
+            while(pre){
+                if(pre.nodeType === 1){
+                    ary.unshift(pre);
+                }
+                pre = pre.previousSibling;
+            }
+            return ary;
+        }
+        console.log(pre);
+        /**
+         * 思考题？
+         *  获取下一个弟弟元素节点
+         *  获取所有的弟弟元素节点
+         *  获取相邻的两个元素节点
+         *  获取所有的兄弟元素节点
+         */
+
+
+
+       /* while(pre && pre.nodeType !== 1){
+            pre = pre.nextSibling;
+        }
+        console.log(pre);*/
+        /*console.log(previousSibling);
+        for(var i = 0; i < 5; i++){
+           if(i < 5){
+               i+=1;
+               continue;
+           }else{
+               break;
+               i+=2;
+           }
+        }
+
+
+
+        var i = 0;
+        while(i < 5){
+            if(i < 5){
+                i+=1;
+                continue;
+            }else{
+                break;
+                i+=2;
+            }
+            i++;
+        }
+        console.log(i);*/
+
+    </script>
+</body>
+</html>

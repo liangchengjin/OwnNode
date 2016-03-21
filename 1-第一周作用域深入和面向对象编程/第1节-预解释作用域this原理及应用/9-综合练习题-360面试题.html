@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>9-综合练习题-360面试题</title>
+</head>
+<body>
+
+<script>
+    var num = 20;
+    var obj = {
+        num = 30,
+        fn:(function (num){
+            this.num * =3;
+            num += 15;
+            return function(){
+                this.num *= 4;
+                num += 20;
+                console.log(num);
+            }
+        })(num);
+    }
+    var fn = obj.fn;
+    fn();
+    obj.fn();
+
+    var found /*:biikeab*/ = false;
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深入：引用数据类型</title>
+</head>
+<body>
+
+<script>
+    // 一、深入：引用数据类型
+
+  /*var num = 12;
+    var  obj = {
+        name:"中国深圳",
+        age:6,
+        teacher:"梁成进"
+    };*/
+
+
+    /**
+     *  1. 在刚开始加载页面的时候，浏览器会天生自带一个供我们当前js代码执行的环境，我们把这个环境称之为"栈内存"，我们也叫他为做用域
+     *  2. 而且开妈加载页面的那个作用域称之为全局作用域(window)
+     *  3. 当开始加载js代码之前，首先会把当前全局作用域下带 var 和 function 关键字的时空行提前的声明或者定义，我们把这种机制叫做 "域解释" 也有人会把它叫做 "变量提升"
+     *
+     *      重点：在全局作域下声明的变量叫做全局变量(公用变量)
+     *
+     *  4. 带 var 关键字的是提前的声明  var num; 就叫做声明
+     *      var 一个变量叫做声明 ，给这个变量赋值叫做定义，这就是叫做声明和定义
+     *  5. 声明：declare 就是 var 变量名; 只是声明没有赋值的话，默认的值是 undefined
+     *  6. 定义：defined 给变量名赋值
+     *
+     *
+     *
+     *
+     */
+
+    // 预解释: var num;
+        console.log(num);   // undefined
+        var num = 12;
+
+        console.log(num);   // 12
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>16-数据类型-function</title>
+</head>
+<body id="bodyEle">
+
+<script>
+    // 16-数据类型-function
+    /**
+     * JS数据类型中包含了几种数据类型
+     *  1.对象数据类型
+     *  2.引用数据类型：包含了对象数据和函数数据类型
+     *
+     *
+     *  function： 函数数据类型，相当于一个方法或者一个功能
+     */
+
+
+
+    // 一、 函数数据类型的定义
+        /**
+         * 定义一个函数的步骤
+         * 1.开辟一个新的空间地址：xxxfff111
+         * 2.把函数体中的js代码当做字符串存到空间里面，一个函数如果只是写义了，没有执行的话，这个函数没有任何的意义
+         * 3.在把我们的地址给我们的函数名
+         *
+             */
+        function fn(){
+            // 函数体：就是一个功能或者一个方法实现的步骤
+             console.log("中国深圳");
+        }
+        fn();  // 执行这个函数
+        /**
+         *  首先会开成一个自己的私有地盘
+         *  然后把定的时候，存在空间里的js代码字符串当做js代码执行
+         *
+         */
+
+        // 案例：约会计划
+             /*function 约会(){
+                1.准备钱
+                2.制定路线(先去长城，欢乐谷，国家的大剧院，梅州东坡酒楼，电影院，把女友送回家)
+                3.打电话约
+             }
+             约会();*/
+
+        // 案例：变量
+            function sum(){
+                var num = 1;
+                num+=3;
+                num*=5;
+                console.log(num);
+            }
+            sum();
+            sum();
+            /**
+             *  中国深圳
+             *  20
+             *  20
+             */
+
+            // JS中function的一个特别大的作用(封装)：将实现一个功能的代码进行封装，以后如果用到了这个功能，代码没有必要在重新的写了，只需要执行这个方法就好了
+
+         // 第一次升级：形参(可以理解为一个变量)(多态：一个功能的多种形态，通过参数的不同实现不同的功能，这就叫做多态), 就是定在小括号里面的东西，就叫做形参
+            /**
+             * 作用：实现一个功能，发现部队发原材料没有，在制定计划的时候我们没有办法获取 ，我们就把需要的原材料定义在我们的形参上，在执行的计划的时候，把原材料提供了就好了
+             * @param num1
+             * @param num2
+             *
+             * 定义一个形参变量，执行的时候没有传递值，那默认值是 undefined
+             */
+            // 1.普通版
+               /* function sum(num1, num2){
+                    var total = 0;
+
+                    // 用typeof 检查传递形参数是否有传递进来值
+
+                    if(typeof num1!="undefined"){
+                        total+=num1;
+                    }
+
+                    if(typeof num2!="undefined"){
+                        total+=num2;
+                    }
+                   return total;
+                }
+                var totals = sum();
+                console.log(sum(100,200));
+                console.log(sum(100));
+                console.log(sum());*/
+
+            // 2.这种形参是不行的
+                /*function sum(num1, num2){
+                    var total = 0;
+
+                    // 用typeof 检查传递形参数是否有传递进来值
+
+                    if(typeof num1!="undefined"){
+                        total+=num1;
+                    }
+
+                    if(typeof num2!="undefined"){
+                        total+=num2;
+                    }
+                    console.log(total);
+                }
+
+                sum(100,200);
+                sum(100);
+                sum();
+                sum(100,200,300);*/
+
+        // arguments: 是函数内置接收参数的机制
+            /**
+             * 内置：天生自带的，不管你是否传递了参数，也不管是否写形参了，arguments 一直的存在
+             *
+             *      重点：
+             *      arguments 也是一个类数组(有数字做为索引, 索引从0开始代表第几个传递的参数，还有有一个length的属性代表传递了多个个参数)
+             *
+             *      重点：
+             *      arugments 获取其中的某一个只能用 arguments[索引]，不能用.item()
+             *
+             *      重点：
+             *      callee:arugments.callee代表的就是当前函数的本身
+             *
+             *
+             *
+             */
+            // version 1.0
+            function fn(){
+                var total = 0;
+                // 求和
+                for(var i = 0; i < arguments.length; i++){
+                    var cur = arguments[i];
+                    //oLis.item(i); // 不能使用.item
+
+                    // isNaN 判断是不是一个数字;
+                    cur = Number(cur);
+                    /*if(isNaN(cur) === false){
+                        total += cur;
+                    }*/
+
+                    // !isNaN 取返回 优化
+                    if(!isNaN(cur)){
+                     total += cur;
+                     }
+                }
+                console.log(total);
+                /*console.dir(arguments);
+                console.log(arguments[0]);
+                console.log(arguments[1]);
+                console.log(arguments.length);*/
+            }
+            fn(22,22,"a");  // 44 返回的是一个 数组 []
+            fn();
+            fn(213);
+            fn(1,8,99,42,66);  //  216 返回的是一个 数组 []
+            // console.dir() 比 console.log(); 在控制台输出的详细一些
+
+            /*Arguments[5]
+            0:1
+            1:2
+            2:3
+            3:4
+            4:5
+            callee:fn()
+            length:5
+            Symbol(Symbol.iterator):values()
+            __proto__:Object*/
+
+
+            // argumetns 求和 version 2.0
+            function fn(){
+                var total = 0;
+                for(var i = 0; i < arguments.length; i++){
+                    var cur = arguments[i];
+                    cur = Number(cur);
+                    if(!isNaN(cur)){
+                        total += cur;
+                    }
+                }
+                console.log(total);
+            }
+            fn(22,22,"a");  // 44 返回的是一个 数组 []
+            /**
+             console.log(total);  Uncaught ReferenceError: total is not defined
+
+             fn 函数执行的时候，会形成一个私有的地盘(函数里面定义的变量，在外面不能直接使用)
+
+           闭包：就是函数执行的的时候会形成一个新的私有的作用域，来保护里面的变量不受外界的干扰，我们把这种保护机制叫做"闭包"
+           */
+
+
+            // version 3.0
+                function fn(){
+                    var total = 0;
+                    for(var i = 0; i < arguments.length; i++){
+                        var cur = arguments[i];
+                        cur = Number(cur);
+                        if(!isNaN(cur)){
+                            total += cur;
+                        }
+                    }
+                    return total;
+                    // 在函数体中，return后面的代码不执行
+                    total+=100;
+                    console.log(total);
+                }
+
+                var totals = fn(22,22,"3"); // 把函数执行完成的整休返回值赋值给外面的 totals 这个变量
+                totals*=3
+                console.log(totals); // 141
+
+                var n = fn(100,200);
+
+            /**
+             * 外面想用什么，在函数里面直接的return 返回就可以了，函数执行完成的整体就是这个值
+             *
+             * 如果要我们没有写return的话(或者return)，默认的返回结果是 undefined
+             *
+             * 在函数体中，return后面的代码不执行: return的第二个作用，控制函数体中的代码执行到指定就结束
+             *
+             */
+
+
+ /***********************************************************/                  /**上面讲的都是实名函数**/
+ /***********************************************************/
+
+
+
+    // 二、函数表达式：把一个匿名函数的定义部分当做一个值赋值给一个变更 或者一个元素的事件
+
+
+            // 1. 匿名函数
+                var fn = function(){
+                    console.log("匿名函数的定义");
+                };
+
+                var oBody = document.getElementById("bodyEle");
+                oBody.onclick = function(){
+                    console.log("匿名函数的定义绑定事件");
+                };
+
+            // 2. 自执行函数：定义和执行一起完成了
+                (function(){
+
+                })();
+
+                // 这四种也是自执行函数
+                ~function(){}();
+                !function(){}();
+                +function(){}();
+                -function(){}();
+
+
+
+
+</script>
+</body>
+</html>

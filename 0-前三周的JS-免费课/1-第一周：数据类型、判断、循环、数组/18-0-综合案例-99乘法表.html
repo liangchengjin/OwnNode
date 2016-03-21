@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>18-综合案例-99乘法表</title>
+
+    <style>
+        html,body,ul,li,span{
+            margin:0;
+            padding:0;
+            font-size:14px;
+            font-family:"\5FAE\8F6F\96C5\9ED1",Helvetica,SansSerif;
+        }
+		ul,li{
+			list-style:none;
+		}
+        #tab{
+			position:absolute;
+            top:50%;
+            left:50%;			 
+            margin-left:-450px;
+            margin-top:-135px;
+            width:900px;
+            height:270px;           
+            border:1px solid red;
+            border-radius:5px;
+        }
+		#tab li{
+			height:30px;
+			line-height:30px;
+		}
+		#tab li span{
+			width:100px;
+			height:30px;
+			text-align:center;
+			display:inline-block;
+		}
+		.c1{background:#31b0d5;}
+		.c2{background:#ff00cc;}
+		.c3{background:#6600cc;}
+		.c4{background:#00cc00;}
+		.c5{background:#ffcc00;}
+		.c6{background:#cc6633;}
+		span:hover{background:green; color:#FFF; cursor:pointer;}
+
+		
+    </style>
+</head>
+<body>
+    <div id="tab">       
+    </div>
+<script>
+    // 
+	var oTab = document.getElementById("tab");
+	var str = "";
+		str+="<ul>"
+			for(var i = 0; i < 10; i++){ // 行
+				var val = "c1";
+				switch(i%3){
+					case 0:
+						val = "c1";
+						break;
+					case 1:
+						val = "c2";
+						break;
+					default:
+						val = "c3";
+				}
+				str+="<li class='"+val+"'>";
+					for(var j = 1; j <= i; j++){ // 列
+						str+="<span>";
+							str+=""+j+"*"+i+" = "+(j*i)+"";
+						str+="</span>";
+					}
+				str+="</li>";
+			}
+		str+="</ul>";
+
+		oTab.innerHTML = str;
+
+		// innerHTML:向指定元素中添加内容(可以是文字，也可以是html标签), innerHTML可以识别html标签的
+		// innerText: 不能识别html标签
+		
+		/*
+		oTab.innerHTML = "<a href='http://www.baidu.com'>视频学习平台</a>";
+		oTab.innerText = "<a href='http://www.baidu.com'>视频学习平台</a>";
+		*/
+
+		// 字符串拼接的第一条黄金法则：单双不能同时用，外面是"",里面就不需要就是需要是'', 外面是'', 里面需要是""
+
+		// 如果一个字符串中需要增加一个变量,看最外面是双还是单位"" 还是 '', 如果是"", 那么直接的"+变量+";如果是'', 则'+变量+'
+
+</script>
+</body>
+</html>

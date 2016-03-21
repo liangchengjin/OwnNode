@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+
+<div id="div1" style="width:100px; height:100px;">中国深圳</div>
+
+<script>
+    // 通过 DOM 方法获取的元素都是对象数据类型的，用typeof检测返回的结果是"Object"，既然是对象数据类型的，就存在相关的属性名和属性值
+
+    /*var oDiv = document.getElementById("div1");
+    var oStyle = oDiv.style;
+    var c = oDiv.style.backgroundColor;
+
+    c = "red";
+
+    console.dir(oDiv);*/
+
+    oDiv.onclick = function () {
+        var bg = oDiv.style.backgroundColor;
+        if(bg == "red"){
+            bg = "yellow";
+        }
+    }
+    /**
+     *
+     */
+</script>
+</body>
+</html>

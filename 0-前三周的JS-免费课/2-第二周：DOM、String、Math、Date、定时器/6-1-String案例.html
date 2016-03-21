@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script>
+    var time = "2015-5-24 12:55:3";
+    // 2015年05月24日 12时55分03秒
+    /**
+     * 思路1：按照空格，把字符串折成["2015-5-24","12:55:3"]
+     *       拿出数组的第一项 在按照一折成["2015","5","24"]
+     *       拿出数组的第三项 在按照一折成["12","55","3"]
+     */
+
+
+    // 小于10 我们补充0
+    function Zero(value){
+        return value<10?"0"+value:value;
+    }
+    // 格式化时间字符串
+     function formatTime(timeStr){
+        var ary = timeStr.split(" ");  // ["2015-5-24", "12:55:3"]
+        console.log(ary);
+        var str1 = ary[0];
+        var str2 = ary[1];
+
+        var ary1 = str1.split("-");  // ["2015", "5", "24"]
+        console.log(ary1);
+
+        var ary2 = str2.split(":");
+        console.log(ary2);
+
+        return ary1[0]+"年"+Zero(ary1[1])+"月"+Zero(ary1[2])+"日"+Zero(ary2[0])+"时"+Zero(ary2[1])+"分"+Zero(ary2[2])+"秒";
+
+    }
+    formatTime(time);
+    console.log(time);
+   // console.log(res);
+
+
+
+    /**
+     * 思路2： 直接用replace 一个个的替换(没有办法补充0)
+     * 思路3： 用正则
+     *
+     */
+</script>
+</body>
+</html>

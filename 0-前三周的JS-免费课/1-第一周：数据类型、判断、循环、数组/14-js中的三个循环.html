@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="own">
+  <title>js中的三个循环</title>
+  <meta name="Keywords" content="关键词,关键词">
+  <meta name="Description" content="描述">
+  
+ <style type="text/css">
+	*{margin:0; padding:0;}
+	html,body{font-size:14px; font-family:"微软雅黑"}
+ </style>
+ </head>
+ <body>
+  
+  <script>
+  // js中的三个循环
+		// for 循环
+			/*
+			 四步曲：
+				1.设置初始值 var i = 0;
+				2.设置循环执行条件 i < 5;
+				3.执行循环体中的内容 { 循环体 } 大括号包起来的部分，这里面就叫做循环体
+				4.每一轮循环完成后执行我们的 i++累加操作
+			*/
+	    // 1. 循环 5
+			for(var i = 0; i < 5; i++){
+				//console.log(i);
+			}
+			/*
+				0
+				1
+				2
+				3
+				4
+			*/
+
+
+		// 2. 循环 10
+			for(var i = 0; i < 10; i++){
+				//console.log(i);
+			}
+			
+			//console.log(i);
+
+
+	// 二、 break/continue:
+			/*
+				在循环体中遇到这两个关键字，循环中后面的代码就不在执行了
+
+
+				break: 在循环体中, 出现break, 整个循环就直接的结束了; i++ 最后的这个累加的操作也不再执行了。
+
+				continue：在循环体中，出现了continue, 当前这一轮的循环就结束了,继续下一轮的循环, 后面的累加操作继续的执行
+			*/
+			
+			// break
+			for(var i = 0; i < 5; i++){
+				break;
+				console.log(i);
+			}
+			console.log(i);  // 0
+
+	console.log("面试题");
+	// 面试题
+			for(var i = 0; i < 10; i++){
+				if(i < 5){
+				   i+=2;
+				   continue;
+				}
+
+				i+=3;
+				break;
+				console.log(i);
+			}
+			console.log(i); // 9
+  
+  </script>
+ </body>
+</html>

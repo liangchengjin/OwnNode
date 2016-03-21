@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>7-number</title>
+ </head>
+ <body>
+  
+  <script>
+  // "="赋值，
+
+  // "==" 是判断左右两边的值是否相等，
+  console.log(12 == "12"); // true 在 "==" 等于呈进行比较的时候，我们发现左右两边的数据类型是不一样的，浏览器会默认的把它们先转换为一样的(在这里是把"12"通过Number("12")先强制转换邮数字12), 然后在比较值是否相等
+
+  // "===" 是判断左右两边的值是否绝对相等
+  console.log(12 === "12"); // false "===" 绝对相等，不仅仅值要一样，而且数据类型也要一样，不能像"=="那样，不一样数据类型会转换，"==="是不会转换的 
+
+  // Number: 正数、负数、零、小数、NaN
+
+  // 一、 NaN：not a number不是一个数字， 但是属于number数据类型的
+		 /*
+			typeof NaN: "number"
+			NaN == NaN: false 因数我们也不知道每一边的NaN到底是啥，NaN和任何的值都不相等
+
+		 
+		 */
+  // 二、我们把其它的数据类型转换为 number 类型
+		/*
+			严格的转换：Number();
+		*/
+		console.log(Number(true));	// 1
+		console.log(Number(false));	// 0
+		console.log(Number(null));	// 0
+		console.log(Number(undefined)); // NaN 把undefined是不能转换为有效的数字的。
+		console.log(Number(""));	// 0
+		// 把字符串转换成 数字类型
+		console.log(Number("12"));	// 12
+		console.log(Number("12px"));// NaN 如果是把一个字符串转换为数字，只有字符串中的每一个字符串都是有效的数字字符，才可以正转换，相反只要有一个不是有效的数字字符，最后的结果是NaN
+		
+	// 二、非严格转换：parseInt/parseFloat  从左边到右一次查找，把有效的数字字符转为数字，但是一但遇到一个非有效的数字字符，立即停止查找(不管后面是否还有都不在查找了)
+		console.log(parseInt("12px"));	// 12
+		console.log(parseInt("12px13px"));//12
+		console.log(parseInt("px13"));//NaN
+		console.log(parseInt("13.5px"));//13
+		console.log(parseFloat("13.5px"));//13.5
+
+	
+	// 三、数字的常用方未能 toFixed(n): 保留小数点后面n位
+
+		var num = 3.141592654;
+		console.log(num.toFixed(2)); // 3.14
+
+	// 四、检测是否为有效的数字
+		var a = "own" == NaN; // 我的想法，如果 "own" 和NaN相等了，那么则证明"own" 不是有效的数字---->这句话是不对的，因为NaN永远不可能出现和其它值相等的情况
+		console.log(a); //fals
+		/*
+			isNaN(); 用来检测是否为有效数字的方法，如查当前的值是有效数字返回的结果是 false，如果不是有效数字，返回的结果是 true
+		
+		*/
+		console.log(isNaN(12));		//  false
+		console.log(isNaN("own"));	//  true
+		console.log(isNaN("12"));	//  false 说明"12" 也是有效数字-->如果检测的是值不是 number类型，浏览器会默认先通过Number把它强制转换为number类型，然后在检测是否为有效的数字
+
+		console.log(isNaN("12px"));	// true
+
+
+
+	// 腾讯面试题：
+
+		var num = parseFloat("px12.5");		// num = NaN
+		if(num === 12.5){					// NaN == 12.5
+			console.log(12.5);
+		}else if(num == NaN){				// NaN == NaN
+			console.log("NaN");
+		}else if(typeof num === "number"){ // typeof NaN="number"-->"number"==="number"
+			console.log("number");
+		}else{
+			console.log("no");
+		}
+		// 结果是： number
+
+
+
+
+		var num = 10;
+		if(num >= 15){
+			num++; // num+=1 / num=num+1 都是在自身的基础上累加1
+		}else if(num>=0 && num<=14){
+			num++;
+		}else{	// 以上两个条件都不成立在执行
+			num += 2;
+		};
+		console.log(num);	// 9
+
+
+  
+  
+  </script>
+ </body>
+</html>

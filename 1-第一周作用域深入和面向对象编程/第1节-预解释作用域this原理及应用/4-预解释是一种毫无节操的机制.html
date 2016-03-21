@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>课时4 预解释是一种毫无节操的机制</title>
+</head>
+<body>
+
+
+<script>
+    // TODO: 一、 预解释是一种毫无节操的机制
+    /**
+     * 自从学了预解释，从此节操是路人
+     *
+     *
+     * 1. in:  "num" in window 判断num是否为window这个对象的一个属性，是的话返回true,不是的话返回 false    *
+     *
+     */
+
+    /*var obj = {name:"张明明", age:16};
+    console.log("name" in obj);     // true
+    console.log("eat" in obj);      // false*/
+
+
+
+
+
+
+
+  // TODO: 一、预解释的时候不管你的条件是否成立，都要把带var的进行提前的声明
+    /**
+     * window 的预解释：var num; -->window.num;
+     */
+    /*if(!("num" in window)){
+        var num = 12;
+    }
+    console.log(num); // undefined*/
+
+
+
+
+
+
+
+   // TODO: 二、 函数的定义
+    /**
+     * 预解释的时候，只预解释 "="左边的， 右边的是值，不参与预解释
+     */
+
+    // window 下的参预解释： var fn;
+       /* var fns = function(){
+            console.log("ok");
+        };
+        fns(); //  推荐使用这种*/
+
+    // 这种方叫做匿名函数之表达式：我们把这种函数定义的部分当做一个值赋值给我们的变量/元素的某一个事件
+
+       /* fn();
+        function fn(){
+            console.log("ok");
+        }
+        fn(); // "ok"*/
+
+
+
+
+
+
+
+
+    // TODO: 三、 自执行函数：定义和执行一起完成
+        /**
+         * 执行函数定义的那个function在全局使用域不能进行预解释，当代码执行到这个位置的时候定义和执行一起定成了
+         */
+        /*(function(num){})(100);
+        ~(function(num){})(100);
+        +function(num){}(100);
+        -function(num){}(100);
+        !function(num){}(100);*/
+
+
+
+
+
+
+
+
+
+
+    // TODO: 四、函数体中return 下面的代码虽然不在再执行了，但是里要进行豫解释; return后面跟着的都是我们返回的值，所以不进行预解释
+
+        /*function fn(){
+            // 预解释： var num;
+            console.log(num);   // undefined
+            return function(){
+
+            };
+            var num = 100;
+        }
+        fn();*/
+
+
+
+
+
+
+
+
+
+    // TODO: 五、 在预解释的时，如果名字已经声明过了，不需要从新的声明，但是需要重新的赋值
+        /**
+         * 在JS中如果变量的名字和函数的名字重复了，也算冲突，最终只能保留一个fn
+         * 预解释：var fn;  window.fn;  fn=xxxfff000 window.fn = xxxfff000
+         * @type {number}
+         */
+
+       /*/!* var fn = 13;
+        function fn(){
+            console.log("ok");
+        }*/
+
+        // window 预解释：
+        /**
+         * 声明 + 定 fn = xxxfff111
+         * 声明 var fn; (不需要重新声明)
+         * 声明(不重复进行)+定义 fn = xxxfff222
+         * -->fn = xxxfff222
+         */
+        fn();  // -->2
+        function fn(){console.log(1);};
+        fn();
+        var fn = 10; // --> fn = 10;
+        fn();   // ->10() Error:fn is not a function
+        function fn(){console.log(2);};
+        fn();
+
+
+</script>
+</body>
+</html>

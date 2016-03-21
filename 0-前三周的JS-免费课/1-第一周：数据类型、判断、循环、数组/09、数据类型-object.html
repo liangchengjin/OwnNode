@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus?">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>09、数据类型-object</title>
+ </head>
+ <body>
+	
+	<script>
+	// 一、js数据类型中的对象数据类型
+			/*
+				由多组[属性名和属性值]组成，多组键值对组成，由多个key:value
+
+				属性名属性值是用来描述这个对象特征
+			*/
+			var obj = {name:"own", age:6};
+			var personInfo = {
+				name:"梁成进",
+				age:16,
+				heght:"180cm",
+				weight:"65kg"
+				//05:37
+			};
+		
+			var obj1 = {name:"ceng"}; // 这种创建方式，叫做字面量创建方式
+			var obj2 = new Object();  // 这种创建方式，叫做实例创建方式
+
+			// 1.对象 增加 两种方式
+				/*
+					给一下对象增加一组属性名和属性值
+				*/ 
+				obj.name = "cc";		  // 第一种方式 
+				obj["age"] = 6;		  // 第一种方式 
+
+			// 2.对象 修改  原有属性名的属性值
+				 /*
+					规定一个对象中的属性名不能重复，如果之前有就是修改，没有就是增加
+				 */
+			obj["name"] = "中国深圳";
+			obj.name = "广东深圳";
+
+			// 3. 获取 属性名和属性值,
+				 /*
+					如果属性名不存在，默认返回的结果就是 undefined
+				 */
+			console.log(obj["name"]);
+			console.log(obj.name);
+			console.log(obj.zz);
+
+			// 4. 删除 属性名和属性值
+				  /*1.假删除*/
+				  //obj.age = null;
+				  console.log(obj.age);
+				  console.log(obj); // 结果：Object {name: "广东深圳", age: null}
+				  /*2.真删除*/
+				  delete obj.age
+				  console.log(obj); // 结果：Object {name: "广东深圳"}
+
+	// 二、对象数据类型中，还可以具体的细分			
+			
+			//对象数据类型中，还可以具体细分：
+				/*{}、[]、/^$/、时间...*/
+			
+
+
+			/*
+			对象(Object)、
+			数组(Array)、
+			正则(RegExp)、
+			时间(Date)、
+			字符串类(String)、
+			布尔类(Boolean)、
+			数学函数(Math)....等对应的实例：对象、数组、正则、时间...每一个点都是关于我们对象的具体细分
+			*/
+			var obj = {};
+			var ary = [];
+			var reg = /^$/
+			
+			// 1. JS中对象、类、实例的区别：对象是泛指，js中万皆对象，类是对象的具体的细分，实例是类中的一个具体的事物
+
+			// 2. 举例说明：自然界中万物皆对象，所有的东西都可能分为: 人类、植物类、动物类、物体类，
+
+			// 3. 重点：每一个人都是人类中的一具体的实例，每一个时间都是这个时间类的实例
+	
+	</script>
+ </body>
+</html>

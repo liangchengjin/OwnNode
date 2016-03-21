@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <title>4-关于我们JS当中常用的几种输出方式</title>
+
+  <style>
+	div{width:100px; height:100px; margin:50px; padding:6px; border:5px solid green; background:red;}
+  </style>
+ </head>
+ <body>
+   <div id="div1"></div>
+   <script>
+   /*
+	一、关于我们JS当中常用的几种输出方式
+		1.alert(): 在浏览器弹出一个框，在框中有我们要输出的内容(不管你想相输出什么内容，最后输出的都是一个字符串内容)
+		alert(1); 最后果在浏览器弹出的结果不是一个数字1，变为了字符"1", alert都是把这们要输出的内容转化为字符串然后再输出
+
+		2.confirm(): 在浏览串弹出一个提示确认框
+			confirm("确定要删除吗？");
+
+		3.console.log();  是在控制台输出日志
+			怎么找到控制台，
+			建议大家回去安装的浏览器"谷歌浏览器",安装的编写代码的工具是"webStorm"
+	
+	
+	二、关于控制台的作用
+			所有的浏览器打开控制台都是按F12这个键
+			1.按F12
+			2.找到 Console
+			3.也可以手机模拟器
+	
+			Elements：包含了我们当前页面渲染完成后的HTML结构和每一个标签的样式 信息以及一个清晰明了的例子盒子模型信息--->我们通常在Elements中进行页面中元素样式 的调整
+
+			Console: JS通过console.log 输出的内容都可能在这进而进行查看，我们还可以在控制台编写一些测试的JS脚本代码
+
+			console.dir: 它只是比.log输出的内容更加详细一些
+
+			console.table: 它能把我们需要查看的数据在控制台中以一个表格的形式展示出来
+   
+			Network：我们当前页面加载的所有资源(css,js,图片,请求数的接口, 音视频。。。)都可以在这里查看到，并且可以看到每一个资源加载的时间,这样就可以对网站进行初步的优化了；以后如查和后台数据交互，那么守个页卡下展示出来的内容都是我们开发过程中的重要的参考依据
+
+			Sources: 存放当前网站所有的CSS/JS的源文件; 通过这个页卡，我们还可以实现页面中BUG的调试
+
+			Resources：存放了当前网站所有的本地存储的信息
+			后面的其它页呀都是对网站进深入优化必备的工具
+   
+   */
+   // alert(): 在浏览器弹出一个框
+		/*alert(1000);*/
+
+   // confirm: 在浏览串弹出一个提示确认框
+		/*confirm("确定要删除吗？");*/
+	
+   // console.log();  是在控制台输出日志
+
+   </script>
+ </body>
+</html>
