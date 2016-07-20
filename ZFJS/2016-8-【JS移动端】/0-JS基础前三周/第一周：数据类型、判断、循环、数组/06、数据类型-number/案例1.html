@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>Document</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+ 
+  form{padding:20px;}
+  form > p{margin-bottom:10px;}
+  form > p span{font-size:14px; color:#333;}
+  form > p input{width:300px; height:30px; margin-left:10px; padding:0 5px; border-radius:5px; outline:none; border:1px solid #ddd;}
+  </style>
+ </head>
+ <body>
+	<form> 
+		<p><span>帐户:</span><input type="text" name="username" id="username" placeholder="请输入用户名"></p>
+		<p><span>密码:</span><input type="password" name="userpassword" id="userpassword" placeholder="请输入用密码"></p>
+		<p><input type="submit" value="提    交" id="sub"></p>
+	</form>
+
+  <!--js-->
+  <script>
+	  var username = document.getElementById("username");
+	  var userpasd = document.getElementById("userpassword");
+	  var sub = document.getElementById("sub");
+	  
+	  var json = {
+		  username:"cc",
+		  userpasd:123456,
+		  color:"red",
+		  fn:function(){			 
+			 if(username.value == json.username && userpasd.value == json.userpasd){
+				alert("用户名是："+username.value+" ,密码是："+userpasd.value);					
+			  }else{
+				alert("您输入的用户:"+username.value+" , 和密码："+userpasd.value+"是错误的，请重新输入！");
+			  }
+		  }
+	  }
+	 sub.onclick = json.fn;
+	</script>
+ </body>
+</html>

@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>14、js中循环的应用[隔行变色]</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{
+	font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;
+	font-size:12px;
+  }
+  ul,li{list-style:none;}
+  #list{
+  margin:10px auto 0;
+	width:500px;
+	padding:10px;
+	border:1px solid #ddd;
+	border-radius:10px;
+	background:-webkit-linear-gradient(top left, #31b0d5, #67b168, #ac2925);
+	}
+  #list li{
+	height:30px; 
+	line-height:30px;
+	cursor:pointer;
+	}
+ .c1{background:#ddd;}
+ .c2{background:#a6e1ec;}
+ .c3{background:#ef2996;}
+  
+  </style>
+ </head>
+ <body>
+	<div id="list">
+		<ul>			
+			<li>《飞鸟与鱼》（据称并非泰戈尔所著，而只是署名）</li>
+		　　<li>世界上最遥远的距离 The most distant way in the world </li>
+		　　<li>不是生与死 is not the way from birth to the end. </li>
+		　　<li>而是我就站在你面前It is when I stand in front of you </li>
+		　　<li>你却不知道我爱你 but you don't understand I love you. </li>
+		　　<li>世界上最遥远的距离 The most distant way in the world </li>
+		　　<li>不是我就站在你面前 is not when i stand in front of you</li>
+		　　<li>你却不知道我爱你 you don't knowI love you</li>
+		　　<li>而是爱到痴迷 It is when my love is bewildering the soul</li> 
+		　　<li>却不能说我爱你 but I can't speak it out </li>
+		　　<li>世界上最遥远的距离 The most distant way in the world</li> 
+		　　<li>不是我不能说我爱你 is not that I can't say I love you. </li>
+		　　<li>而是想你痛彻心脾 It is after missing you deeply into my heart</li> 
+		　　<li>却只能深埋心底 I only can bury it in my heart</li>
+		　　<li>世界上最遥远的距离The most distant way in the world</li> 
+		　　<li>不是我不能说我想你 is not that i can't say to you i love you</li> 
+		　　<li>而是彼此相爱 It is when we are falling in love </li>
+		　　<li>却不能够在一起 but we can't stay nearby </li>
+		　　<li>世界上最遥远的距离 The most distant way in the world</li> 
+		　　<li>不是彼此相爱 is not we love each other . </li>
+		　　<li>却不能够在一起 but can't stay together　</li>
+		　　<li>而是明知道真爱无敌 .It is we know our true love is breaking through the way</li> 
+		　　<li>却装作毫不在意 we turn a blind eye to it</li>
+		　　<li>所以世界上最遥远的距离 So the most distant way in the world</li> 
+		　　<li>不是树与树的距离 is not in two distant trees. </li>
+		　　<li>而是同根生长的树枝 It is the same rooted branches </li>
+		　　<li>却无法在风中相依 but can't depend on each other in the wind</li>
+		　　<li>世界上最遥远的距离 So the most distant way in the world </li>
+		　　<li>不是树枝无法相依 is not can't depend on each other in the wind</li>　
+		　　<li>而是相互了望的星星 It is in the blinking stars who only can look with each other</li>
+		　　<li>却没有交汇的轨迹 but their trade intersect.</li> 
+		　　<li>世界上最遥远的距离 So the most distant way in the world</li> 
+		　　<li>不是星星没有交汇的轨迹 is not in the blinking stars who only can look with each othe</li>
+		</ul>
+	</div>
+	
+  
+  <!--js-->
+  <script>
+  //十四、js中循环的应用[隔行变色]
+	
+  // 1.原理：操作所有的li，让按照奇偶行的规律，改变它的class样式的属性值，奇数行是 c1, 偶数行是c2
+
+  // 2.通过元素的标签名获取一组元素  
+	 /*
+		document.getElementsByTagName("元素的标签名");
+		在整个文档中(获取的范围，上下文),我们通过元素的标签名(div、li、p...)的标签名来获取一组元素
+	 */
+
+	 // 1).在获取整个文档中所有的li，它是一个集合, 我们把这个集合叫做类数组(类似于数组), 并且类数组是对象数据类型的
+		/*
+		  var oLis = document.getElementsByTagName("li");
+		  console.log(oLis);  // HTMLCollection[33]
+		  console.log(typeof oLis);  //object
+		*/
+	  // 2).它的里面有索引从0开始的
+	  // 索引的概念：就是代表当前是第几个元素的位置下标，索引是从0开始的，索引为0代表第一个li， 索引为1代表第二个li....索引为n代表第n+1个li
+	  // 索引里面有一个length: 就是代表获取的集合的长度，或者是当前获取了多少个li
+		/*
+		  console.log(oLis.length);   // 33
+		  console.log(oLis["length"]);// 33
+		 */
+
+	  // 3).我们想获取第一个li里的内容
+		/*
+		  console.log(oLis[0]); // 获取某一个指定的元素oLis[索引]    <li class="c1">《飞鸟与鱼》（据称并非泰戈尔所著，而只是署名）</li>
+		  console.log(oLis[1]);
+		 */
+
+	  // 4).通过DOM方法获取的类数组还可以用.item(索引)来获取某一个
+		/*
+			console.log(oLis.item(0)); // <li class="c1">《飞鸟与鱼》（据称并非泰戈尔所著，而只是署名）</li>
+		*/
+
+
+
+	// 3. 通过id来获取元素名，再通过元素的id来获取它的类名
+		/*var oList = document.getElementById("list");
+		var oLis = oList.getElementsByTagName("li");		
+		for(var i = 0; i < oLis.length; i++){
+			// i=0; 第一次循环，我们要获取第一个li 就用 oLis[0]
+			// i=1; 第二次循环，我们要获取第二个li 就用 oLis[1]
+			var oLi = oLis[i]; // 每一次循环的时候在数组中把对应的li取出来
+			// i=0; 偶数 第一行 是奇数行
+			// i=1; 奇数 第二行 是偶数行
+			// i的值是偶数代表奇数行， i的值是奇数代表偶数行
+			// i%2 i除以2 取余数 如：13%2 取余数 为1
+			i%2 === 0? oLi.className = "c1" : oLi.className = "c2";
+					
+			//oLi.style.background = "";
+			// 那我们想用class来写如何写呢
+					
+					//oLi.class = ""; 当然这样写是不对的。
+					//应该是这样正确的写法
+					//oLi.className = "c1"; // 设置每一个li的class样式的属性的值
+				
+					//oLi.className = "c1"; // 设置每一个li的class样式的属性的值
+		};*/
+
+
+	// 4.没有注释的 两行隔行变色 用 三元运算符来操作
+		/*
+		var oList = document.getElementById("list");
+		var oLis = oList.getElementsByTagName("li");
+		for(var i = 0; i < oLis.length; i++){
+			var oLi = oLis[i];
+			i%2===0?oLi.class="c1":oLi.className="c2";
+			console.log(i%2)
+		}*/
+
+	// 5.没有注释的 三行隔行变色 用switch case 来操作
+		/*var oList = document.getElementById("list");
+		var oLis = oList.getElementsByTagName("li");
+		for(var i = 0; i < oLis.length; i++){
+			var oLi = oLis[i];
+			switch(i%3){
+				case 0:
+					oLi.className = "c1";
+					break;
+				case 1:
+					oLi.className = "c2";
+					break
+				default:
+					oLi.className = "c3";			}
+		}*/
+
+	// 6.没有注释的 三行隔行变色 用switch case 来操作 进行添加事件
+		/*var oList = document.getElementById("list");
+		var oLis = oList.getElementsByTagName("li");
+		for(var i = 0; i < oLis.length; i++){
+			var oLi = oLis[i];
+			
+			//switch(i%3){
+				case 0:
+					oLi.className = "c1";
+					break;
+				case 1:
+					oLi.className = "c2";
+					break
+				default:
+					oLi.className = "c3";
+			}//	
+
+			i%2===0?oLi.class="c1":oLi.className="c2";
+			
+			// 鼠标移上去 添加事件
+			oLi.onmouseover = function(){
+				this.className = "c3"
+			};
+			
+			// 鼠标离开
+			oLi.onmouseout = function(){
+				// 源来是啥就是啥
+				this.className = "c1";
+				this.className  = "c2";
+			}			
+		}
+		*/
+
+	// 7. 自定义属性
+
+		var oList = document.getElementById("list");
+		var oLis = oList.getElementsByTagName("li");
+		for(var i = 0; i < oLis.length; i++){
+			var oLi = oLis[i];			
+			
+			i%2===0?(oLi.className = "c1", oLi.cc = "c1") : (oLi.className = "c2", oLi.cc = "c2");
+			
+			//console.log(typeof oLi);  // object
+			
+			// 因为每一个li都是对象数据类型的，那么应用这个思想，我们给每一个li增加一个自定义的属性名(cc)，属性值就是当前li的className的值
+			//oLi.cc = "chengcheng";
+			
+			// 鼠标移上去 添加事件
+			oLi.onmouseover = function(){
+				this.className = "c3"
+			};
+			
+			// 鼠标离开
+			oLi.onmouseout = function(){
+				// 源来是啥就是啥
+				var oidVal = this.cc;
+				this.className = oidVal;
+			}			
+		}
+		
+  </script>
+ </body>
+</html>

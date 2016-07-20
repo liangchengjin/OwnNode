@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>9、定时器原理和定时器的应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	//1. 定时器：就是设置一个定时器，在设置一个等待的时间，到达指定时间后，执行对应的操作，这就是定时器
+
+	// 1. window.setInterval() 定时器, 执行多次
+		/*
+		window.setInterval([function],[interval]); // 设置一个定时器，到达指定时间[interval]，执行我们的操作[function]，然后定时器并没有停止，以后每隔这么长时间，都重新的执行我闪的[function]
+		*/
+		
+		// 案例			
+			/*
+			var count = 0;
+			var timer = window.setInterval(function(){
+				count++;
+				console.log(count);
+			},1000);
+			*/
+
+	// 2. window.setTimeout(); 定时器,只执行一次
+		/*
+		window.setTimeout([function],[interval]); // 设置一个定时器，到在指定的时间[interval]， 执行我们的操作[function]， 定时器
+		
+		var count = 0;
+		var timer = window.setTimeout(function(){
+			count++;
+			console.log(count);
+		}, 1000);
+		*/
+
+	// 3. 定时器的返回值是一个数字，代表当前是第几个定时器，相当于我们去银行办理业务拿到的那个呈
+		var timer1 = window.setTimeout(function(){
+			
+		}, 1000);
+
+		var timer2 = window.setTimeout(function(){
+			
+		});
+		console.log(timer1); // 1
+		console.log(timer2); // 2
+		// 14:55
+  </script>
+ </body>
+</html>

@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>6、字符串方法及应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	// 6、字符串方法及应用
+
+	// String: 字符串类
+	// 1. 对象、类、实例
+		/*
+		例如：自然界中万物都是对象，类是对、对象的一个细分，比如我们的人类、动物类、植物类....，实例是每一个类别中的一个具体的事物，比如赵子龙就是人类中的一个实例
+
+
+		// 01. JS中的对象就是一个泛指，所有东西都是对象，类是把这个泛指具体的细分：Object、Array、RegExp、Date、String、Node....这些都是js中内置类，实例是类中的一个具体的东西，比如：{}是Object中一个实例，"呈琛"是String中的一个实例....
+
+
+		// 02.Array这个数组类中提供了很多的方法，每一个数组都是他里面一个实例 ，所以数组可以用这些方法
+		
+		*/
+
+
+		// 03.字符串
+			var str = "welcome to cc! good good study,day day up! no zuo no no die!";
+			// 一个字符串是由多个字符组成的
+			// str.length 获取字符串中字符的个数(字符的长度)
+			// 字符串中也存在索引，也是从0开始的，"w"这个字符的索引就是0
+			// 空格、换行这些特殊的符号也是一个字符
+
+		// 2. charAt(索引); 获取指定索引位置的字符
+			console.log(str.charAt(0));
+
+		// 3. 获取所有的字符
+			for(var i = 0; i < str.length; i++){
+				console.log(str.charAt(i));
+			}
+
+		// 4. charCodeAt(索引); 获取指定索引位置的字符对应的ASCII值
+			/*
+			ASCII码值：每一个字母、汉字，特殊符号都有一个对应 码值(这个码值就是Unicode编码值)
+			*/
+			for(var i = 0; i < str.length; i++){
+				var s = str.charCodeAt(i);
+				console.log(s);
+			}
+			
+		// 5.字符串截取方法
+			var str = "welcome to cc! good good study,day day up! no zuo no no die!";
+			// 01. substr(n, m); 从索引n开始截取m个字符
+				console.log(str.substr(0, 19)); // welcome to cc! good
+
+			// 02. substring(n, m); 从索引n开始，找到索引m处(不包含m)，将找到	的字符返回
+				console.log(str.substring(2,19)); // lcome to cc! good 不包含19的那个位数
+
+			// 03. slice(n, m); 从索引n开始，找到索引m处(不包含m)，将找到字符返回, slice 支持负数做为索引，是 str.length+负数索引
+				
+				console.log(str.slice(0, 16)); // welcome to cc! g
+				console.log(str.slice(-11, -1)); //  no no die
+
+				// 如只写了一个n，没有m：代表截取到末尾位置
+				console.log(str.slice(-16)); // o zuo no no die!
+
+		// 6. 查找字符的索引
+			var str = "welcome to cc! good good study,day day up! die!";
+			// 01. indexOf(字符)：获取指定字符在字符串第一次出现的索引
+				console.log(str.indexOf("!")); // 13
+
+			// 02. lastIndexOf(字符): 获取指定字符在字符串最后一次出现索引位置
+				console.log(str.lastIndexOf("!")) // 46
+
+			// 03. 如果没有这个字符，返回的是-1, 基于这个理念经常用这个方法判断字符串中是否包含某个字符
+			    if(str.indexOf("q") > -1){
+					// 代码包含q这个字符
+				}
+
+			// 04. 大小写转换
+				/*
+				toLowerCase: 将所有的字母转换为小写
+				toUpperCase: 将所有的字母转换为大写
+				*/
+				var str = "welcome to cc! GOOD good study,DAY day up! die!";
+				var toLowerCases = str.toLowerCase();
+				console.log(toLowerCases);  // welcome to cc! good good study,day day up! die!
+
+				var toUpperCases = str.toUpperCase();
+				console.log(toUpperCases); // WELCOME TO CC! GOOD GOOD STUDY,DAY DAY UP! DIE!
+
+			// 05. replace();替换
+				/*
+				replace(要替换的老字符, 替换成的新字字符);
+				
+				在不使用正则的情况下，每一次调用方法以能替换一次
+				
+				一般情况下，我闪都是用正则处理
+				*/
+					var str = "welcome to cc! GOOD good study,DAY day up! die!";
+					var replaces = str.replace("GOOD", "呈琛");
+					console.log(replaces); // welcome to cc! 呈琛 good study,DAY day up! die!
+
+				// 把所有的o替换成欧
+					var replacea = str.replace("o", "欧");
+					console.log(replacea);
+				
+				// welc欧me to cc! GOOD good study,DAY day up! die! 但是并没有替换成所有的欧
+
+				// 用正则的方法来替换
+					var reg = str.replace(/o/g,"欧");
+					console.log(reg); // welc欧me t欧 cc! GOOD g欧欧d study,DAY day up! die!
+
+			// 06.join();  分割符替换 			
+
+				var ary = [1,2,3,4,5,6,7,8,9];
+				var joins = ary.join("+");
+				console.log(joins); // 1+2+3+4+5+6+7+8+9
+				
+				var evals = eval(joins);
+				console.log(evals); // 45
+
+			// 07. split() 是将字符串按照指定的分隔符拆分成数组
+				var s = "1+2+3+4+5+6+7+8+9";
+				//var str = s.split("+");
+				//console.log(str); // ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+				var str = s.split(" "); // ["1+2+3+4+5+6+7+8+9"]
+				console.log(str); // ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+
+				var str = s.split("3"); // ["1+2+3+4+5+6+7+8+9"]
+				console.log(str); // ["1+2+", "+4+5+6+7+8+9"]
+
+				var ss = "my name is ciny";
+				console.log(ss.split(" ")); // ["my", "name", "is", "ciny"]
+				
+			// 08. match? 这是正则常用的。
+			
+
+	
+  </script>
+ </body>
+</html>

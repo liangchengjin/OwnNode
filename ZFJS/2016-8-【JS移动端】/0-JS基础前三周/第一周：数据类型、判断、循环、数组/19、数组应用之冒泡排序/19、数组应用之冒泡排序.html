@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>19、数组应用之冒泡排序</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+  // 十九、数组应用之冒泡排序
+
+  // 一、冒泡排序、快速排序、插入排序
+	
+
+	// 1.冒泡排序
+		 // 1).思想
+		/*
+			var ary = [12, 10, 13, 8, 4];
+			target:[4,8,10,12,13]
+			// 从小到大排序
+			冒泡排序的思想：当前项和后一项进行比较，如果当前项大于后一项，两者交换位置
+				[12] 代表当前项
+				[10] 代表后一项
+
+				交换位置
+					第一轮
+					[10,12,13,8,4]		第一次比较	12 跟 10 比较 也就是说10 和12已经比完了，结下来如下
+					[10,12,13,8,4]		第二次比较  12 跟 13比
+					[10,12,8,13,4]		第三次比较  13 跟  8比
+					[10,12,8,4,13]		第四交比较  13 跟  4比 //一共5个数，我们前后比较，第一项不用和自己比(自己就是12,也就是说12不能和自己12相比，它会和下一个相比)，所以最多比较4次：我们最多比较的次数是 ary.length-1次，
+
+					第二轮
+					第一轮结束，虽然没有大到最终的目的，但是已经反当前最大的放在最后面了，也就是 一共5个数，我们每一轮都将当前最大的放在后面，那我们放四个最大的就是实现排序了，就是：最多比较ary.length-1轮
+					
+					[10,12,8,4,13]
+					[10,8,12,4,13]
+					[10,8,4,12,13]
+					
+					第三轮
+					[8,10,4,12,13]
+					[8,4,10,12,13]
+					第四轮
+					[4,8,10,12,13]
+					
+					i控制轮娄 i从0开始的话
+					i=0是第一轮  比较 ary.length-1-0次
+					i=1是第二轮  比较 ary.length-1-1次
+					i=2是第三轮  比较 ary.lnegth-1-2次
+					....
+					i是第n+1轮 比较 ary.length-1-i次
+
+					当、当前项大于后一项，交换位置
+					var a = 12;
+					var b= 13;
+					var c = null
+					c=a;
+					a=b;
+					b=c;					
+		*/
+
+		// 2).案例加注释版的
+			/*			
+			function sortAry(ary){
+				// i 代表是轮数, 比较 ary.length-1轮
+				// i = 0 ary.length-1-0
+				// i = 1 ary.length-1-1
+				// ary.length-1-i
+				for(var i = 0; i < ary.length-1; i++){
+					// j 代表的是每一轮比较多少次，不用和自己比较ary.length-1，把之前放在后面的也排除，在减去i
+					for(var j = 0; j < ary.length-1-i; j++){
+						var cur = ary[j]
+						var next = ary[j+1];
+						// 如果当前项大于后一项，两才交换位置
+						if(cur > next){							 
+							var temp = ary[j];
+							ary[j] = ary[j+1];
+							ary[j+1] = temp;
+						}
+					}
+				}
+			}
+			var ary = [12, 10, 13, 8, 4];
+			sortAry(ary);
+			console.log(ary);  // [4, 8, 10, 12, 13]
+			*/
+			
+		// 3).优化版 升序
+			/*
+			function sortAry(ary, type){
+				// type 0 代表升序 1 代表降序 如果不传默认也是升序：只有1是降序
+				// i 代表是轮数, 比较 ary.length-1轮
+					//i = 0 ary.length-1-0
+					//i = 1 ary.length-1-1
+					//ary.length-1-i
+				for(var i = 0; i < ary.length-1; i++){
+					// j 代表的是每一轮比较多少次，不用和自己比较ary.length-1，把之前放在后面的也排除，在减去i
+					for(var j = 0; j < ary.length-1-i; j++){
+						var cur = ary[j]
+						var next = ary[j+1];
+						// 如果当前项大于后一项，两才交换位置
+						if(cur > next){							 
+							var temp = ary[j];
+							ary[j] = ary[j+1];
+							ary[j+1] = temp;
+						}
+					}
+				}
+
+				if(type === 1){
+					ary.reverse();
+				}
+			}
+			var ary = [12, 10, 13, 8, 4];
+			sortAry(ary);
+			console.log(ary);  // [4, 8, 10, 12, 13]
+			*/
+
+
+		//4).不加注释版的
+			function sortAry(ary, type){
+				for(var i = 0; i < ary.length-1; i++){
+						/*
+						i=0; i小于ary.length-1;
+						*/
+					for(var j = 0; j < ary.length-1-i; j++){
+						if(ary[j] > ary[j+1]){
+							var temp = ary[j];
+							ary[j] = ary[j+1];
+							ary[j+1] = temp;
+						}
+					}
+				}
+			
+				type === 1?ary.reverse() : void 0;
+			};
+
+		var ary = [12,34,23,45,23,12,23,24,35,1,26,37,45];
+		sortAry(ary,0);  // [45, 45, 37, 35, 34, 26, 24, 23, 23, 23, 12, 12, 1]
+
+		sortAry(ary,0);  // [1, 12, 12, 23, 23, 23, 24, 26, 34, 35, 37, 45, 45]
+		console.log(ary);
+
+		
+
+
+  </script>
+ </body>
+</html>

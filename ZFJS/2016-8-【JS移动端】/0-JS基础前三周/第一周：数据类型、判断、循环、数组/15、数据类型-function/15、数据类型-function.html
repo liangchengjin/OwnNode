@@ -1,0 +1,301 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>15、数据类型-function</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body id="bodyEle">
+  
+
+  
+  <!--js-->
+  <script>
+  // 十五、数据类型-function
+  
+  
+
+ //一、实名函数
+	
+	// 1.function：是什么？就是一个函数数据类型，相当于一个方法或者一个功能
+	
+	 // -1.定义一个函数的步骤
+			/*
+			1).开辟一个新空间地
+			2).把函数体的js代码当做字符串存到空间里面(一个函数如果只是定义了，并没有执行的话，这个函数没有任何的意义)
+			3).在把我们的地址给我们的函数名			
+			*/
+		
+		 /*fn 就是一个函数名
+			 function fn(){
+				// 这里就是函数体，
+					//什么是函数体，就是一个功能或者一个方实现的步骤
+					alert("欢迎大家来到中国深圳");
+			 }
+			 fn(); // 执行这个函数
+			// 首先会形成一个自己的私有地盘
+			// 然后把定义的时候，存在空间的js代码字符串当做js代码执行
+			
+			// 对象object
+			var obj = {name:"呈琛"};		
+			*/
+
+
+
+
+	//2. 功能计划
+		/*
+		function 约会(){
+			// 1、准备钱
+			// 2、制定路径(先去长城，欢乐谷，国家大剧院，梅州东坡酒楼，电影院，把女朋友送回家)
+			// 3、打电话		
+		}
+		约会(); // 计划执行
+
+		"李小龙"
+		*/
+
+		// 2.需求 1+1
+			/*
+			 变量 变量=1 变量+3 变量*5...
+			
+			var num = 1;
+			num+=3
+			num*=5;
+			console.log(num);
+
+			var num = 1;
+			num+=3
+			num*=5;
+			console.log(num);
+
+			var num = 1;
+			num+=3
+			num*=5;
+			console.log(num);  // 20
+			
+			*/
+			/*
+			function sum(){
+				var num = 1;
+				num+=3
+				num*=5;
+				console.log(num);
+			};
+			sum(); // 20
+			sum(); // 20
+
+			*/
+			//在js中function的一个特别大的作用(我把这个叫做封装):将实现 一个有的代码进封装，台后如果用到了这个功能，代码没必要重新的写了，只需要执行这个方法就好了
+
+
+
+		//3. 实现一个功能用 typeof 来检查形参
+			/*
+			
+			 -1.第一次升级: 形参(可以理解为一个变量)(多态一个功能的多种形态, 通过参数的不同实现实现不同的的功能，这就叫做多态)
+				什么是形参？就是定在方法小括号里面的变量，这就叫做形参
+			
+			 -2.作用：实现下功能，发现部分原材料没有，在制定计划的时候我们没有办法获取，我们就把原材料定义在我们的形参上，在执的计划的时候，把原材料提供了就好了
+			
+			 -3.同样一个方法：通过传递的值不一样，而实现的功能也就不同
+				1)、第一个求的是 100 + 200
+				2)、第二个求的是 20 + 20
+			
+				function sum(num1, num2){
+					var total = num1+num2;
+					console.log(total);
+				}
+				sum(100, 2200);
+				sum(20, 20);
+				
+				
+
+			-4.定义一个形参变量，执行的时候没有传递值，那默认的值是 undefined，也就是说下面的sum(100)传给第一个变量num1,那第二个变量num2就是一个空的(undefined)，到下面的就执行了，var total = num1+num2的结果是(var total = num1 + undefined;), 最后输出的结果是 total值是 NaN, 也就是说：数字 + undefined(20 + undefined)得出的结果是 NaN
+			*/
+				/*
+				function sum(num1, num2){
+					var total = num1+num2;
+					console.log(total);
+				}
+				sum(100, 2200);
+				sum(20);
+				*/	
+
+			//-5. 用判断的方式来操作
+				/*
+				 -11.sum(200, 300);	
+					1).如果 typeof num1的类型传递过来的值 不等于空 那么就执行 total就执行 total = total+200; 这时的total就等于200；
+					2).如果 typeof num2的类型传递过来的值 不等于空 那么就执行 total就执行 这时的 total的值就是200了，那么 total+=num2(就相当于 total = 200+300) 结果total的值得到 num1 + num2 最后的输出结果就是500, 
+				
+				-22.sum(200);
+					1).如果 typeof num1的类型传递过来的值 不等于空，那么就执行 toal+=num1(想当于total=0+200); 这时候的total就等于 200
+
+					2).如果 typeof num2的类型没有传递过来，这时的num2就默认是undefined ，因为num2不于空，这时条件不满足 total+=num2 就不执行，直接跳出来，这时的total的结果就是 200
+
+				-33.sum();
+					1);  typeof num1和typeof num2的类型都没有传递过来，这时的num1和num23就默认是undefined, 遇到下面两个if条件不满足，都不会执行，这时就直接输出total的值为0
+
+
+				
+				function sum(num1, num2){
+					var total = 0;
+					// 用typeof 检查形参是否有传递进来值
+					if(typeof num1!="undefined"){
+						total+=num1;
+					}
+
+					if(typeof num2!="undefined"){
+						total+=num2;
+					}
+					console.log(total);
+				}
+				sum(200, 300);		// 500
+				sum(200);			// 200
+				sum();				// 0
+				sum(100,300,300);	// 400
+
+				*/
+
+		//4. arugments: 是函数内置接收参数的机制
+			/*
+			 -1.在js当中除了形参以用接收源材料以外，还有一个知识点用来接收源材料，就是函数内置接收参数的机制 arguments 
+			 
+			 -2.内置：天生在自带的，不管你是否传递了参数，也不管是否写了形参了，arguments一直的存在
+
+			 -3.arguments 也量个类数组(有数字作为索引，索引从0开始代表第几个传递的参数，还有一个length的属性代表传递了多少个参数)
+
+			 -4.arguments除了索引和length以外还有一个 callee
+				1).arguments获取其中的某一个只能用arguments[索引]，不能用.item();
+				callee：arugments.callee代表的就是当前函数的本身
+
+		
+			*/
+				/*
+				function fn(){
+					console.dir(arguments);			//
+					console.log(arguments[1]);		// 获得它的第二个数组
+					console.log(arguments.length);	// 获得它的长度为 4
+				}
+				fn(1,2,5,2);  // [] 返回的结果是一个数组的形式
+				*/
+
+
+			// -5.案例求和 Number(强转), isNaN(进行判断是不是一个有效数字)
+				/*
+					非有效数字的要进行判断
+				
+				function fn(){
+					var total = 0;
+					for(var i = 0; i < arguments.length; i++){
+						var cur = arguments[i]; // 获得我们的每一项的参数
+						// 强制转
+						cur = Number(cur);
+						if(isNaN(cur) === false){
+							total+=cur;
+						}
+					}
+					console.log(total);
+				}
+				fn(154, 45, "a");		// 199
+				fn(154, 628);			// 782
+				fn(585, 2);			// 587
+				fn();					// 0
+				fn(1,2,3,4,5,6,7,8,9);	// 45
+				*/
+
+				// console.log(total); // Uncaught ReferenceError: total is not defined
+					/*
+					 函数执行的时候，会形成一个私有的地盘(函数面面定义的变量，在外面不能直接用)
+					*/
+	   //5. console.dir比console.log在控制台输出的详细信一些
+
+	   //6. 闭包： 函数执行的时候会形成一个新的私有的作用域，来保护里面的变量不受外界的干扰，我们把这种保护机制叫做闭包；
+			/*
+				如果我们想在外面使用函数里面的 total 那就用 return total返回出去，提供给外面使用
+
+				我们想用谁，就用 return 返回谁
+			*/
+			function fn(){
+					var total = 0;
+					for(var i = 0; i < arguments.length; i++){
+						var cur = arguments[i]; // 获得我们的每一项的参数
+						// 强制转
+						cur = Number(cur);
+						/*if(isNaN(cur) === false){
+							total+=cur;
+						}*/
+						if(!isNaN(cur)){
+							total+=cur;
+						}
+					}
+					return total;
+				};				
+				// 外面想用什么，在函数里直接的return返回就可以了，执行完成的整体就是这个值
+				console.log(fn(154, 45, "a")); // 199  //但是通常我们不会这么做的
+
+				var totals = fn(154, 88, "a"); // 把函数执行完成的整体返回值赋值给外面的totals这个变量;
+				console.log(totals);		   // 242
+				totals*=3;
+				console.log(totals);		   // 726
+
+				// 如果我们没有写return的话(或者return;)，默认的返回结果是undefined
+
+
+		//7.return 的好处
+				/*
+				在函数体中，return后面的代码不再执行：redturn的第二个作用，控制函数体中的代码执行到指定就结束
+				*/ 
+				
+
+ //二、匿名函数:
+	/*
+		1.在项目匿名函数通常用两种
+			1).函数表达式：把一个匿名函数的定义部分，当做一个值赋值给本个变量或者一个元素的事件，这就叫做函数表达式
+			var fn = function(){
+			
+			}
+	
+	// 获取我们的body
+	var oBody = document.getElementById("bodyEle");
+	
+	// function(){} 这种就叫做匿名函数，也就是说没有名字的函数
+		oBody.onclick = function(){			
+		}
+	
+	*/
+
+
+// 三、自执行函数
+		/*
+			自执行函数：就是定义和执行一起完成了，
+		*/
+		(function(){
+		
+		})();
+
+		// 还可以如下写法：
+		~function(){}();
+		!function(){}();
+		+function(){}();
+		-function(){}();
+	
+
+
+	
+			
+
+  </script>
+ </body>
+</html>
+

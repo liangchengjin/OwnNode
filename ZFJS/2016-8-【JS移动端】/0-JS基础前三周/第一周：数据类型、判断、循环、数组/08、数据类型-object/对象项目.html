@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>Document</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+	<ul id="ul">
+		<li></li>
+	</ul>  
+  <!--js-->
+  <script>
+    var oUl = document.getElementById("ul");
+	var html = ""
+	var personInfo = {
+			name:"赵子龙",
+			age:28,
+			height:"180cm",
+			weight:"60kg"
+		}
+	html += "<li>姓名: "+personInfo["name"]+"</li>";
+	html += "<li>年龄: "+personInfo["age"]+"</li>";
+	html += "<li>身高: "+personInfo["height"]+"</li>";
+	html += "<li>体重: "+personInfo["weight"]+"</li>";
+	
+	for(var key in personInfo){
+		console.log(key);
+		console.log(key+":"+personInfo[key]);		
+	}
+	oUl.innerHTML = html;		
+  </script>
+ </body>
+</html>

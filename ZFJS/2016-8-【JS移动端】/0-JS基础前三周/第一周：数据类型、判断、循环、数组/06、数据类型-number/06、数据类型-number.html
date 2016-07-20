@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>06、数据类型-number</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>  
+
+  
+  <!--js-->
+  <script>
+	// 06、数据类型 number
+		/*
+			1.number: 包含(正娄、负数、0、小娄、NaN)
+				-1.NaN：not a number 不是一个有效数据，但是它是属于Number数据类型的
+				
+				   NaN == NaN 是不想等的
+				   var num = 12;
+				   12 == 12;
+
+				   = 一个等号是赋值
+				   == 两个等是判断左右两边的值是否相等
+				
+				-2. isNaN(); 检测一个值不是有效数字的命题是否成立，是有效数字返回 false, 不是有数字返回的才是 true
+				
+					如果检测的值不是 number 类型的，浏览器会默认的把它转换成 number 类型，然后在判断是否为有效的数字
+					console.log(isNaN(12));		// false
+					console.log(isNaN("cc"))	// true
+					console.log(isNaN("123"));	// 
+					// 首先把 "123" 转化成 number 类型的 Number ==》是先把 Number("123")转化成数字
+					var num = Number("123");
+					console.log(num);	// 123
+
+				 -3Number()：强制将其它的数字类型转化为number类型，要求如果是字符串，字符串当中一定都需要是数字才可以转换
+						例如：							
+							Number("12");   ==> 转换为12
+
+							Number("12px")  ==> NaN 
+
+							说明：只要里面一个不是数字，它返回的值一定是 NaN
+					
+				
+				-4.非强制数据类型转换 parseInt / parseFloat
+					 parseInt: 是从从左到右，一个个字符查找，把是数字的转换为有效的数字，中途如果遇到了一个非有效数字，就不在继续查找了
+					 console.log(parseInt("12px")); // 12
+
+					 parseFloat: 和上面一样，可以多识别一个小数点
+						 console.log("12.8"):	// 12.8
+						 parseInt("12px");		// 12 
+						 parseInt("12px13");	// 12				 
+						 parseInt("cc2016");	// NaN					
+						 parseFloat(12.5px);	// 12.5 
+						 parseFloat("12.5px");	// 12.5				 
+						 Number("15.8px");		// NaN					
+						 Number("12.5");		// 12.5
+				
+				*/
+
+				// 腾讯的面试题
+					var val = Number("12px");
+					if(val == 12){
+						console.log(12);
+					}else if(val == NaN){
+						console.log(NaN);
+					}else{
+						console.log("以都不成立");
+					} // 结果为：以都不成立
+			   
+  </script>
+ </body>
+</html>

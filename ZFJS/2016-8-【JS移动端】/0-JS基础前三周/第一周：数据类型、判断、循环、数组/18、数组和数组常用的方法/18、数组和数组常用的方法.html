@@ -1,0 +1,304 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>18、数组和数组的12个常用的方法</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+
+  </style>
+ </head>
+ <body>
+
+
+
+  <!--js-->
+  <script>
+    // 18、数组和数组常用的方法
+
+    //一.  object 以下都属性对象数据类型
+		/*
+		var obj = {};
+		var ary = [];
+		var reg = /^(?:^| +)$/;
+		var data = new Date();
+
+		var obj = {name:"呈琛"}; // 字面量方式的创建
+		var obj = new Object();	 // 实例的方创建
+		*/
+
+	//二. 创建一个数组的两种常用的方式
+		/*
+		1. 创建数组方式
+		var ary = [1,2,3,4,5,6,7,8,9];	// 字面量方式，是直接可以看的。这就叫作字面量方式
+		var ary = new Array();			// 实例创建方式
+		console.dir(ary);				// 看数组的详细信息，包含我们的数组中常用的几个方法(展开__proto__, 里面提供了数组中常用的所有方法)
+		
+		2.创建一个数组及获取它的属性的类型
+		var ary = ["呈琛","深圳",18,true,null,undefined,{},function(){}];
+		console.dir(ary);				//数组是由多个项组成的，每一项之间用逗号隔开，并且每一项存储的数据类型可以是任何的数据类型，
+		
+		3.数组中的索引
+		数组也是对象数据类型，对象数据类型是由 属性名:属性值 组成，数组中代表当前是第几项的那个数字(0 1 2 3...)是它的属性名，我们把它也可以称之为数组的索引
+
+		4.获取数组中的对象 
+		var ary = ["呈琛","深圳",18,true,null,undefined,{},function(){}]; 
+		console.log(ary[1]);			// 呈琛  ary[索引]  就是获取级数中第 索引+1 项对应的内容
+
+
+		5.获取数组中的长度 length
+		  1).如果我们写的索引超过了总长，返回的结果是undefined
+		   console.log(ary.length);		// 8 获取数组的长度
+		
+
+		6.操作数据的 for循环来输出我们每一项数组的值
+			var ary = ["中国深圳","世界之窗","南山区"];
+			console.log(ary.length); 
+			console.log(ary[4]);
+
+			for(var i = 0; i < ary.length; i++){
+				// 当 i=0; 每一次循环 ary[0]
+				// 当 i=1; 第二次循环 ary[1]
+				// ....
+				// 当ary[i] 在每一次循环的时候获取数组中的当前项
+				console.log(ary[i]);
+			}
+
+			中国深圳
+			世界之窗
+			南山区
+		*/
+
+	//三.数组中常用的方法
+		/*
+		var ary = [10,12,13,11,19,17];
+		ary.push(16); // 
+		console.log(ary);
+		*/
+		/*
+		0. 学习方法：
+			1.方法是做什么的，实现的是什么功能
+			2.传递的参数是什么
+			3.返回值是什么
+			4.原来的数组是否发生了改变
+		*/
+		
+		//1. 第一组：关于数组的增加、删除、修改			
+			//1). push 向数组的末尾添加新的内容, 返回添加后新数组最终的长度改变了
+				/*
+				var ary = [10,12,13,11,19,17];
+				 var res = ary.push(18,20);  
+				 console.log(res);	// 7
+				*/	
+			 //2). unsift 向数组的开头增加新的内容，返回的也是增加后的数组的长度，原来的数组也改变了
+				/*
+				var ary = [10,12,13,11,19,17];
+				var res = ary.unsift(16.22);	// 7
+				console.log(ary);
+				console.log(res);
+				*/
+
+			//3-0). splice(n, 0, x); 向数组的中间某个位置添加新的内容 从索引n开始，删除0个内容，把新增加的内容x放在索引n的前面，返回的是一个空数组，原有的数组改变
+				/*
+				var ary = [10,12,13,11,19,17];
+				var res = ary.splice(2, 0, "呈琛");
+				console.log(ary);
+				console.log(res); //[]
+				*/
+
+			//3-1). splice(n, m); 删除数组中指定的某些项，坐过引n开始(包含n), 删除m个元素, 把删除的内容当做一个新的数组返回，原有的数组改变
+				/*
+				var ary = [10,12,13,11,19,17];
+				var res = ary.splice(2, 2);
+				console.log(ary);  // [10, 12, 19, 17]
+				console.log(res);  // [13, 11]
+				*/
+
+			//3-2). splice(n, m, x); "替换" 把原有数组中的某些项进行替换(删除，然后用x替换)从索引 n开始删除m个元素，用x替换原来的，把删除的内容当做一个新的数组返回，原有数据改变
+
+				/*
+				  规律：splice(0, 0, x)				相当 于我们的unshift
+						splice(ary.length, 0, x)	相当于我们的push
+				*/
+				/*
+				var ary = [10,12,13,11,19,17];
+				//var res = ary.splice(2,3,"中国深圳");
+				//console.log(ary);  // [10, 12, "中国深圳", 17]
+
+				var res = ary.splice(ary.length, 0,166);
+				console.log(res);
+				console.log(ary);  // [10, 12, 13, 11, 19, 166, 17]
+				*/
+			
+			//4). pop(); 删除数组最后一个，返回的是删除那一项，原有数组改变
+
+			//5). shift 删除数组的第一个，返回的是删除的那一项，原有数组改变
+
+	
+
+
+		//2. 第二组：数组的查询和复制
+			 /*1). slice(n, m); 坐索引n开始(包含n),找到索引m处(不包含m),然后把找到的内容做为一个新的数组返回，原有的数组是不改变的
+				var ary = [10,12,13,11,19,17];
+				var res = ary.slice(2, 5);
+				console.log(ary);  // [10, 12, 13, 11, 19, 17]
+				console.log(res);  // [13, 11, 19]
+
+			   2). slice(n); 坐索引n开始(包含n)，查找到数组的末尾，然后把找到的内容作为一个新的数组返回，原有的数组是不改变的
+					slice(0)或者slice() 将原有的数组原封不动的复制一份，属于数组的克隆
+
+					var ary = [10,12,13,11,19,17];
+					var res = ary.slice(0);
+					console.log(ary);  // [10, 12, 13, 11, 19, 17]
+					console.log(res);  // [10, 12, 13, 11, 19, 17]
+
+				3).concat(); 也可以实现数组的克隆,原来的数组也不改变(相当于slice(0))
+
+					var ary = [10,12,13,11,19,17];
+					var res = ary.concat();
+					console.log(ary);  // [10, 12, 13, 11, 19, 17]
+					console.log(res);  // [10, 12, 13, 11, 19, 17]
+					
+					说明：其实它不是真的克隆，它只是数组拼接(连接)
+
+				4).concat 的本意是实现数组的拼接的， ary.concat(ary2) 将数组ary和ary2拼接成一个数组，原来 的数组也不改变，这就是concat
+					var ary = [10,12,13,11,19,17];
+					var ary2 = ["深圳","12k"];
+					var res = ary.concat(ary2);
+					console.log(ary);  // [10, 12, 13, 11, 19, 17]
+					console.log(res);  // [10, 12, 13, 11, 19, 17, "深圳", "12k"]
+
+
+			 */
+
+		//3. 第三组：将我们的数组转化为我们的字符串
+			/*
+			  1).toString 是把数组中的每一项拿出来用逗号隔开，原有数组不变
+					console.log([] == "");  // true
+					var ary = [10,12,13,11,19,17];
+					var res = ary.toString();			
+					console.log(ary);  // [10, 12, 13, 11, 19, 17]
+					console.log(res);  // 10,12,13,11,19,17
+				
+
+			  2.join(分隔符) 把数组中的每一项拿出来用指定的分隔符隔开，原有数组不变
+					console.log([] == "");  // true
+					var ary = [10,12,13,11,19,17];
+					var res = ary.join("+");			
+					console.log(ary);  // [10, 12, 13, 11, 19, 17]
+					console.log(res);  // 10+12+13+11+19+17
+
+					案例求和1：
+						实现数组中数字的求和，但这种方法不好
+						var ary = [10,12,13,11,19,17];
+						var total = 0;
+						for(var i = 0; i < ary.length; i++){
+							total+=ary[i];
+
+						}
+						console.log(total);  // 82
+
+					案例求和2：
+
+				3). eval 将指定的字符串变成真正静达式执行
+					第一种：
+					实现数组中数字的求和
+					var ary = [10,12,13,11,19,17];
+					var str = ary.join("+");	// "10+12+13+11+19+17"
+					var total = eval(str);
+					console.log(total);	 // 82	
+
+
+					第二种：
+					var ary = [10,12,13,11,19,17];
+					var str = ary.join("+");	// "10+12+13+11+19+17"
+					var total = eval(str);		// eval将指定的字符串变成真正表达执行
+					console.log(total);					// 82	
+					console.log(eval(ary.join("+")));	// 82
+
+						
+
+			*/
+
+
+
+		//4. 第四组：数组的排列和排序
+			/*
+			1).reverse() 数组倒过来排列，原有的数组改变
+				var ary = [10,12,13,11,19,17];
+				var res = ary.reverse();			
+				console.log(ary);	// [17, 19, 11, 13, 12, 10]			
+				console.log(res);	// [17, 19, 11, 13, 12, 10]
+			
+			2).sort 数组的排序，可以实现由大到小(由小到大)，原有的数组也变，直接写成 sort只能处理10以内容的数字排序，处理10以上的我们需要传递一个参数，这个参数是一个函数
+				var ary = [10,12,13,11,19,17];
+				var res = ary.sort();
+				console.log(res);	// [10, 11, 12, 13, 17, 19]
+
+				// 传递一个参数,进行从小到大和从大到小进行排序
+					var ary = [10,12,23,11,19,6];
+					ary.sort(function(a, b){
+						return a - b;
+					});
+					console.log(ary);	// [6, 10, 11, 12, 19, 23]
+
+					ary.sort(function(a, b){return a-b;});	// 由小到大排序
+					ary.sort(function(a, b){return b-a;});	// 由大到小排序 
+			*/
+			// 这里没有实现
+			var ary = [10,12,23,11,19,6];
+			ary.sort(function(a, b){
+				// 1.有六项循环五次
+					/*
+				    1).a代表是每一次循环的时候当前的这个项，b是后面的这个项console.log(a+"《===》"+b);
+
+					return a-b; 当前项减去后一项，如果大于0，代表前面的比用后面的大，这样的话就交换位置，
+
+					2).我们把这种机制叫做冒泡排序：sort实现排序 的是遵循的冒泡排序的思想实现				
+				*/
+				return a - b;
+			});
+			console.log(ary);	// [6, 10, 11, 12, 19, 23]
+			/*
+			 10《===》12
+			 12《===》23
+			 23《===》11
+			 12《===》11
+			 10《===》11
+			 23《===》19
+			 12《===》19
+			 23《===》6
+			 19《===》6
+			 12《===》6
+			 11《===》6
+			 10《===》6
+			*/
+			
+		//5. 第五组：一些常用但是不兼容
+			/*
+			 indexOf
+			 forEach
+			 map
+
+			 正式课第一周给大家详细的讲解，并且自己处理兼容，现在大家回去自己查询使用的方法。
+			*/
+				
+
+			
+			
+			 
+
+
+
+			
+		
+  </script>
+ </body>
+</html>

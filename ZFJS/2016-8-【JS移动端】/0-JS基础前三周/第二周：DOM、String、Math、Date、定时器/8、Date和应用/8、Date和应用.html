@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>8、Date和应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  #div1{
+	color:#FFF;
+	width:800px;
+	height:50px;
+	line-height:50px;
+	border:1px solid green;
+	background:green;	
+	font-size:28px;
+	margin:50px auto;
+  }
+  </style>
+ </head>
+ <body>
+  
+  <div id="div1">北京时间：</div>
+  
+  <!--js-->
+   <script>
+  // 8、Date和应用
+
+  // 1. 获取当前自己电脑的时间: 不能做重要的用途，例如：淘宝秒杀活动
+	var titme = new Date();
+	console.log(titme); // Mon Jul 18 2016 21:36:29 GMT+0800 (中国标准时间) 时间格式数据(对象数据类型的)
+
+	// "2015年05月24日 星期日 15时31分27秒" 变成我们这个时间格式字符串
+
+	var oDiv = document.getElementById("div1");
+	var timeStr = formTime();
+	oDiv.innerHTML += timeStr;
+
+	function formTime(){
+		// 获取当前电脑时间
+		var time = new Date();
+		var year = time.getFullYear();  // 年
+		var month = time.getMonth();    // 月 它是获得0-11代表我们的1-12月
+		var day = time.getDate();	    // 日
+		
+		var week = time.getDay();	    // 0-6代表周日--周六
+		var wStr = "日一二三四五六";
+		var weeks = wStr.charAt(week);
+		
+		var hours = time.getHours();    // 时
+		var minutes = time.getMinutes();// 分
+		var seconds = time.getSeconds();// 秒
+		var msSeconds = time.getMilliseconds(); // 毫秒
+		
+		return year+"年"+zero(month)+"月"+zero(day)+"日 星期"+weeks+" "+zero(hours)+"时"+zero(minutes)+"分"+zero(seconds)+"秒";
+	}
+	
+	// 一位的前面进行补0
+	function zero(value){
+		return value < 10?"0"+value:value;
+	}
+
+   // 26:01
+  </script>
+ </body>
+</html>

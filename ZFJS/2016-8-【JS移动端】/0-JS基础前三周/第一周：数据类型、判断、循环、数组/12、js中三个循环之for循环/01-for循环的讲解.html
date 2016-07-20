@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>for循环的讲解</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  <h1 id="hbox"></h1>
+
+  
+  <!--js-->
+  <script>
+		for(var i = 0; i < 10; i++){
+				console.log("i = " + i);
+				/*
+					1. i 小于 10 时候，就执行 下面的内容 if判断
+					2. 当i小于等于5，就执行里面的内容，i+=2(相当于i=0+2),因为i的初始值是0，然后遇到 continue 结束本轮循环，后果面将不再执行了
+					3. 这时i就等于2了，2小于10吗？小于就执行下需的内容，当遇到if再进行判断 2小于等5吗？小于就执行if里面的内容,这时i就是2, i = 2+2就等于4；然后再遇到continue 结束本轮循环，后面的将不再执行了，
+
+					4. 这时候的i就等4了，4小于10吗？ 小于就执行下面的内容，当遇到if再进判断，4小于等于5吗？小于就执行if里面的内容，这时的 i就是4，i+=2(想当于 4+2); 然后再遇到continue 结束本轮循环，后面的将不再执行，
+
+					5.这时候的i 就等于 6 了，6小于10吗？小于就执行下面的内容，当遇到if就进行判断，6 小于等 5吗？这时候的6不小于等于5了，然后不执行这里的if 直接进行下面的内容执行，
+
+					6.这时遇到i+=3; 这里的i也就是当前的6，这时i+=3(相当于 i = 6; i = 6 +3); 这时的i 就等于9了，然后遇到break整个下面的内容将结束执行，最后再执行外面的内容。这时候的i就等于9了
+				*/
+				if(i <= 5){
+					//i+= 2;  //1. i = 0 i+= 相当于 i = 0 + 2;
+							//2. i = 2 i+= 相当于 i = 2 + 2;
+							//3. i = 4 4 < 10 小于的话，就执行 if  4 <= 5 小于,那就执行 i+=2 相当于 i = 4 +2; 这时候上面的 不的值就改变了 也就是6了
+							//4. i = 6; 6 <= 5 不满足 那就跳出去了
+						i++;
+					continue;
+				}
+
+				i+= 3;  // i = 6 ; i = 6 +3 =9
+				break;
+				
+			}
+		console.log(i);
+
+		///var ss = "str = ";
+
+		var box = document.getElementById("hbox");
+		
+		var str = "呈琛";
+		var obj = {
+			"name":"呈琛",
+			"red":"red"
+		}
+		obj.name = "小陈";
+
+		if(str == "呈琛"){
+				box.innerHTML = obj.name;
+				box.style.color = obj.red;
+		}else{
+			console.log("------------");
+		}
+		/// <sss>呈琛</sss>呈琛
+
+
+		
+  </script>
+ </body>
+</html>

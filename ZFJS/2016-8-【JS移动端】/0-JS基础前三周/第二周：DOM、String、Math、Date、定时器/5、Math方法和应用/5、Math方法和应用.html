@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>5、Math方法和应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	// 5、Math方法和应用
+
+	// Math 是数据函数，里面提供了几个操作数学的方法
+	
+	// 1. math.abs(); 取绝对值
+		var num = 12.5;
+		var maths = Math.abs(12.5);
+		console.log(maths); // 12.5
+
+		var maths = Math.abs(-12);
+		console.log(maths); // 12
+
+		var maths = Math.abs(12);
+		console.log(maths); // 12
+		
+		/*
+		Math.abs(-12);
+		12
+		Math.abs(12);
+		12
+		Math.abs(-12.3);
+		12.3
+		*/
+
+	//2. Math.ceil(); 向上取整		
+		/*
+		向上取整，只要出现小数点。就会向上取一位
+		如：12.3 那么就就在它的后面取一位，然后就是13
+		Math.ceil(12.3);
+		13
+		Math.ceil(12.0000001);
+		13
+		Math.ceil(-12.3);
+		-12
+		*/
+		var ceils = Math.ceil(15.8);
+		console.log(ceils); // 16
+		var ceils = Math.ceil(15.4);
+		console.log(ceils); // 16
+
+	// 3. Math.floor(); 向下取整
+		 /*
+		 Math.floor(12.8);
+		 12
+		 Math.floor(-12.8);
+		 -13
+		 */
+		var floors = Math.floor(12.8);
+		console.log(floors); // 12
+		var floors = Math.floor(-12.8);
+		console.log(floors); // -13
+
+	// 4. Math.round(); 四舍五入
+		/*
+		Math.round(-12.6);
+		-13
+		Math.round(-12.5);
+		-12
+		*/
+		var rounds = Math.round(12.4);
+		console.log(rounds); // 12
+		var rounds = Math.round(-12.4);
+		console.log(rounds); // 12
+	
+	// 5. Math.max(val, val, val....); 求最大值
+		/*
+		Math.max(12,23,12,24,1,2,56,34,78);
+		78
+		*/
+		var max = Math.max(12,23,12,24,1,2,56,34,78);
+		console.log(max); // 78
+
+
+	// 6.Math.min(val, val, val....); 求最小值
+		/*
+		Math.min(12,23,12,24,1,2,56,34,78)
+		1
+		*/
+		var min = Math.min(12,23,12,24,1,2,56,34,78);
+		console.log(min);
+	
+	// 7. Math.random(); 获取[0-1]之间的随机小数; 这是包含号不包含1，这叫左避又开区间	
+
+		/*
+		获取[n-m]之间的随机整数
+		Math.round(Math.random() * (m-n)+n);
+		例如：1-10 14-58;
+
+		Math.random();		//0.2830344095907036
+		Math.random();		//0.029396404929963094
+		Math.random();		//0.11314721421145668
+		Math.random();		//0.9861055440191715
+		Math.random();		//0.43469410644912765
+		Math.random();		//0.9430149205132774
+		Math.random();		//0.6003164994729708
+		Math.random();		//0.06412022394608607
+		Math.random();		//0.2888166111697781
+		Math.random();		//0.05258498564830516
+		*/
+		// 随机数
+		function ran(){
+			var random = Math.round(Math.random()*55+1);
+			console.log(random);
+		}
+
+		// 随机数
+		var n = 0;
+		while(n !== 58){
+			n = Math.round(Math.random() * 44 +14);
+			console.log(n);
+		}
+		//setInterval(ran,1000);
+
+
+	// 8. 封装一个方法
+		function getRandom(n, m){
+			// 不管传递的是啥，强制转化一下，只有两种情况：数字和NaN
+			n = Number(n);
+			m = Number(m);
+			// 只要有两个中有一个不是有效的数字，就返回[0-1]之间随机小数
+			if(isNaN(n) || isNaN(m)){
+				return Math.random();
+			}
+			// 如果n比m大了，我们默认交换位置
+			if(n > m){
+				var temp = n;
+				n = m;
+				m = temp
+			}		
+			return Math.round(Math.random() * (m - n) + n);
+		}
+
+	// 获取4位0-61之间的随机整数? 获取4位不重复的如何处理
+		var ary = [];
+		for(var i = 0; i < 4; i++){
+			ary.push(getRandom(0,61));
+		}
+		console.log(ary); // [52, 15, 16, 1]
+		
+  </script>
+ </body>
+</html>

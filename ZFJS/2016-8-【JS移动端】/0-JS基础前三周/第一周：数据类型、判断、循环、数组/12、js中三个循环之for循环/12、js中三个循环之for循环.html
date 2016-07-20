@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>12、js中三个循环之for循环</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+  // 十二、js中三个循环之for循环
+		// js中什么叫循环，就是一遍一遍的操作
+
+		// 1. for 循环
+			/*
+			  for循环一共要遵守四步曲
+			  四步曲：
+				1). 设置初始值  var i = 0;
+				2). 设置循环执行的条件 i < 5;
+				3). 执行循环体中的内容 {[循环体]} 包起来的
+				4). 每一轮循环完成后都执行我们的 i++累加操作
+			*/
+			/*
+			for(var i = 0; i < 5; i++){
+				console.log("i = " +i);
+			} // 循环了 5 次
+				
+				 i = 0
+				 i = 1
+				 i = 2
+				 i = 3
+				 i = 4
+				*/
+			
+			/*
+			for(var i = 0; i < 10; i++){
+				console.log("i = " +i);
+			} // 循环了 5 次
+				
+				 i = 0
+				 i = 1
+				 i = 2
+				 i = 3
+				 i = 4
+				 i = 5
+				 i = 6
+				 i = 7
+				 i = 8
+				 i = 9
+				*/
+
+		// 2. break / continue:
+			/*
+				不管是 break还是continue，在循环体中遇到这两个关键字，循环中后面的代码就不在执行了。
+					for(var i = 0; i < 10; i++){
+						break;
+						console.log(i);
+					}
+
+
+				1).break: 在循环体中，出现了 break 整个循环就直接的结束了,i++最后的这个累加的操作也不再执行了
+						for(var i = 0; i < 10; i++){
+							break;
+							console.log(i);
+						};
+						alert(1);
+
+				2).continue: 在循环体中，出现了 continue，当前这一轮的循环就结束了，继续下一轮的循环，后面的累加操作继续的执行
+
+					for(var i = 0; i < 10; i++){
+						continue;
+						console.log(i);
+					};
+					alert(1);
+			*/
+
+		// 4.项目
+			for(var i = 0; i < 10; i++){
+				/*
+					1. i 小于 10 时候，就执行 下面的内容 if判断
+					2. 当i小于等于5，就执行里面的内容，i+=2(相当于i=0+2),因为i的初始值是0，然后遇到 continue 结束本轮循环，后果面将不再执行了
+					3. 这时i就等于2了，2小于10吗？小于就执行下需的内容，当遇到if再进行判断 2小于等5吗？小于就执行if里面的内容,这时i就是2, i = 2+2就等于4；然后再遇到continue 结束本轮循环，后面的将不再执行了，
+
+					4. 这时候的i就等4了，4小于10吗？ 小于就执行下面的内容，当遇到if再进判断，4小于等于5吗？小于就执行if里面的内容，这时的 i就是4，i+=2(想当于 4+2); 然后再遇到continue 结束本轮循环，后面的将不再执行，
+
+					5.这时候的i 就等于 6 了，6小于10吗？小于就执行下面的内容，当遇到if就进行判断，6 小于等 5吗？这时候的6不小于等于5了，然后不执行这里的if 直接进行下面的内容执行，
+
+					6.这时遇到i+=3; 这里的i也就是当前的6，这时i+=3(相当于 i = 6; i = 6 +3); 这时的i 就等于9了，然后遇到break整个下面的内容将结束执行，最后再执行外面的内容。这时候的i就等于9了
+				*/
+				if(i <= 5){
+					i+= 2;  
+					console.log(i);
+					continue;
+				}
+
+				i+= 3;
+				break;
+				console.log(i);
+			}
+			console.log(i);
+		
+
+
+			
+  </script>
+ </body>
+</html>

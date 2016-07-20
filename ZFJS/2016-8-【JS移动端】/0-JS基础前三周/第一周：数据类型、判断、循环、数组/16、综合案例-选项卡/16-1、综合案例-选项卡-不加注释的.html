@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>16、综合案例-选项卡</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif; font-size:14px;}
+  ul,li{list-style:none;}
+  #tab{margin:10px auto; width:500px;}
+  #tab ul{position:relative; top:1px; }
+  #tab ul li{width:100px; height:30px; line-height:30px; text-align:center; border:1px solid #ddd; float:left; margin-right:10px; cursor:pointer;}
+  #tab ul li.select{background:red; color:#FFF; background:-webkit-linear-gradient(top left, #ff0066,#00cc33,#ffcc00);}
+  #tab > div{height:100px; line-height:100px; text-align:center; border:1px solid #ddd; clear:both; display:none;}  	
+  #tab > div.select{display:block;}
+  </style>
+ </head>
+ <body>
+	<div id="tab">
+		<ul>
+			<li class="select">视频</li>
+			<li>综艺</li>
+			<li>秒拍</li>
+		</ul>
+		<div class="select">视频内容</div>
+		<div>综艺内容</div>
+		<div>秒拍内容</div>
+	</div>
+  <!--js-->
+  <script>
+  // 十六、综合案例-选项卡
+
+  //一、综合案例-选项卡-注释版
+
+	// 第1步：分析需示和思路，选项卡的思路非常简单：
+		/*1.鼠标滑到某一个li上面，让当前的li和对应的div有select的样式，然后再让当前的有这个select样式*/
+
+	// 第2步：要操作谁就先获取谁
+		/*
+		var oTab = document.getElementById("tab");
+		var oLis = oTab.getElementsByTagName("li");
+		var oDivs = oTab.getElementsByTagName("div");
+		*/
+
+	// 第3步：制定一个功能方法，实现我们的需求
+		/*nIndex是我们定义的形参，代表当前被选中元素的索引*/
+		/*
+		function tabChange(nIndex){
+			for(var i = 0; i < oLis.length; i++){
+				oLis[i].className = "";
+				oDivs[i].className = "";
+			}			
+			oLis[nIndex].className = "select";
+			oDivs[nIndex].className = "select";
+		}
+		*/
+
+	// 第4步：给我们的li绑定鼠标移上去的事件
+		/*
+		for(var i = 0; i < oLis.length; i++){
+			// 自定义属性
+			oLis[i].cc = i; // 在每一次循环的时候，把每一个li的索引定义在自己的自定义属性cc上
+			oLis[i].onmouseover = function(){				
+				tabChange(this.cc); // this.cc 就是自己的属性
+			}
+		}
+		*/
+
+		// 说明：
+		// js加载完成后(for循环加载完了 i=3)，我们才会手动触发onmouseover事件
+		/*oLis[0].onmouseover = function(){
+			"tabChange(i)"
+		}
+		oLis[1].onmouseover = function(){
+			tabChange(i)
+		}
+		oLis[2].onmouseover = function(){
+			tabChange(i)
+		}*/
+
+
+
+
+	//二、综合案例-选项卡-不加注释版
+		/*
+		var oTab = document.getElementById("tab");
+		var oLis = oTab.getElementsByTagName("li");
+		var oDivs = oTab.getElementsByTagName("div");
+
+		function tabChange(n){
+			for(var i = 0; i < oLis.length; i++){
+				oLis[i].className = "";
+				oDivs[i].className = "";
+			}
+			oLis[n].className = "select";
+			oDivs[n].className = "select";
+		}
+
+		for(var i = 0; i < oLis.length; i++){
+			oLis[i].cc = i;
+			oLis[i].onmouseover = function(){
+				tabChange(this.cc);
+			}
+		}
+		*/
+
+	
+	//三、综合案例-选项卡-优化版
+		var oTab = document.getElementById("tab");
+		var oLis = oTab.getElementsByTagName("li");
+		var oDivs = oTab.getElementsByTagName("div");
+		var len = oLis.length;
+		for(var i = 0; i < len; i++){
+			var oLi = oLis[i];
+			oLi.cc = i;
+
+			oLi.onmouseover = function(){
+				for(var j = 0; j < len; j++){
+					oLis[j].className = "";
+					oDivs[j].className = "";
+				}
+				//this.className = "select";
+				oLis[this.cc].className = "select";
+				oDivs[this.cc].className = "select";
+			}
+		}
+  </script>
+ </body>
+</html>

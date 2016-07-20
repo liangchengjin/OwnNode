@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>10、JS里的三个判断：if else、 三元运算符?、switch case</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	 //JS里的三个判断：if else、 三元运算符?、switch case
+
+
+	 //1. if、else if、else 是最常用的判断，可以解决js中所有的判断需求
+
+	 //2. 三元运算符应该用简单的if else情况
+
+	 //3. switch case 应用于不同值情况下的不同操作
+
+	 //一、 if else
+		/*
+		 if(条件1){
+			执行条件1成立的js代码
+		 }else if(条件2){
+			执行条件2成立的js代码
+		 }else if(条件3){
+			执行条件3成立的js代码
+		 }...
+		 else{
+			以上所有的条件都不成立执行的代码
+		 }
+		 */
+		
+		// if 中的条件可以是小于、大于、等于、也可以是单独的一个值(判断当前值代表的是真还是假)
+
+		// if中的条件还可以是多个小的条件组合 中间用||(只要有一个为真整体就为真)和&&(所有的小条件都为真 整体才为真) 隔开
+		if([]){ // 代表的是真
+			console.log("[]");
+		}// []	
+
+		 var num = 10;		
+		 if(num < 0){
+			console.log("负数");
+		 }else if(num >= 0 && num <= 10){
+			console.log("0-10之间");
+		 }else if(num > 10){
+			console.log("10以上");
+		 } // 0-10之间
+
+
+		 if(num < 0){
+			console.log("负数");
+		 }else if(num >= 0 && num <= 10){
+			console.log("0-10之间");
+		 }else{
+			console.log("10以上");
+		 } // 0-10之间
+
+
+	//二、 三元运算符
+		// 条件? 条件成立执行:条件不成立执行;
+		
+		// 一个if else 改用 三元运算符来写
+			var num = 12;
+			if(num >= 0){
+				console.log("正数或零");
+			}else{
+				console.log("负数");
+			}
+			
+			num >= 0? console.log("正数或零"):console.log("负数");
+
+		// 一行if 改用 三元运算符来写如下：void 0就是一个空 什么也没有
+			if(num > 0){
+				console.log("正数或零");
+			}
+			num >= 0? console.log("正数或零 "):void 0;
+
+
+	//三、switch case
+		
+		// 一行if 改用 switch case来写如下
+		var num = 10;
+		if(num == 0){
+			console.log("0");
+		}else if(num == 5){
+			console.log("5");
+		}else if(num == 10){
+			console.log("10");
+		}else{
+			console.log("NaN");
+		};
+
+		// 第一种 case 情况下载都要加 break; 如果不加 break，不管后面的代码是否成立都执行了;
+		
+		// 每次一种 case 情况相当于 === 的比较，一定要注意数据类型是否一致;
+		var num = 10;
+		switch(num){
+			case 0:				
+				console.log("0");
+				break;
+			case 5:
+				console.log("5");
+				break;
+			case 10:
+				console.log("10");
+				break;
+			default:
+				console.log("NaN");
+		}
+  </script>
+ </body>
+</html>

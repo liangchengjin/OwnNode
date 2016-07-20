@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>3、DOM中的节点和关系属性-综合应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  <div id="div1">
+	<h1>2016年最前沿的技术休息</h1>
+	<!--以下是2016最新的课程体系-->
+	<ul>
+		<li>HTML5+CSS3课程</li>
+		<li>JavaScript课程</li>
+		<li id="li3">NodeJs课程</li>
+		<li>Java课程</li>
+		<li>SQL课程</li>
+	</ul>
+  </div>    
+  <!--js-->
+  <script>
+	// 1. 如果我想获取li3的上一个哥哥元素节点，我们发现，直接previousSibling获取的不一是元素的，往上面在找多少级也不知道
+	var oLi3 = document.getElementById("li3");
+
+	// console.log(oLi3.previousSibling.previousSibling);
+
+	// for 循环
+	for(var i = 0; i < 5; i++){
+		if(i<=5 ){
+			i+=1;
+			continue;
+		}else{
+			break;
+			i+=2;
+		}
+	}
+	console.log(i); // 6
+	
+	// while 循环
+	var i = 0;
+	while(i<5){
+		if(i<=5){
+			i+=1;
+			i++;
+		}else{
+			break;
+			i+=2;
+		}
+	}
+	console.log(i);  // 10:38
+
+
+
+	/////////////////////////////////////////////////////
+	
+	var oLi3 = document.getElementById("li3");
+	var pre = oLi3.previousSibling;
+	while(pre && pre.nodeType !== 1){
+			pre = pre.previousSibling;			
+		}
+		console.log(pre); // 获取上一个哥哥的元素节点
+	
+	
+	// jQuery 的封装
+		// 2. 封装一个方法 获取上一个哥哥元素节点
+		function prev(ele){
+			var pre = ele.previousSibling;
+			while(pre && pre.nodeType !== 1){
+				pre = pre.previousSibling;
+			}
+			return pre;
+		}
+		var previ = pre;	
+		console.log(previ);
+
+		// 3. 获取所以的哥哥元素节点
+		function prevAll(ele){
+			var pre = ele.previousSibling;
+			var ary =  [];
+
+			while(pre){
+				if(pre.nodeType === 1){
+					ary.unshift(pre); 
+				}
+				pre = pre.previousSibling;
+			}
+			return ary;
+		}
+
+
+		// 4.思考题？
+			/*
+			获取下一个弟弟元素节点，
+			获取所有的弟弟元素节点，
+			获取相邻的两个元素节点，
+			获取所有的兄弟元素节点
+			*/
+		
+		
+
+
+  </script>
+ </body>
+</html>

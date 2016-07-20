@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>13、js中三个循环之for in循环</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  <!--js-->
+  <script>
+  // 十三、js中三个循环之for in循环
+	
+	// for in循环：通常用来循环一个对象中的属性名和属性值的
+		// 在整个对象里面除了以字母当中成员组成的以外，还可以用拿着数字当着属性名来，但是数字属性名不用 . 来获取，只能用中括号[1]来获取,如以下：
+		
+		var obj = {
+			name:"呈琛",
+			age:18,
+			sex:"女",
+			hobby:"敲代码",
+			birthday:"12-30",
+			addres:"中国深圳",
+			1:10086
+		};
+		obj.name;
+		obj["name"];
+		obj[1];
+
+		// 对象中有多少组键值对，我们就循环多少次
+		// for in 在这样的情况下它有个顺序问题：首先循环数字的属性名(再按照从小到大),在把剩下的属性名按照我们写的顺序循环
+		for(var key in obj){
+			//console.log(key);			// key 就是每一次循环获取的属性名‘
+			//console.log(obj[key]);	// 获取属性值 在for in 中只能通过 对象名[key]来获取 不能写obj.key
+
+			console.log(key+" : "+obj[key]);
+		}
+		/*
+			1 : 10086
+			name : 呈琛
+			age : 18
+			sex : 女
+			hobby : 敲代码
+			birthday : 12-30
+			addres : 中国深圳		
+		*/
+  
+  </script>
+ </body>
+</html>

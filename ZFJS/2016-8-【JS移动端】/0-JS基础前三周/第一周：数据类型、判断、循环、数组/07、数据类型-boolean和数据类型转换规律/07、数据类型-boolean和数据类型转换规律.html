@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>07、数据类型-boolean和数据类型转换规律</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	//1. boolean: true false
+		/*
+		!: 一个叹号是取反，首先将值转化为布尔类型的，然后再取反
+			console.log(!3); // false  是先把3转换为 boolean，然后面取反
+
+			
+
+		// !!: 将其它的数据类型转换为 boolean 类型，相当于 Boolean();
+		 console.log(Boolean("cc")); // true
+		 console.log(!!"cc");		 // true
+		 console.log(!!3);			 // false
+		 
+		 */
+	
+	//2. 数据类型转型的规则：
+		/*
+		-1. 如果只有一个值，判断这个值是真还是假，遵循：只有0 NaN "" null undefined 这五个是假的，其余的都是真。
+		
+
+		-2. 如果是两个值比较是否相等，遵循这个规则：
+			val1 == val2 两个值可不是同个数据类型的，如果 == 比较的话，会进行默认的数据类型转换
+			
+			1) 对象 == 对象 永远不相等
+				[]==[]								// false
+				({}=={})							// false
+				(function fn(){} == function(){})	// false
+			
+			2) 对象 == 字符串  先将对象转换为字符串(调用toString的方法)，然后在进行比较
+				[]==""			// true
+				[].toString()	// ""
+
+				[]转换为字符串""
+				{}转化为字符串"[object Object]"
+					({})==""				//	false
+					({}.toString())			//	"[object Object]"
+
+			3) 对象==布尔类型 对象先转换为字符串(toString)，然后把字符器、在转化为数字(Number ""空字符串是0)，布尔类型也转换为数字(true是1 false是0)，最后让两个数字比较	
+				[1,2,3,4,5]==""			//	false
+				[1,2,3,4,5].toString()	//	"1,2,3,4,5"
+				Number("")				//	0
+
+			4) 对象==数字 对象先转换为字符串(toString)，然后把字符串在再转化为数字(Number)
+
+			5) 数字==布尔	布尔转换为数字
+				2==true	// false
+
+			6) 数字==字符串 字符串转化为数字
+
+			7) 字符串==布尔	都转换为数字
+
+			8) null==undefined 结果是true
+
+			9) null或者undefined 和其它任何的数据类型比较都不相等
+				null==undefined		// true
+				null==0				// false
+				undefined==0		// false
+		*/
+
+		//3.在js中除了 == 是比较，还有 === 也是比较(绝对比较)
+			/*
+			 val1 === val2 如果数据类型不一样肯定不相等,只数据类型一样才能相等
+				0==false	// true
+				0===false	// false
+
+				null == undefined	//	true
+				null === undefined	//	false
+			*/
+  </script>
+ </body>
+</html>

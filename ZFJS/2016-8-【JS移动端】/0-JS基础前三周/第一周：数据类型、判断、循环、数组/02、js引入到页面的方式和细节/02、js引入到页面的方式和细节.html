@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>02、js引入到页面的方式和细节</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+  <link rel="stylesheet" href="index.css">
+ </head>
+ <body>
+  <div id="div1" style="width:100px; height:100px"></div>
+
+  
+  <!--js-->
+  <script>
+//一、 css 引入在html 页面中的几种方式
+	/*
+		为四种：
+		1.行内样式
+			 <div id="div1" style="width:100px; height:100px"></div>
+		2.内嵌样式
+			<style>
+				#div1{width:100px; height:100px;}
+			</style>
+			<div id="div1"></div>
+
+			说明：将css样式写在style标签块里面，放在head与head结束标签里面
+
+		3.外链样式
+			<link rel="stylesheet" href="index.css">
+			说明：只是将内嵌式中的css样式放到入外面一个单独的样式文件中了
+		
+		4.导入式(不推荐)
+			@import "css/index.css";
+			说明：这种方式不常用，
+
+	*/
+
+
+	//二、 js 引入在html页面里有几种方式呢
+		/*
+			1.内行引入样式
+				<div id="div1" style="width:100px; height:100px;" onclick="alert('welcome to sz');"></div>
+				说明：这种安全性能非常低，不介意使用
+
+			2.内嵌式
+				<script type="text/javascript">
+					alert("欢迎大家来到深圳，");
+				<\/script>
+				说明：将js代码写在script脚本块中间
+
+			3.外链式
+				<script src="js/index.js"><\/script>
+				<script><\/script>
+				
+				说明：将js代码写在外面文件中，通过src找到引入, 
+				
+				细节点1：在外链式中，script脚本块中间不可以写js代码，写了也不执行
+				
+				细节点2：我们通常将js放在body的最后面，原因：html页面是从上到下加载的，js通常是获取html标签给予动太操作效果的，所以需要先加载html标签在加载我们的js
+
+				var oDiv = document.getElementById("div1");			
+		*/
+
+  
+  </script>
+ </body>
+</html>

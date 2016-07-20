@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>17、综合案例-99乘法表</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  ul, li{list-style:none;}
+
+  #tab{position:absolute; top:50%; left:50%; margin-left:-450px; margin-top:-145px; width:900px;  border:1px solid red; border-radius:10px; padding:10px;}
+  
+  #tab li{height:30px; line-height:30px;}
+  
+  #tab li span{width:100px; height:30px; display:inline-block; text-align:center;}
+
+  .c1{background:#ff9900;}
+  .c2{background:#9900ff;}
+  .c3{background:#009900;}
+  </style>
+ </head>
+ <body>
+	<div id="tab"></div>
+
+  
+  <!--js-->
+  <script>
+  // 第一个版本
+	/*
+	  var oTab = document.getElementById("tab");
+	  var str = "";
+	  str+="<ul>";
+		for(var i = 1; i <= 9; i++){ // 这是行
+			var val = "c1";
+			switch(i%3){
+				case 0:
+					val = "c1";
+					break;
+				case 1:
+					val = "c2";
+					break;
+				default:
+					val = "c3";
+			}
+
+			str+="<li class='"+val+"'>";
+				for(var j = 1; j <= i; j++){  // 这是列
+					str+="</span>";
+						str+=""+j+" * "+i+" = "+(j*i)+"";
+					str+="</span>";
+				}
+			str+="</li>";
+		}
+	  str+="</ul>";
+
+	  oTab.innerHTML = str;
+
+	  // innerHTML: 向指定元素中添加内容(可以是文字，也可以是html标签), innerHTML可以识别html标签的
+
+	  // innerText:不能识别html标签
+
+	  // 字符拼接的第一条黄金法则：单双不能同进用外面是"", 里面就需要是'',外是'', 里面需要是"";
+
+	  // 字符拼接的第二条黄金法则：如果一个字符串中需要把变量的值放进来，需要增加一个变量，看外面是""还是'', 如果是"",那么直接的"+变量+",如果是'',则'+变量+'
+
+	  */
+
+	//第二个版本：
+		  var oTab = document.getElementById("tab");
+		  var str = "";
+		  str+="<ul>";
+			for(var i = 1; i <= 9; i++){ // 这是行
+				var val = "c1";
+				/*switch(i%3){
+					case 0:
+						val = "c1";
+						break;
+					case 1:
+						val = "c2";
+						break;
+					default:
+						val = "c3";
+				}*/
+
+				str+="<li>";
+					for(var j = 1; j <= i; j++){  // 这是列
+						str+="<span  class='"+val+"'>";
+							str+=""+j+" * "+i+" = "+(j*i)+"";
+						str+="</span>";
+					}
+				str+="</li>";
+			}
+		  str+="</ul>";
+
+		  oTab.innerHTML = str;
+		  var oSpans = oTab.getElementsByTagName("span");
+		  for(var i = 0; i < oSpans.length; i++){
+			oSpans[i].className = "c"+(i%3+1);
+		  }
+	
+  </script>
+ </body>
+</html>
