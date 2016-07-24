@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>Document</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  #div1{
+	width:100px;
+	height:100px;
+  }
+  </style>
+ </head>
+ <body>
+	<div id="div1">深圳</div>
+  
+
+  
+  <!--js-->
+  <script>
+
+	// 通过DOM方元素都是对象数据类型的,用typeof检测返回的结果是"object"， 既然是对象数据类型的变存在相关的属性名和属性值
+	var oDiv = document.getElementById("div1");
+	var oStyle = oDiv.style;
+	
+	var c = oDiv.style.backgroundColor;
+	c = "red"
+
+	oDiv.onclick = function(){
+		var bg = oDiv.style.backgroundColor;
+		if(bg == "red"){
+			bg = "yellow";
+		}
+	}
+
+
+
+	oStyle.backgroundColor = "red";
+	oStyle.lineHeight = "100px";
+	oStyle.textAlign = "center";
+	
+	console.dir(oDiv);
+	console.log(oDiv.style);
+	
+  </script>
+ </body>
+</html>

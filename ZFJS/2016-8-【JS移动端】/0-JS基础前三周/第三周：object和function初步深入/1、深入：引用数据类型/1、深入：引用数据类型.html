@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>1、深入：引用数据类型</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+   // 基本数据类型
+	   // var num = 12;
+   // 1. 对象数据类型
+		var obj = {
+			name:"深圳",
+			age:6,
+			teacher:"呈琛"
+		};
+		
+		
+		// 01.在js当中，刚开始加载页面的时候，浏览器会天生自带一个供我们当前js代码执行的环境，我们把这个环境称之为"栈内存"，我们也叫作为作用域
+
+		// 02.而且开始加载页面的那个作用域称之为全局作用域(window)
+
+		// 03.当开始加载js代码之前，首先会把当前全局作用域下带 var 和 function 关键字的进行提前的声明或者定义，我们把这种机制叫做"预解释"(变量提升)，有此人也叫做提前声明
+			/*
+			 -1.在全局作用域下声明的变量叫做全局变量(公用变量)
+
+			 -2.带var 关键字的是提前的声明 var num; 就叫做声明
+			
+			*/
+
+		// 04.带var 关键字的是提前的声明， 什么是提前声明呢？ 就是 var num;就叫做声明
+
+		// 05.什么叫声明呢?：declare 就是 var 变量名;
+		
+		// 06.什么叫定义呢?: defined 给变量名赋值
+
+	// 2. 预解释：var num;
+			console.log(num); // undefined
+			var num = 12;
+			console.log(num); // 12
+  </script>
+ </body>
+</html>
