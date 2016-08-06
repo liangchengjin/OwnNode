@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时10：综合实战题</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  .box{text-align:center; margin-top:50px;}
+  #spanNum{color:red;}
+  #btn{cursor:pointer; -webkit-user-select:none;}
+  </style>
+ </head>
+ <body>
+  <div class="box">
+	 <h3>认为深圳的天气很热的</h3>
+	 <div id="btn">我非常的赞同以上的观点：<span id="spanNum">0</span></div>
+  </div>
+ 
+  <!--js-->
+  <script>
+  var oBtn = document.getElementById("btn");
+  var spanNum = document.getElementById("spanNum");
+
+  // 1.利用全局作用域不销毁的原理，把需要累加的数字定义为全局变量  
+	  /*var count = 0;
+	  oBtn.onclick = function (){	
+		count ++;
+		spanNum.innerHTMNL = count;
+	  }*/
+	  // 弊端：在项目中为了防止全局变量之间的冲突，我闪一般是禁止或者减少使用全局变量的
+
+
+ // 2. 自己形成一个不销毁的私有的作用域来保护我们需要累加的数字 
+	/*
+	001:
+	~function () {
+		var count = 0;
+		  oBtn.onclick = function (){	
+			count ++;
+			spanNum.innerHTMNL = count;
+		  }
+	}
+	
+	002:
+	oBtn.onclick = (function (){
+		  var count = 0;
+		  return function (){	
+			count ++;
+			spanNum.innerHTMNL = count;
+		  }
+	})();
+
+	弊端：有一个不销毁的私有的作用域，所以占那以一丢丢的内存....	
+	*/
+
+
+ // 3. 利用innerHTML的方式处理：每一次点击的时候都先放到页面中获取最新的值，然后累加，最后把累加的结果重新放回去
+   /*
+   oBtn.onclick = function (){		
+	   // spanNum.innerHTML获取面页中的内容返回的是一个字符串
+			spanNum.innerHTMNL++;
+	}
+	弊端：每一次都需要把页面中的内容先转换为字符串，然后再累加，累加完在重新添加回去，当重新的添加的时候浏览器都要重新的渲染
+	*/
+
+
+// 4. 利用自定属性存储(推荐);
+	oBtn.count = 0;
+	oBtn.onclick = function(){		
+		spanNum.innerHTML = ++this.count;
+	}
+
+  </script>
+ </body>
+</html>

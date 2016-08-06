@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时9：综合练习题:360的面试题</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+  var num = 20;
+  var obj = {
+	num:30,
+	fn: function(){
+		this.num *=3;
+		var num = 45;
+		
+		return (function(){
+			this.num +=4;
+			num += 20;
+			console.log(num);
+		})(num); // 把全局变量 num 的值20赋值给了自执行函数的形参，而不是obj下的30，如果想是obj下的30，我们需要写 obj.num		
+	}
+  };
+
+  var fn = obj.fn;
+  fn();
+  obj.fn();
+  console.log(window.num, obj.fn);
+
+ // window: 
+  ~function fn(){
+	// 私有作用域
+  }();
+  </script>
+ </body>
+</html>

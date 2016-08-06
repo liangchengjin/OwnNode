@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时11：单例模式</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+   // 课时11：单例模式: 其实就是起到一个分组的作用
+   
+   // 以前的写法
+	   /*
+		   var name = "呈琛";
+		   var age = 18;
+		   var name = "赵子龙";
+		   var age = 48;
+
+		   console.log(name);
+		   console.log(age);
+	   */
+
+   // 1. 对象数据类型作用(单例模式作用)：
+	 /*
+	  01. 把描述同一个事物(同一个对象)的属性和方法放在一个内存空间下，起到了分组的作用，这样不同事物之的属性即使属性名相同，相互也不会发生冲突，我们把这种分组编写代码的模式叫做做 "单例模式";
+
+	  02. 在单例模式中我们把 persion1或者persion2也叫做"命名空间";	
+
+	 */
+		 var person1 = {name:'呈琛', age:16};
+		 console.log(person1.name, person1.age);
+
+		 var person2 = {name:'赵子龙', age:26};
+		 console.log(person2.name, person2.age);
+
+	//2. 单例模式是一种项目开发中经常使用的模式，因为项目中我们的可以使用单例模式来进行我们的"模块化开发"
+		/*
+		"模块化开发": 对于一相对来说比较大的项目，需要多人协作的开发的，我们一般情况下会根据当前项目的需求划分成几个功能版块，每个人一部分，同时开发，最后把每个人的代码进行合并
+		*/	
+
+		// 如百度的板块
+		// 公共模块
+		var utils = {
+			select:function(){
+			
+			}
+		}
+
+
+		// 01. 页卡模块中的change--->实现选项卡切换
+			var tabReader = {
+				change:function(){
+					utils.select(); // 调用公共模块 在自己命名空间下调用其它的命名空间的方法
+				}
+			}
+
+		// 02. 搜索模块 change--->搜索内容变化处理的
+			var searchRander = {
+				change:function(){
+						this.clickEven(); // 在自己的命名空间下调用自己的命名空间的方法
+					},
+				clickEven:function(){	
+					tabReader.change();
+				}				
+			}
+			searchRander.change();
+ 
+  </script>
+ </body>
+</html>

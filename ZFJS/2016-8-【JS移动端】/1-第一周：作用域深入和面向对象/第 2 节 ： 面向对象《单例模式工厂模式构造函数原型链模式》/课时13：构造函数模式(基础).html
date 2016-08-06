@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时13：构造函数模式(基础)</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	// 课时13：构造函数模式(基础)
+
+	// 1. 这是工厂模式
+		/*
+		function createJsPerson(name, age){
+			var obj = {};
+			obj.name = name;
+			obj.age = age;
+			obj.writeJs = function(){
+				console.log("my name is " + this.name + ", i can write js....");
+			}
+			return obj;
+		}
+		var p1 = createJsPerson("呈琛", 18);
+		p1.writeJs(); // my name is 呈琛, i can write js....
+		*/
+
+
+	// 2. 构造函数模式的目的，就是为了创建一个自定义类，并且创建这个类的实现
+		/*
+		function createJsPerson(name, age){
+				var obj = {};
+				obj.name = name;
+				obj.name = name;
+				obj.age = age;
+				obj.writeJs = function(){
+					console.log("my name is " + this.name + ", i can write js....");
+				}
+				return obj;
+		}
+		var p1 = new createJsPerson("呈琛", 18);
+		p1.writeJs(); 
+		*/
+		
+
+	// 3. 构造函数模式和工厂模式的区别？
+		/*		
+		 01.执行的时候
+			普通函数执行--->createJsPerson();
+
+			构造函数模式--->new createJsPerson(); 通过new执行后，我们的createJsPerson就是一个类了	
+			
+			面函数执行的返回值(p1)就是createJsPerson这个类的一个实例
+		
+		 02. 在函数代码执行的时候
+			-1. 相同点：都是形成一个私有的作用域，然后 形参赋值-->预解释-->代码从上到下执行(类和普通函数一样，它也有普通函数的一面)
+
+			-2.不同点：在代码执行之前，不用自己在手动的创建对象了，浏览器会默认的创建一个对象数据类型值(这个对象其实就是我们当前类的一个实例)
+
+			-3. 接下来代码从上到下执行，以当前的实例为执行的主体(this代表的就是当前的实例)，然后分别是的把属性名和属性值赋值给当前的实例
+
+			-4. 最后浏览默认的把创建的实例返回
+		*/
+
+		//构造函数模式的目的，就是为了创建一个自定义类，并且创建这个类的实现
+		
+			function CreateJsPerson(name, age){
+				// 浏览器默认创建对象就是我们的实例p1 ---> this
+				this.name = name;  // --> p1.name = name;
+				this.age = age;	   // --> p1.age = age;
+				this.writeJs = function(){
+					console.log("my name is " + this.name + ", i can write js...."); // createJsPerson--this 是 p1
+				}
+				// 浏览器在把默认的把创建的实例返回
+			}
+			var p1 = new CreateJsPerson("呈琛", 18);
+			p1.writeJs();  // writeJs 这个 this 是 p1
+
+			var res = CreateJsPerson("深圳", 7); // 这里this 就是window 这样写不是构造函数模式执行而是普通的函数执行，由于没有写return所以res=undefined 并且 CreateJsPerson 这个方法中的this是window
+
+			var p2 = new CreateJsPerson("赵子龙", 49);
+			p2.writeJs();
+
+
+	// 4. 创建一个数组：
+		var ary = [];
+		var ary = new Array();  // 实例创建的方式-->构造函数模式执行的方式
+		/*
+		 不管哪一种方式ary都是Array这个类的实例
+		*/
+
+
+	// 5. js中所有的类都是函数数据类型的，它通过 new 执行变成了一个类，但是它本身也是一个普通函数
+
+	// 6. js中所有的实例都是对象数据类型的
+
+	// 7. 第四个:this
+		/*
+		 在构造函数模式中，类中(函数体中)出现的this.xxx=xxx中的this是当前类的一个实例
+		*/
+
+	// 8. p1和p2都是 CreateJsPerson这个类的实例，所以都拥有writeJs这个方法，但是不同实例之间的方是不一样的
+	   /*
+	   在类中给实例增加的属性(this.xxx=xxx)属于当前实例的私有的属性，实例和实例之间是单独的个体，所以私有的属性之间是相等的
+	   */
+		console.log(p1.writeJs === p2.writeJs); // false
+
+  </script>
+ </body>
+</html>

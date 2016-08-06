@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时8：this关键字</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  <div id="div1">你点我呀。</div>
+  <!--js-->
+  <script>
+
+//1、 this关键字
+	 /*
+	  什么是 this 就是这个
+	  1.我们在js中主要研究中的都是函数中的this
+	  2.js中的"this代表的就是当前行为执行的主体"; js中的context代表的是当前行为执行的环境(区域);
+
+		比如：呈琛在沙县小吃  吃蛋炒饼, this-->就是呈琛 context-->上下文(沙县小吃)	  
+		比如：
+			function 吃饭(){
+				this -->就是 呈琛
+			}
+			呈琛.吃饭(); // 吃饭的行为就是全局作用域下发生的。
+
+
+			~function (){
+				呈琛.吃饭();
+			}();
+
+			console.log(this);  // Window 这里的this就是window
+
+	  3. this是谁和函数在哪定义的和在哪里执行的都没有任何的关系，如果的区分this呢？
+	 */
+
+ // 1. 第一条this: 函数执行，首先看函数名前面是否有".",有的话，"."前面是谁this就是谁；没有话this就是window
+	 function fn(){
+		console.log(this); // window
+	 }
+	 fn(); // this---> 这里的this就是 window
+
+	 var obj = {fn: fn};
+	 obj.fn();  // this--->这里的this就是 obj
+
+	 function sum(){
+		// 这里的 this 就是 window
+		fn();   // this---> 这里的this就是 window
+	 }
+	 sum();
+
+	 var oo {
+		sum:function(){
+			// 这里的 this 就是 oo
+			fn();  // this---> 这里的this就是 window 
+		}
+	 };
+	 oo.sum();
+
+	 // 如果想不起来this了,就想到 你以为 你以为的 就是你以为的。
+
+	
+	// 2.第二条this: 自执行函数的this永远就是window
+
+	// 3.第三条this: 给元素的某一个事件绑定方法，当事件触发的时候，执行对应的方法，方法中的this是当前的元素
+
+	function fn(){
+		console.log(this); // 这里的this是 window
+	}
+	var obj = {fn:fn};
+	fn();
+	obj.fn(); // this -->这里的this是 obj
+	document.getElementById("div1").onclick = fn; // fn中的this就是#div1
+
+	document.getElementById("div1").onclick = function(){
+		// this-->这里的是#div
+		fn(); // this 这里的this是 window
+	};
+
+	 
+  </script>
+ </body>
+</html>

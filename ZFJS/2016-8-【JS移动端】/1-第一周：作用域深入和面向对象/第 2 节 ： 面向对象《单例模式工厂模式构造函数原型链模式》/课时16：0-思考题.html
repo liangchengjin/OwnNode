@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>思考题</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+    // 思考题
+	// 在数组上原型上有一个方法叫做slice, 我们要求大家自己回去后，首先自己实现一个方法 mySlice
+		/*
+			要求：和原来的slice功能一模一样				
+		*/
+	Array.prototype.mySlice= function(){
+		// <js code>
+	}
+
+	考虑的情况：
+		slice(n, m);
+		slice(m);
+		slice();
+		n和m是负数		
+		n<m
+		n和m的值超过了数组的长度了
+		n和m不是有效数字
+		....
+		要求：
+			不能使用数据内置的方法，比如添加不能使用push 而使用ary[ary.length-1] = xxx
+
+	2. 实现一个需求[面试题]
+		(5).plus(10).reduce(2) 5+10-2
+		Number.prototype.plus = function(num){};
+		Number.prototype.reduce = function(num){};
+  </script>
+ </body>
+</html>
