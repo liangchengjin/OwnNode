@@ -4,13 +4,11 @@
   <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
   <meta name="Author" content="">
-  <title>Document</title>
+  <title>5.冒充对象继承</title>
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <!--css-->
-  <link rel="stylesheet" href="../css/foundation.css">
-    <link rel="stylesheet" href="../css/app.css">
   <style>
   *{margin:0; padding:0;}
   body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
@@ -23,7 +21,32 @@
   
   <!--js-->
   <script>
-  
+
+   // 5. 冒充对象继承: 把父类私有的+公有的克隆一分一模一样 给子类私有的
+	function A(){
+		this.x = 100;
+	}
+
+	A.prototype.getX = function(){
+		console.log(this.x);
+	};
+
+	function B(){
+		// this 这里的就是 n
+		var temp = new A;
+		for(var key in temp){
+			csonsole.log(key);
+			this[key] = temp[key];
+		}
+
+		temp = null;
+	}
+	
+
+	var n = new B;	
+	n.getX();
+	console.log(n.x); // 100
+
   </script>
  </body>
 </html>

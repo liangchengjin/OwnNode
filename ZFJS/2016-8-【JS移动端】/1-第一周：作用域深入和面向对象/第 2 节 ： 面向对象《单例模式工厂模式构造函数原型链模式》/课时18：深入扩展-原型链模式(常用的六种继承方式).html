@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时18：深入扩展-原型链模式(常用的六种继承方式)</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	// 创建一个对象: 如何创建
+			var obj = {};
+			var obj = new Object();
+		// 区别
+			var num = 1;
+			var num = new Number(1);
+
+
+
+			Object.prototype.aaa = function(){};
+			var obj = {name:"深圳", age:7};
+		// 遍历
+			for(var key in obj){
+				// --> for int循环在遍历的时候，默认的话可以把自己私有的和在它所属类原型上扩展的属性的方法都可以遍历到，但是一般情况下，我闪遍历一个对象只需要遍历私有的即可，我们可使用以下的判断进行处理
+				/*
+				if(obj.propertyIsEnumerable(key)){
+					console.log(key);
+				}*/
+
+				//console.log(obj[key]);
+				//console.log(key);
+
+				// 判断自己是不是私有的
+				if(obj.hasOwnProperty(key)){
+					console.log(key);
+				}
+			}
+			obj.aaa();
+			obj.__proto__.aaa();
+
+		// obj.propertyIsEnumerable("age"); 可枚举
+
+
+
+
+
+  
+  </script>
+ </body>
+</html>
