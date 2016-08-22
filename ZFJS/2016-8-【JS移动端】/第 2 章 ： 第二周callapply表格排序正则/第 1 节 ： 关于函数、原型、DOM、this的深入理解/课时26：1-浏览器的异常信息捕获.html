@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>浏览器的异常信息捕获</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+	//1. 我们在JS中使用try、catch进行浏览器的异常信息捕获
+		/*
+		console.log(num);
+		console.log("ok"); // Uncaught ReferenceError: num is not defined(…) 在JS中本行报错，下面代码都不在执行了
+		*/
+
+		//01. 我们16行代码执行报错，如果用try\catch捕获了异常信息，不影响下面的代码继续执行; 如果try中的代码执行出错了，会默认的去执行catch中的代码
+			try{
+				console.log(num);
+			}catch(e){ // ->这里的形参必须要写，我们一般起名为e
+				//console.log("报错了~~~");
+				console.log(e.message); // -->num is not defined 可以收集当前代码报错的原因 e.message 是显示报错的信息
+			}
+			console.log("ok");
+
+			
+			// finally
+			try{
+				// <js code>
+			}catch(e){
+				// 如果代码报错了执行 catch中的代码
+			}finally{
+				// 一般不用：不管try中的代码是否报错，都要执行finally中的代码
+			}
+
+
+	//2. throw new Error("里面自定义报错的内容") 有时候即想捕获到错误的信息，又想不让下面的代码继续执行
+		try{
+			console.log(num);
+		}catch(e){ 			
+			//console.log(e.message); // -->可以得到报错的信息，把其进行统计
+			// -->手动抛出一条错误信息，终止代码执行
+			throw new Error("当前网络繁忙，请稍后在试~~~"); // new Error 是创建这个错误信息的一个实例
+
+			new ReferenceError; // 引用错误  就是没有这个东西
+			new TypeError;		// 类型错误
+			new RangeError;		// 范围错误
+		}
+		console.log("ok");
+
+			
+  
+  </script>
+ </body>
+</html>

@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时28：JSON及操作</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+  // 课时28：JSON及操作
+
+  //1. JSON 不是一个单独的数据类型，它只是一种特殊的数据格式->它是对象数据类型的
+	/*
+	var obj = {name:"呈琛", age:7}; // --> 这是普通格式的对象
+	var josnObj = {"name":"呈琛", "age":7}; // --> json格式的对象(相对于普通的格式来说，只是把属性名用双引号包起来了)
+	*/
+
+
+  //2. 在window浏览器对象中，提供了一个叫做JSON的属性，它是里面提供了两个方法：
+	 /*
+	 window.JSON
+
+		1). JSON.parse -->是把JSON格式的字符串转为JSON格式的对象
+		2). JSON.stringify --> 是把JSON格式的对象转换为JSON格式的字符串
+	 */
+	var obj = {name:"呈琛", age:7}; 	
+	var jsonStr = JSON.stringify(obj);		// {"name":"呈琛","age":7}
+	console.log(jsonStr); 
+	
+
+	var str = '{"name":"呈琛", "age":7}';  
+	var parSe = JSON.parse(str);		    // Object {name: "呈琛", age: 7}
+	console.log(parSe);
+	console.log(parSe.name, parSe.age);		// 呈琛 7
+
+	// 重点：在IE6~8浏览器中，我们的window下没有JSON对象，刚才的parse和stringify都不存在了
+		/*
+			-> 把JSON格式的字符串转换换为JSON格式的对象
+			-> 把JSON格式的对象转换为JSON格式的字符串(后期在讲)
+		*/
+	
+	// evl
+	var str = '{"name":"呈琛", "age":7}';
+	eval("("+str+")"); // --> 不要问为什么，一定要记住使用eval的话，不要忘记手动的加一个小括号
+
+	
+  </script>
+ </body>
+</html>

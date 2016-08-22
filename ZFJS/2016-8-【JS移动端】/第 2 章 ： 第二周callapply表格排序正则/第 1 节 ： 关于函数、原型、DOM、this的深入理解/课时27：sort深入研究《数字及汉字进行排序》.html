@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时27：sort深入研究</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+   // 课时27：sort深入研究
+		//1. 一维数组
+		var ary = [12,23,14,34,23,1,14,16,26,2];
+
+		ary.sort(function (a , b) {
+			return 1; // 返回一个 1是什么意思？ 就是不管a和b谁大，每一次都返回一个恒大于零的数，也就是每一次a和b都交换位置，最后的结果就是原有数组倒过来排序列了 ====> reverse
+		});
+		console.log(ary);
+
+		// ary.sort(); // ->这样只能处理10以内的数字排序		
+		ary.sort(function(a , b){
+			// return a - b; // 这里的a 是什么 ，那么 b又是什么
+			// a --> 是每一次执行匿名函数的时候，找到的数组中的当前项
+			// b --> 是当前、前的后一项
+			console.log(a, b);
+
+			// return a - b; // 01. 是升序 如果a>b, 返回的是>0, a和b交换位置
+			// return b - a; // 02. 是降序 如果b>a, 返回的是>0, a和b交换位置
+			
+			// -> 我return 的是一个>0 / <=0的数，大于0让a和b交换一下位置，小于等 于0原来的位置不动
+		});
+
+	// 2.回调函数
+		/*
+		 什么是回调函数：把一个方法 A 当做参数值，传递给另外一个函数B，然后在B执行的过程中，我们随时根据需求让A方法执行
+		*/
+		function fn (callback) {
+			callback();  
+		};
+		fn(function(){});
+
+		function A(){
+			console.log("我是一个A的方法")
+		}
+		function B(fn){
+			fn();
+			fn();
+			fn();
+		}
+		B(A); // 把上面的A的方法当做一个参数传给B，让B去执行A的方法
+
+
+
+	//2. 二维数组：进行排序
+		var ary =  [
+			{name:"黄小明", age:78},
+			{name:"李小刚", age:13},
+			{name:"赵子龙", age:99},
+			{name:"呈琛", age:16}
+		];
+		/*给二维数组 按年龄 进行排序*/
+			/*
+			ary.sort(function (a, b) {
+				// 根据年龄进行排序
+				return (parseFloat(a.age) - parseFloat(b.age));
+			});
+			console.log(ary);
+			*/
+
+		/*给二维数组 按姓名 进行排序*/
+			/*
+			用 localeCompare(); 进行汉字排序
+			*/
+		ary.sort(function (a, b) {
+			// 根据年龄进行排序
+			return a.name.localeCompare(b.name);
+		});
+		console.log(ary);
+
+  </script>
+ </body>
+</html>

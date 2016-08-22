@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时19：原型链综合复习(参考)</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+	<div id="div1"></div>
+  
+  <!--js-->
+  <script>
+   // 课时19：原型链综合复习(参考)
+
+   // 
+    /*
+	div、 a、 document、 window
+	*/
+   var oDiv = document.getElementById("div1");
+   console.dir(oDiv); // 把它的全部方法列出来
+
+   // 创建一个类
+   function Fn(){
+	   this.x = 100;
+   }
+   var f1 = new Fn;
+   var f2 = new Fn;
+  </script>
+ </body>
+</html>

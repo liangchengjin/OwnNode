@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时19：原型链综合复习(参考)</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+	<div id="div1"></div>
+  
+  <!--js-->
+  <script>
+   // 课时19：原型链综合复习(参考)
+	
+	// 1. 所有的函数数据类型(普能函数、类)都天生自带一个属性：prototype，它存储值是一个对象数据类型的值，浏览器默认为其开辟一个堆内存
+
+	// 2. 在浏览器给prototype默认开辟的这个堆内存上有一个默认的属性：constructor，指向当前类本身
+
+	// 3. 每一个对象数据类型(普通的对象、数组、正则、实例、 prototype)都天生自带一个:__proto__，指向当前实例所属类的类型
+	
+
+	function Fn(){
+		//-->在类的函数体中写的this.xxx=xxx都是给当前类的实例增加的私有的属性或者方法
+		this.x = 100;
+		this.y = 200;
+	}
+	
+	//-->在类的原型上写的，都是给当前类的实例或者当前类，增加的公有的
+	Fn.prototype.getX = function(){
+		console.log();
+	}
+	Fn.prototype.getY = function(){
+		console.log();
+	}
+
+	var f1 = new Fn;
+	var f2 = new Fn;
+  </script>
+ </body>
+</html>

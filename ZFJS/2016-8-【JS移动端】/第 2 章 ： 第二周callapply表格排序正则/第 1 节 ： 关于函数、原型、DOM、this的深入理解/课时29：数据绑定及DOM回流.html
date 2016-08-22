@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时29：数据绑定及DOM回流</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  body, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #ul1 {
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        #ul1 li {
+            height: 35px;
+            line-height: 35px;
+            border-bottom: 1px dashed #999;
+        }
+		#ul1 li span:first-child{
+			display:inline-block;
+			width:20px;
+			height:20px;
+			background:red;
+			color:#FFf;
+			line-height:20px;
+			text-align:center;
+			border-radius:50%;
+			margin-right:10px;
+		}
+    </style>
+ </head>
+ <body>
+  <ul id="ul1">
+		<li>习近平：坚持党校姓党根本工作原则</li>
+		<li>李克强推销中国产能：从冰天雪地到热带雨林</li>
+	</ul>
+
+  
+  <!--js-->
+  <script>
+  // 课时29：数据绑定及DOM回流
+
+	var oUl = document.getElementById("ul1");
+	var oLis = oUl.getElementsByTagName("li");
+	for(var i = 0; i < oLis.length; i++){
+		oLis[i].onmouseover = function(){
+			this.style.backgroundColor = "green";
+		}
+
+		oLis[i].onmouseout = function(){
+			this.style.backgroundColor = "red";
+		}
+	}
+
+	//这里存放的是我们JSON格式的数据
+	var ary = [
+		{
+			"title": "从习近平讲话看下一步反腐倡廉工作着力点",
+			"desc": "习近平总书记１２日上午在十八届中央纪委六次全会上发表重要讲话，深刻分析反腐败斗争依然严峻复杂的形势，提出当前和今后一个时期的目标任务。"
+		},
+		{
+			"title": "李克强主持国务院常务会议再推简政放权",
+			"desc": "国务院总理李克强1月13日主持召开国务院常务会议，决定再推出一批简政放权改革措施，让市场活力更大释放;确定完善高新技术企业认定办法，使更多创新型企业得到政策支持。"
+		},
+		{
+			"title": "从习近平讲话看下一步反腐倡廉工作着力点",
+			"desc": "习近平总书记１２日上午在十八届中央纪委六次全会上发表重要讲话，深刻分析反腐败斗争依然严峻复杂的形势，提出当前和今后一个时期的目标任务。"
+		},
+		{
+			"title": "李克强主持国务院常务会议再推简政放权",
+			"desc": "国务院总理李克强1月13日主持召开国务院常务会议，决定再推出一批简政放权改革措施，让市场活力更大释放;确定完善高新技术企业认定办法，使更多创新型企业得到政策支持。"
+		},
+		{
+			"title": "从习近平讲话看下一步反腐倡廉工作着力点",
+			"desc": "习近平总书记１２日上午在十八届中央纪委六次全会上发表重要讲话，深刻分析反腐败斗争依然严峻复杂的形势，提出当前和今后一个时期的目标任务。"
+		},
+		{
+			"title": "李克强主持国务院常务会议再推简政放权",
+			"desc": "国务院总理李克强1月13日主持召开国务院常务会议，决定再推出一批简政放权改革措施，让市场活力更大释放;确定完善高新技术企业认定办法，使更多创新型企业得到政策支持。"
+		},
+		{
+			"title": "李克强主持国务院常务会议再推简政放权",
+			"desc": "国务院总理李克强1月13日主持召开国务院常务会议，决定再推出一批简政放权改革措施，让市场活力更大释放;确定完善高新技术企业认定办法，使更多创新型企业得到政策支持。"
+		}
+	];
+
+	// 1. 利用动态创建元素节点和把它追加到页面中的方式实现数据绑定
+		/*
+		for(var i = 0; i < ary.length; i++){
+			var cur = ary[i];
+			var oLi = document.createElement("li"); // 动态创建一个li		
+			oLi.innerHTML= "<span>"+(i+4)+"</span>"+cur.title;
+			oUl.appendChild(oLi);
+		}*/
+	// 优势：把需要动态绑定的内容一个个的追加到页面中，对原来的元素没有任何的影响
+	// 弊端：每当创建一个li，我们就添加到页面中，引发一次DOM的回流，最后引发回流的次数过多
+
+	// 2. 字符串拼接的方式：首先循环需要绑定的数据，然后把需要动态绑定的标签以字符串的方式拼接到一起，拼接完成后，最后统一添加到页面当中---->"字符串拼接绑定数据是我闪以后工作中最常用的一种绑定数据的方式"-->有些是用模板引擎数据绑定(jade、kTemplate、angular.js、backone.js....)
+		/*
+		var str = "";
+		for(var i = 0; i < ary.length; i++){
+			var cur = ary[i]; // 得到每一个数组
+			str+="<li>";
+			str+="<span>"+(i+3)+"</span>";
+			str+=cur.title;
+			str+="</li>";
+		}*/
+		// oUl.innerHTML += str; // --> oUl.innerHTML = oUl.innerHTML(把之前的三个li以字符串的方式获取到)+str; (拼接完成的整体还是字符串，最后在把字符串统一的添加到页面中，浏览器还需要把字符串渲染成为对就的标签);
+
+		//弊端：我们把新拼接的字符串添加到#Ull中，原有的三个li鼠标滑过效果都消失了(原来标签绑定的事件都了)
+		//优势：事先把内容拼接好，最后统一添加到页面中，只引发一次回流
+	
+	
+	// 3. JS中DOM深入知识：
+		/*
+			--> 回流(重排 reflow):当页面中的HTML结构发生改变(增加、删除元素、位置发生改变...),浏览器需要从新的计算一遍最新的DOM结构，从新的对当前的页面进行渲染
+			
+			--> 重绘:某一个元素的部分样式发生改变了(背景颜色),浏览器只需要重新的渲染当前的元素即可 
+		*/
+
+
+	// 4. 文档碎片 《推荐》  createDocumentFragment
+		// 创建一个文档碎片
+		var frg = document.createDocumentFragment(); // 创建一个文档碎片
+		for(var i = 0; i < ary.length; i++){
+			var cur = ary[i];
+			var oLi = document.createElement("li"); // 动态创建一个li		
+			oLi.innerHTML= "<span>"+(i+4)+"</span>"+cur.title;
+			frg.appendChild(oLi);
+		}
+		oUl.appendChild(frg);
+		console.dir(frg);
+		frg = null; // 手动释放它的堆内存，它是一个类数组
+
+
+  </script>
+ </body>
+</html>

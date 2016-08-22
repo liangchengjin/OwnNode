@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>关于原型链中的this问题</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+  function Fn(){		
+		this.x = 100;
+		//this.y = 200;
+		this.getX = function(){
+			console.log(this.x);
+		}
+	}	
+	
+	Fn.prototype.getX = function(){
+		console.log(this.x);
+	}
+
+	Fn.prototype.setX = function(n){
+		this.x = n;
+	}
+
+	var f1 = new Fn;
+	f1.getX(); // -->this-->f1, onsole.log(f1.x) 100
+	f1.__proto__.getX();; // thsi->f1.__proto__, console.log(f1.__proto__.x) undefined;
+	Fn.prototype.setX(300); // this.-->prototype
+	/*
+	Fn.prototype.getY = function(){
+		console.log(this.y);
+	}*/
+
+	var f1 = new Fn;
+	var f2 = new Fn;
+	// 1. 看方法执行的时候，"."前面是谁，th就是谁
+	// 2. 把函数体中的this替换成分析的结果
+	// 3. 按照原型链的查找模式找到对应的值即可
+
+	f1.getX(); // --> getX中的this是f1 100
+
+  </script>
+ </body>
+</html>

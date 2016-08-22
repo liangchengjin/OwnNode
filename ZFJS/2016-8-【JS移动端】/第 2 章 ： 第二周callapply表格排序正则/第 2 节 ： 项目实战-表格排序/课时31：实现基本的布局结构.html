@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时31：实现基本的布局结构</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif; -webkit-user-select:none;}
+  
+  .box{
+	margin:20px auto;
+	padding:20px;
+	width:400px;
+	border:1px solid green;
+	border-radius:10px;
+	box-shadow:3px 3px 10px 0 red;
+  }
+  .box thead{
+	background:green;
+	color:#FFF;
+  }
+
+  .box thead tr{
+	height:30px;
+  }
+
+  .box thead tr th{
+	width:100px;
+	text-align:center;
+  }
+
+  .box thead tr th.cursor{
+	cursor:pointer;
+  }
+
+  .box tbody tr{
+	height:30px;
+  }
+
+  .box tbody tr.bg{
+	background:#99ff33;
+  }
+
+  .box tbody tr td{
+	width:100px;
+	text-align:center;
+  }
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<table id="tab" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th class="cursor">年龄</th>
+					<th class="cursor">武力</th>
+					<th>性别</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>令狐冲</td>
+					<td>60</td>
+					<td>99</td>
+					<td>男</td>
+				</tr>
+				<tr class="bg">
+					<td>令狐冲</td>
+					<td>60</td>
+					<td>99</td>
+					<td>男</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+  
+  <!--js-->
+  <script>
+  
+  </script>
+ </body>
+</html>

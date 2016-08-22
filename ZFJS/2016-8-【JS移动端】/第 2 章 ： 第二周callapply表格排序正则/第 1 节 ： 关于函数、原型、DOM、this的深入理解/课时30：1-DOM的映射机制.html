@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时30：1-DOM的映射机制</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  body, ul, li {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        #ul1 {
+            margin: 20px auto;
+            width: 50%;
+        }
+
+        #ul1 li {
+            height: 35px;
+            line-height: 35px;
+            border-bottom: 1px dashed #999;
+        }
+		
+  </style>
+ </head>
+ <body>
+	<a id="aa">A</a>
+	<ul id="ull">
+		<li>90</li>
+		<li>55</li>
+		<li>56</li>
+		<li>33</li>
+		<li>20</li>
+	</ul>
+
+  
+  <!--js-->
+  <script src="js/utils.js"></script>
+  <script>
+	// 课时30：1-DOM的映射机制
+	
+	// DOM映射的机制：页面中的标签和JS中获取到的元素对象(元素集合)是紧紧的绑定的在一起的，页面中的HTML结构改变了，JS中不需要重新获取，集合里面的内容也会跟着自动变
+	
+	var oUl = document.getElementById("ull");
+	var oLis = oUl.getElementsByTagName("li");
+	console.log(oLis);
+
+	var oLi = document.createElement("li");
+	oUl.appendChild(oLi);
+	oLis[4].style.background = "red";
+
+	console.log(oLis.length); // -->6 没有重新的获取，但是oLis这个集合中的长度和内容会自动跟着发生必改变
+
+	
+
+  </script>
+ </body>
+</html>
