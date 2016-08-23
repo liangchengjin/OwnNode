@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时32：实现Ajax数据读取和绑定</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif; -webkit-user-select:none;}
+  
+  .box{
+	margin:20px auto;
+	padding:20px;
+	width:400px;
+	border:1px solid green;
+	border-radius:10px;
+	box-shadow:3px 3px 10px 0 red;
+  }
+  .box thead{
+	background:green;
+	color:#FFF;
+  }
+
+  .box thead tr{
+	height:30px;
+  }
+
+  .box thead tr th{
+	width:100px;
+	text-align:center;
+  }
+
+  .box thead tr th.cursor{
+	cursor:pointer;
+  }
+
+  .box tbody tr{
+	height:30px;
+  }
+
+  .box tbody tr.bg{
+	background:#99ff33;
+  }
+
+  .box tbody tr td{
+	width:100px;
+	text-align:center;
+  }
+  </style>
+ </head>
+ <body>
+	<div class="box">
+		<table id="tab" cellspacing="0" cellpadding="0">
+			<thead>
+				<tr>
+					<th>姓名</th>
+					<th class="cursor">年龄</th>
+					<th class="cursor">武力</th>
+					<th>性别</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>令狐冲</td>
+					<td>60</td>
+					<td>99</td>
+					<td>男</td>
+				</tr>
+				<tr class="bg">
+					<td>令狐冲</td>
+					<td>60</td>
+					<td>99</td>
+					<td>男</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>  
+  <!--js-->
+  <script src="js/utils.js"></script>
+  <!--<script src="js/tab.js"></script>-->
+  <script>
+  // 课时32：实现Ajax数据读取和绑定
+	/*
+	 1.引入js是有顺序限制的:根据JS之间的依赖关系，我们按照顺序依次引入，顺序一但出现问题
+
+	 2.想要操作谁就先获取谁
+	*/
+  var oTab = document.getElementById("tab");
+  var tHead = oTab.tHead;		// 获取表格的头部的第一个
+  //var oThs = tHead.rows[0];	// 获取所有的表样的行 [0] 是代表第一列 "rows" 是代表所的行
+  //var oCells = oThs.cells;	// 获取所有head表格列	"cells" 是代表所有的列
+
+  // 获取头部下面的第一行的所有的列
+  var oThs = tHead.rows[0].cells;
+  // 获取表的第一个tbody标签
+  var tBody = oTab.tBodies[0];
+  // 获取tbody下所有的行
+  var oRows = tBody.rows;
+  var data = null;
+
+
+  // 1. 首先获取后台(data.txt)中的数据-->也就是 "JSON格式的字符串", 用Ajax(async javascript and xml)
+  //1). 先创建一个Ajax对象
+  var xhr = new XMLHttpRequest;
+
+  //2).打开我们需要请求数据的那个文件地址
+  xhr.open("get", "json/json-sort.js", false);
+
+  //3).监听请求的状态
+
+  xhr.onreadystatechange = function(){
+	  if(this.readyState === 4 && /^2\d{2}$/.test(xhr.status)){
+
+		  var val = xhr.responseText;
+		  data = utils.jsonParse(val);
+		  //console.log(data);
+
+	  }
+  };
+
+  //4).发送请求
+  xhr.send(null);
+
+
+  // 2. 现实我们的数据绑定
+  console.log(data);
+
+  function bind() {
+	  var frg = document.createDocumentFragment();
+	  for (var i = 0; i < data.length; i++) {
+		  var cur = data[i];
+		  var oTr = document.createElement("tr"); // -->每一次循环创建一个tr
+		  // 每一个tr中还需要创建四个td，因为每一个对象中有四组键值对
+		  for (var key in cur) {
+			  var oTd = document.createElement("td");
+			  if (key === "sext") {
+				  oTd.innerHTML = cur[key] === 0 ? "男" : "女";
+			  }
+			  oTr.appendChild(oTd);
+		  }
+		  frg.appendChild(oTr);
+	  }
+	  tBody.appendChild(frg);
+	  frg = null;
+  }
+  bind();
+
+  // 现实隔行变色
+  function changeBg() {
+	  for (var i = 0; i < oRows.length; i++) {
+		  oRows[i].className = i % 2 === 1 ? "bg" : null;
+	  }
+  }
+
+
+  </script>
+ </body>
+</html>
