@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+
+	<style>
+		*{
+			margin:0;
+			padding:0;
+		}
+		#box{
+			width:306px;
+			margin:50px auto;
+			border:5px solid green;
+		}
+		#list{
+			width:300px;
+			border:1px solid red;			
+		}
+		#list li{
+			list-style:none;
+			height:50px;
+			width:100%;
+			border-bottom:2px solid green;
+			}
+
+		#list li a{
+			font-size:20px;
+			color:#666;
+
+			}
+	</style>
+</head>
+<body>
+<div id="box">
+	<p><input type="text" id="txt"/><input type="button" name="" id="sub" value="添加"></p>
+	<ul id="list">		
+	</ul>
+	<p>
+	<input type="button" id="del" value="清除"/>
+	<input type="button" id="reloads" value="刷新"/>
+	</p>
+</div>
+<script type="text/javascript">
+
+	var oSub = document.querySelector("#sub");
+	var oTxt = document.querySelector("#txt");
+	var oList = document.querySelector("#list");
+	var del = document.querySelector("#del");
+	var reloads = document.querySelector("#reloads");
+
+	var ary = [];
+	
+	oSub.onclick = function(){
+		ary.push(oTxt.value);
+		console.log(oTxt.value);
+		console.log(ary.length);
+
+		//ary.length > 10 ? window.localStorage.setItem("objs", ary) : void 0;
+		var str = [];
+		if(ary.length > 10){			
+			for(var i = ary.length-4; i<ary.length; i++){				
+				str.push(ary[i]);				
+			}						
+		}
+		window.localStorage.setItem("objs", str);
+		// 设置存储
+		//window.localStorage.setItem("objs", str);
+	}
+
+	//window.localStorage.setItem("objs", str);
+
+	del.onclick = function(){
+		window.localStorage.clear();
+	}
+
+	reloads.onclick = function(){
+		window.location.reload();
+	}
+
+	// 获取数据 
+	var getRage = window.localStorage.getItem("objs");
+	console.log(getRage);
+	
+	// 截取key里面的数据
+	var strAry = Array();
+	var arySplit = getRage.split(",");
+	console.log(arySplit);
+	
+	var fra = document.createDocumentFragment();
+	for(var i = arySplit.length-4; i<arySplit.length; i++){
+		var Li = document.createElement("li");
+		var oA = document.createElement("a");
+		oA.innerHTML = arySplit[i];
+		Li.appendChild(oA);
+		
+		console.log(arySplit[i]);
+		fra.appendChild(Li);
+	}
+	oList.appendChild(fra);
+	//fra = null;
+
+</script>
+</body>
+</html>

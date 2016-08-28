@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+
+<p><input type="text" id="txt"/><input type="button" name="" id="sub" value="添加"></p>
+
+<script type="text/javascript">
+
+	var oSub = document.querySelector("#sub");
+	var oTxt = document.querySelector("#txt");
+
+	var ary = [
+	];
+
+	oSub.onclick = function(){
+		ary.push(oTxt.value);
+		console.log(oTxt.value);
+		console.log(ary.length);
+
+
+		//ary.length > 10 ? window.localStorage.setItem("objs", ary) : void 0;
+		var str = [];
+		if(ary.length > 10){			
+			for(var i = ary.length-4; i<ary.length; i++){
+				str.push(ary[i]);	
+			}
+			//window.localStorage.setItem("objs", str);			
+		}
+		window.localStorage.setItem("objs", str);
+	}
+
+	// 取数据的最后4位
+		/*	
+		for(var i = ary.length-4; i<ary.length; i++){
+			console.log(ary[i]);	
+		}*/
+
+
+	// 判断
+	
+
+
+	// 设置存储
+	//var setRage = window.localStorage.setItem("objs", ary);
+	// 获取数据 
+	var getRage = window.localStorage.getItem("objs");
+	console.log(getRage);
+	
+	// 取key里面的数据
+	var strAry = Array();
+	var arySplit = getRage.split(",");
+	console.log(arySplit);
+
+	for(var i = arySplit.length-4; i<arySplit.length; i++){
+		console.log(arySplit[i]);
+	}
+</script>
+</body>
+</html>
