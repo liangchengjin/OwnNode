@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
   <meta name="Author" content="">
-  <title>课时32：实现Ajax数据读取和绑定</title>
+  <title>课时35：实现多列排序</title>
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -160,6 +160,71 @@
 	  }
   }
 changeBg();
+
+
+// 4. 编写表格排序的方法：实现按照年龄这一列进排序
+function sort(n){ // -n 是当前点击这一列的索引
+    // 01. 把存储所有行的类数组转换为数组
+
+    var _this = this;
+    var ary = utils.listTToArray(oRows);
+
+
+
+    // 02. 给数组进行排序
+    //oThs[1].flag *= -1; // 每一次执行sort，进行的第一就是先让flag的值*-1 -->第一次flag=-1 *1=-1 flag=1 升序, 第二次*1=-1 flg=-1 降序   第三次*=-1 flat=1 升序...
+
+    _this.flag *= -1; // 优化
+
+    ary.sort(function(a, b){
+
+        // 中文汉字排序
+        var curInn = a.cells[n].innerHTML;
+        var nexInn = b.cells[n].innerHTML;
+
+        var curInnNum = parsetFloat(a.cells[n].innerHTML);
+        var nexInnNum = parsetFloat(b.cells[n].innerHTML);
+        if(isNaN(curInnNum) || isNaN(nexInnNum)){
+            return (curInnNum.localeCompare(nexInn)) * _this.flag;
+        }
+        return (curInnNum - nexInnNum) * _this.flag;
+
+
+        // 数字排序
+        //parseFloat(a.cells[1].innerHTML) - parsetFloat(b.cells[1].innerHTML) *oThs[1].flag;
+        return parseFloat(a.cells[n].innerHTML) - parsetFloat(b.cells[n].innerHTML) *_this.flag;
+    });
+
+    // 03. 按照ary中的最新顺序，把每一行重新的添加到tBody当中
+    var frg = document.createDocumentFragment();
+    for(var i = 0; i < ary.length; i++){
+        frg.appendChild(ary[i]);
+    }
+    tBody.appendChild(frg);
+    frg = null;
+}
+
+// 5. 点击第二列实现排序:
+    /*
+    oThs[1].flag = 1; // --> 给当前点击这一列增加一个自定义属性flat， 存储的值是1
+    oThs[1].onclick = function(){
+        //sort();// ->
+        sort.call(oThs[1]);
+        sort.call(this);
+    }
+    */
+    // 所有具有class="cursor"这个样式的列，都可以现实点击排序
+    for(var i = 0; i< oThs.length; i++){
+        var curTh = oThs[i];
+        if(curTh.className === "cursor"){
+            curTh.index = i; // ->用来存储索引
+            curTh.flag = -1; // ->用来实现升序
+            curTh.onclick = function(){
+                sort.call(this, this.index);
+            }
+        }
+    }
+
 
   </script>
  </body>
