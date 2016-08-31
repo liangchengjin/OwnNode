@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时38：正则的元字符和一些简单的应用</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  
+
+  
+  <!--js-->
+  <script>
+
+   // 课时38：正则的元字符和一些简单的应用
+	
+
+	// \d 代表一个0到9之间的数字
+	var reg = /\d/; 
+	console.log(reg.test("cheng2016"));  // true
+
+	reg = /^\d$/; // 只能是一个 0到9 之间的一个数字, 不能有多个数字
+	console.log(reg.test("9"));		// true
+	console.log(reg.test("0123"));	// false
+
+
+	//一. 元字符
+		/*
+			01.每一个正则表达之都是由元字符和修饰符组成的
+
+			"什么是元字符"：
+				[元字符]  --> 就是在 // 之间具有意义的一些字符
+		
+			1.具有特殊意义的元字符
+				\: 转义字符，转义后面字符所代表的含义
+
+				^: 以某一个元字符开始
+
+				$: 以某一个元字符结尾
+
+					如：var reg = /^\d$/;
+
+			2. 代表出现次数的量词元字符
+				*: 出现零到多次
+
+				+: 出现1到多次					
+
+				?: 出现零次或多次
+
+				{n}:	出现n次
+				{n,}:	出现n到多次
+				{n, m}: 出现n到m次
+				
+				\n: 匹配一个换行符
+				.: 除了\n以外的任意字符			
+
+			*/
+			// +: 出现1到多次
+				var reg = /^\d+$/; // 出现一到多次
+				console.log(reg.test("2016")); // true
+
+				// 案例：一个简单的验证手机号的正则：11位数字，第一位是1
+				var reg = /^1\d{10}$/;
+				console.log(reg.test("13588458688"));  // 10
+
+			// .: 除了\n以外的任意字符
+				var reg = /^0.2$/;	// 以0开头，以2结尾，中间可以是除了\n的任意字符
+				console.log(reg.test("0.2"));	// true
+				console.log(reg.test("0-2"));	// true
+
+				reg = /^0\.2$/;
+				console.log(reg.test("0-2"));	// false
+
+				reg = /\./;
+				console.log(reg.test("#"));
+
+
+		//3. (): 分组-->就是把一个大正则本身划分成几个小的正则
+			var reg = /^(\d+)cheng(\d+)$/;
+		
+		// x|y: x或者y中一个
+
+		// [xyz]: x或者y或者z中的一个
+
+		// [^xyz]: 除了三个中的任何一个字符
+
+		// [a-z]: a-z之间任何一个字符
+
+		// [^a-z]: 除了a-z之间的何一个字符
+
+		// \d: 一个0-9之间的数字
+
+		// \D: 除了0-9之间数字以外的何字符
+
+		// \b: 匹配一个边界符 "w1 w2 w3"
+		
+		// \w: 数字、字母、下划线中的任意一个字符 [0-9a-zA-Z_]
+
+		// \s: 匹配一个空白字符 字符、一个制表符、换页符....
+		var reg = /\s/;
+		console.log(reg.test(" "));  // true
+
+  </script>
+ </body>
+</html>
