@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
   <meta name="Author" content="">
-  <title>课时39：正则创建方式的区别</title>
+  <title>课时40：编写简单的正则表达式</title>
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -16,12 +16,40 @@
   </style>
  </head>
  <body>
-  
-
-  
   <!--js-->
   <script>
-  
+	// 课时40：编写简单的正则表达式
+	
+
+	// 关于中括号中第二个知识点：中括号中不识别两位数
+		var reg = /^[12]$/;		// 它是1或者2中的一个
+
+		var reg = /^[12-68]$/;	// 这是 1、2-6中的一个、8 三个中的一个
+
+		var reg = /^[\w-]$/;	// 数字、字母、下划线、- 中的一个
+		console.log(reg.test("-")); // true
+	
+	// 2. 年龄价于18-65之间 18-19  20-59  60-65
+		var reg = /^(1[8-9]|[2-5]\d|6[0-5])$/;
+		console.log(reg.test("30"));	// true
+		console.log(reg.test("63"));	// true
+
+	// 3. 验证邮箱的正则(简版)
+		// 左边： 数字、字母、下划线。。。。
+		// 553585163@qq.com
+		// 445128206@qq.com
+		// chengjin@sina.com
+		// c_heng_jing@163.com
+		var reg = /^[\w.-]+@[0-9a-zA-Z]+(\.[a-zA-Z]{2,4}){1,2}$/;
+		
+	// 4. 中国标准真实姓名 2-4位汉字
+		var reg = /^[\u4e00-\u9fa5]{2,4}$/;
+
+	// 5. 身份证号码
+		var reg = /^\d{17}(\d|X)$/;
+
+		// 13 08219901240617	
+		var reg = /^\(d{2})(\d{4})(\d{4})(\d{2})(\d{2})(\d{2})(\d)(\d|X)$/;
   </script>
  </body>
 </html>

@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时42：分组捕获</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+  
+  </style>
+ </head>
+ <body>
+  <!--js-->
+  <script>
+  // 课时42：分组捕获
+	// 1. 改变优先级
+
+	// 2. 分组引用
+
+	// \2代表和第二个分组出现一模一样的内容；\1第一个分组出现一模一样的内容
+		/*
+		var reg = /^(\w)\1(\w)\2$/;
+		console.log(reg.test("ccjj"));	// true
+		console.log(reg.test("cc0jin"));// false
+		*/
+
+	// 3. 分配捕获：-->正则在捕获的时候，不仅仅把大正则匹配的内容捕获到，而且还可以把小分组的内容捕获到		
+		/*
+		(?:) 在分组中?： 的意思是只匹配不捕获
+		*/
+		/*
+		var reg = /^(\d{2}) (\d{4}) (\d{4}) (\d{2}) (\d{2}) (\d{2}) (\d) (\d|X)$/;
+		var str = "14272619900981211";
+		console.log(reg.exec(str));
+		*/
+		// ary[0] --> 大正则匹配的内容
+		// ary[1] --> 第一个分组捕获的内容
+		// ary[2] --> 第一个分组捕获的内容
+		// ....
+
+		//console.log(str.metch(reg)); // --和exec获取的结果是一样的
+
+		var reg = /shenzheng(\d+)/g;
+		var str = "shenzheng1234shenzheng34567shenzheng5678";
+		// 我们用exec执行三次，每一次不仅仅把大正则匹配的获取到，而且还可以获取第一个分组的内容
+		console.log(reg.exec(str)); // ["shenzheng1234", "1234", index: 0, input: "shenzheng1234shenzheng34567shenzheng5678"]
+		console.log(reg.exec(str)); // ["shenzheng34567", "34567", index: 13, input: "shenzheng1234shenzheng34567shenzheng5678"]
+		console.log(reg.exec(str)); // ["shenzheng5678", "5678", index: 27, input: "shenzheng1234shenzheng34567shenzheng5678"]
+
+		// 而match只能捕获大正则匹配的内容
+		console.log(str.match(reg)); // f["shenzheng1234", "shenzheng34567", "shenzheng5678"]
+
+
+  </script>
+ </body>
+</html>
