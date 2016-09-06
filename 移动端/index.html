@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title></title>
+        <style media="screen">
+            *{
+                margin:0;
+                padding:0;
+            }
+
+            .activity,.expert,.live-box,.found,.provide-warp{
+                width:100%;
+                height:1000px;
+                border:1px solid red;
+            }
+            .activity{background:green;}
+            .expert{background:pink;}
+            .live-box{background:#666;}
+            .live-box{background:yellow;}
+            .found{background:blue;}
+            .provide-warp{background:orrign}
+
+            .foolr{
+                border:1px solid red;
+                position: fixed;
+                top:0;
+                left:100px;
+            }
+            .foolr > a{
+                background:red;
+                display:block;;
+                width:100px;
+            }
+
+
+
+        </style>
+    </head>
+    <body>
+
+
+        <div class="activity">
+                860
+
+        </div>
+        <div class="expert">
+                1222
+        </div>
+
+        <div class="live-box">
+                1412
+        </div>
+
+        <div class="found">
+                1524
+        </div>
+
+        <div class="provide-warp">
+                1524
+        </div>
+
+        <div class="foolr">
+    		<a href="javascript:void(0)" class="active huodong">
+    			<span class="left-arrows">&#62;</span>
+    			<span class="txt">活动</span>
+    			<span class="right-arrows">&#60;</span>
+    		</a>
+    		<a href="javascript:void(0)" class="mingren">
+    			<span class="left-arrows">&#62;</span>
+    			<span class="txt">名人</span>
+    			<span class="right-arrows">&#60;</span>
+    		</a>
+    		<a href="javascript:void(0)" class="zhibo">
+    			<span class="left-arrows">&#62;</span>
+    			<span class="txt">直播</span>
+    			<span class="right-arrows">&#60;</span>
+    		</a>
+    		<!-- <a href="javascript:void(0)" class="wangqi">往期</a> -->
+    		<a href="javascript:void(0)" class="chuanjian">
+    			<span class="left-arrows">&#62;</span>
+    			<span class="txt">创建</span>
+    			<span class="right-arrows">&#60;</span>
+    		</a>
+    		<a href="javascript:void(0)" class="up">
+    			<span class="left-arrows">&#62;</span>
+    			<span class="txt">顶部</span>
+    			<span class="right-arrows">&#60;</span>
+    		</a>
+    	</div>
+
+        <script type="text/javascript" src="js/zepto.min.js">
+        </script>
+        <script type="text/javascript">
+                $(".foolr .huodong").click(function(){
+                $(this).addClass("active").siblings().removeClass("active");
+                var mTop = $(".activity")[0].offsetTop;
+                var sTop = $(window).scrollTop();
+                var result = mTop - sTop;
+                $(window).scrollTop(result);
+            });
+
+            var mTop = $(".activity")[0].offsetTop;  //活动
+            var eTop = $(".expert")[0].offsetTop;    //专家
+            var lTop = $(".live-box")[0].offsetTop;     //直播
+            var fTop = $(".found")[0].offsetTop;    //创建活动
+            var pTop = $(".provide-warp")[0].offsetTop; //顶部
+
+            $(document).scroll(function(){
+                var wTop = $(window).scrollTop();
+                if(mTop-wTop < 50 && eTop-wTop >100){
+                    $(".foolr").find("a").eq(0).addClass("active").siblings().removeClass("active");
+                }else if(eTop-wTop <50 && lTop-wTop >100){
+                    $(".foolr").find("a").eq(1).addClass("active").siblings().removeClass("active");
+                }else if(lTop-wTop <20 && fTop-wTop >100){
+                    $(".foolr").find("a").eq(2).addClass("active").siblings().removeClass("active");
+                }else if(fTop-wTop <20 && fTop-wTop >1 ){
+                    $(".foolr").find("a").eq(3).addClass("active").siblings().removeClass("active");
+                }else if(pTop-wTop < 200){
+                    $(".foolr").find("a").eq(4).addClass("active").siblings().removeClass("active");
+                }
+            });
+
+            $(".foolr").find("a").eq(0).click(function(){
+                $(window).scrollTop(mTop-20);
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+            $(".foolr").find("a").eq(1).click(function(){
+                $(window).scrollTop(eTop-20);
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+            $(".foolr").find("a").eq(2).click(function(){
+                $(window).scrollTop(lTop-20);
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+            // $(".foolr").find("a").eq(3).click(function(){
+            //     $(window).scrollTop(sTop-20);
+            //     $(this).addClass("active").siblings().removeClass("active");
+            // });
+            $(".foolr").find("a").eq(3).click(function(){
+                $(window).scrollTop(fTop-20);
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+            $(".foolr").find("a").eq(4).click(function(){
+                $(window).scrollTop(0);
+                $(this).addClass("active").siblings().removeClass("active");
+            });
+
+        </script>
+
+    </body>
+</html>
