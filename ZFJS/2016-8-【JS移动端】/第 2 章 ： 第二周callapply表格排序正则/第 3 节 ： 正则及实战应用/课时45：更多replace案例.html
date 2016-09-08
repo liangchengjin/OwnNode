@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="Generator" content="EditPlus®">
   <meta name="Author" content="">
-  <title>课时45：更多replace案例</title>
+  <title>课时46：replace案例</title>
   <meta name="Keywords" content="">
   <meta name="Description" content="">
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
@@ -25,7 +25,7 @@
   // 1. replace：将原有的字符替换成我们新的字符
 	 /*
 		01.在不使用正则的情况下，执行一次replace只能替换字符串中的一个
-		02.在replace中我闪可以一次批量的把所有的正则匹配的内容都替换掉--->repalce是支持正则的
+		02.在replace中我们可以一次批量的把所有的正则匹配的内容都替换掉--->repalce是支持正则的
 	 */
 	  var str = "shenzhengns~chanashenzheng";
 	  str = str.replace("shenzheng", "深圳").replace("shenzheng","深圳"); // 深圳ns~chana深圳
@@ -54,15 +54,88 @@
 		  console.log(str);
 	*/
 
-	//2. 将小写的数字替换成大写的中文数字
+	// 04.将小写的数字替换成大写的中文数字
 	var str = "中国深圳:2016";
 	var ary = ["零","壹","贰","叁","肆","伍","陆","柒","捌","玖"];
 	// 我们实现替换的话，需要捕获到数字，并且把数字做成ary的获取对应的汉字进
 	str = str.replace(/\d/, function(){
-		return ary[agrumens[1]]
-	};
-	console.log(ary);
+		/*
+		 第一次执行：大正则捕获的是9，返回的是ary[9]-->"玖"
+		 第二次执行：大正则捕获的是8，返回的是ary[8]-->"捌"
+		*/
+		return ary[arguments[1]];
+	});
+	console.log(str);
+
+	//3.获取一个字符中出现次数最多的字符
+		var str = "zhufengpeixunyangfangihang";
+		// 01.获取每一个字符出现的次数
+		var obj = {};
+		str.replace(/[a-z]/gi, function(){
+			var val = arguments[0];
+			obj[val] >= 1? obj[val]+=1:obj[val] = 1;		
+		});
+		// 02.获取最多出现的次数
+		var maxNum = 0;
+		for(var key in obj){
+			obj[key] > maxNum ? maxNum = obj[key] : null;
+		}
+		// 03.把所有的符合出现maxNum次数都获取到
+		var ary = [];
+		for(var key in obj){
+			obj[key] === maxNum? ary.push(key):null;
+		}
+		console.log("整个字符串出现次数最多的字符是："+ary.toString() + " ~ 出现了"+maxNum+" 次了");
+
+
+		// 04. 模板引擎实现的初步原理
+			var str = "my name is {0}, my age is {1}, i come from {2}, i love {3}~";
+			var ary = ["呈琛", "18", "shengzhen", "function"];
+			str = str.replace(/{(\d+)}/g, function(){
+				//return ary[arguments[1]];
+				return ary[RegExp.$1];		// ie下不兼容
+				//return ary[arguments[1]];
+			});
+			console.log(str);
+
+		// 思考题：
+			/*
+			1、"2016-9-22 13:10:0" -->"2016年09月22日 13时10分00秒";
+			2、把一个字符串中所有单词的首字符大写，"zhu feng pei xun" -->"zhu Feng Pei xun"
+			*/
+
+	// 05.需求：queryURLParameter;
+		/*
+		 var str = https://www.baidu.com/s?wd=%E4%B8%AD%E5%9B%BD%E5%BC%8F%E5%85%B3%E7%B3%BB&rsv_spt=1&rsv_iqid=0xf093ead90002e005&issp=1&f=3&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=7&rsv_sug1=10&rsv_sug7=100&rsv_sug2=0&prefixsug=%E4%B8%AD&rsp=0&inputT=6841&rsv_sug4=8818
+
+		 --> 把URL中的参数都获取到，并且保存如下格式?
+		
+		var obj = {
+			wd:"%E4%B8%AD%E5%9B%BD%E5%BC%8F%E5%85%B3%E7%B3%BB",
+			rsv_spt:1,
+			rsv_iqid:"0xf093ead90002e005",
+			th:"baiduhome_pg"
+		}
+		*/
+		
+		var str = "https://www.baidu.com/s?wd=javascript%20dom%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E5%9B%9B%E7%89%88&rsv_spt=1&rsv_iqid=0xf28b839e0001e620&issp=1&f=3&rsv_bp=0&rsv_idx=2&ie=utf-8&tn=baiduhome_pg&rsv_enter=1&rsv_sug3=1&rsv_sug1=1&rsv_sug7=100&rsv_sug2=1&prefixsug=JavaScript%20DOM%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1&rsp=2";
+
+		var reg = /([^?=&]+)=([^?=&]+)/g;
+		var obj = {};
+		var res = reg.exec(str);
+		
+		while(res){
+			obj[res[1]] = res[2];
+			res = reg.exec(str);
+		}
+		console.log(obj); //Object {wd: "javascript%20dom%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E5%9B%9B%E7%89%88", rsv_spt: "1", rsv_iqid: "0xf28b839e0001e620", issp: "1", f: "3"…}
+		
 	 
+		// 02.
+		str.replace(reg, function(){
+			obj[arguments[1]] = arguments[2];
+		});
+		console.log(obj); // Object {wd: "javascript%20dom%E9%AB%98%E7%BA%A7%E7%A8%8B%E5%BA%8F%E8%AE%BE%E8%AE%A1%E7%AC%AC%E5%9B%9B%E7%89%88", rsv_spt: "1", rsv_iqid: "0xf28b839e0001e620", issp: "1", f: "3"…}
 
   </script>
  </body>

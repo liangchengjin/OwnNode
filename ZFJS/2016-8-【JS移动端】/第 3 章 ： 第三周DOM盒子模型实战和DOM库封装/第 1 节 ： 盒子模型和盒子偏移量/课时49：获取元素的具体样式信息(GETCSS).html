@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="Generator" content="EditPlus®">
+  <meta name="Author" content="">
+  <title>课时49：获取元素的具体样式信息(GETCSS)</title>
+  <meta name="Keywords" content="">
+  <meta name="Description" content="">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <!--css-->
+  <style>
+  *{margin:0; padding:0;}
+  body{font-family: "Hiragino Sans GB","Microsoft Yahei",arial,\5b8b\4f53,"Helvetica Neue",Helvetica,STHeiTi,sans-serif;}
+   #box{
+	height:200px;
+	padding:30px;
+	width:200px;
+	margin:100px auto;
+	border:10px solid green;
+  }
+  </style>
+ </head>
+ <body>
+  <div id="box">
+	要得到你必须要付出，要付出你还要学会坚持，如果你真的觉得很难，那你就放弃，但是你放弃了就不要抱怨，我觉得人生就是这样，世界真的是平衡的，每个人通过自己的努力，
+  </div>
+	
+  <!--js--> 
+  <script>
+  // 课时49：获取元素的具体样式信息(GETCSS)
+  var box = document.getElementById("box");
+  /*
+   -> 获取元素的某一个具体的样式属性值
+	1.元素.style.属性
+		-> 需要把元素的样式都写在行内样式上才要吧(写在样式表中是不管用的)
+
+		 console.log(box.style.height);
+		 console.log(box.style.width);
+		 -> 真实项目中，这种方式不常用，因为我不能为了获取值而把所有的样式都写在行内(无法实现css和html的分离);
+  */
+
+  // 2. 使用window.getComputedStyle这个方法获取所有经过浏览器计算过的样式
+	 /*
+	   -> 什么是所有经过浏览器计算过的样式：只要当前的元素标签可以在页面呈现出来，那以它的所有的样式都是经过浏览器计算过的(渲染过的)-->哪怕有些样式你没有写，我们也可以获取到
+
+	   -> window.getComputedStyle(当前要操作的元素对象，当前元素的伪类[一般我们不用伪类写null])
+	   -> 获取的结果是CSSStyleDeclaration这个类的一个实现：包含了当前元素的所有的样式属性和值 
+	   
+		 console.log(window.getComputedStyle); // function getComputedStyle() {[native code]}
+		 console.log(window.getComputedStyle(box, null).width);
+		 console.log(window.getComputedStyle(box, null)["width"]);
+	 */
+	 
+
+  // 3. 方法虽然好用，但是在IE6~8下是不兼容的：因为window下没有getComputedStyle这个属性-->在IE6~8下执行方法会报错
+	  // 解决IE6~8下我们可能使用currentStyle来获取所有的经过的浏览器计算过的样式
+	  var currents = box.currentStyle
+	  //window.getComputedStyle(box, null).height;
+	  //box.currentStyle.height
+
+	  // getCss: 获取当前元素所有经过浏览器计算过的样式
+	  /*
+		curEle:[object]当前要的元素的对象
+		attr:[string]我们要获取的样式属性的名称
+	  */
+	  // 01. 使用try、catch来处理兼容
+		 /*
+		   弊端：
+			 前前：必须保证try中的代码在不兼容浏览器中执行的时候报错，这样的话我们才可以catch捕获到异常的信息，进行其它的处理
+			 -> 不管当前是什么浏览器，都需要先把代码执行一遍，如果当前是IE6-7,windowgetComputedStyle本身是不兼容，但是我们了要先反它执行一遍，报错了，在把curEle.currentStyle执行一遍
+
+		 */
+
+		 // 02.判断浏览器中的是否存在这个属性或者方法，存在就兼容，不存在就不兼容
+	  function getCss(curEle, attr){
+		var val = null
+		if("getComputedStyle" in ){}
+		
+		try{
+			val = window.getComputedStyle(curEle, null)[attr];
+		}catch(e){
+			val = curEle.currentStyle[attr];
+		}
+		return val;
+	  }
+	  var css = getCss(box, "width");
+	  console.log(css);
+	  
+
+
+ 
+
+  </script>
+ </body>
+</html>
